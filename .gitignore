@@ -1,0 +1,12 @@
+a.out
+a.out.dSYM
+*~
+main.c
+.vscode
+*.o
+libft.a
+libft.so
+\#*\#
+.\#*
+old_bonus
+main*.c
