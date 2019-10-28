@@ -6,11 +6,11 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/10/22 15:50:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/10/22 15:53:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf"
+#include "printf.h"
 #include <stdio.h>
 
 int 	main(void)
