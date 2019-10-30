@@ -6,13 +6,13 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/10/22 15:43:34 by juligonz         ###   ########.fr        #
+#    Updated: 2019/10/30 16:19:40 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
-SRCS = printf.c
+SRCS = ft_printf.c
 
 OBJ = $(SRCS:.c=.o)
 
