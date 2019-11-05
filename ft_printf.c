@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/10/31 16:55:29 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/05 21:06:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,29 @@ static long long	modifier(long long)
 
 }*/
 
-static void	ft_putnbru_base_fd(unsigned long long n, unsigned int *base, int *fd)
+static void	ft_putnbru_base_fd(unsigned long long n, unsigned int *base, int *fd, int *upcase)
 {
 	char c;
 
 	if (n >= *base)
-		ft_putnbru_base_fd(n / *base, base, fd);
+		ft_putnbru_base_fd(n / *base, base, fd, upcase);
 	c = n % *base + '0';
 	if (c > '9')
 		c += 39;
+	if (*upcase)
+		c -= 32;
 	ft_putchar_fd(c, *fd);
 }
 
-int		ft_putnbr_base_fd(long long n, unsigned int base, int fd)
+static int		ft_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
 {
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		ft_putnbru_base_fd(-n, &base, &fd);
+		ft_putnbru_base_fd(-n, &base, &fd, &upcase);
 	}
 	else
-		ft_putnbru_base_fd(n, &base, &fd);
+		ft_putnbru_base_fd(n, &base, &fd, &upcase);
 	return (-1000); // TODO return len
 }
 
@@ -89,18 +91,18 @@ static int	parse(const char c, va_list *args)
 	if (c == 'p')
 	{
 		ft_putstr("0x");		
-		return (ft_putnbr_base_fd(va_arg(*args, long long), 16, 1) + 2);
+		return (ft_putnbr_base_fd(va_arg(*args, long long), 16, 1, 0) + 2);
 	}
-	if (c == 'd')
-		return (ft_putnbr_base_fd(va_arg(*args, long long), 10, 1));
-	if (c == 'i')
-		return (0);
+	if (c == 'd' || c == 'i')
+		return (ft_putnbr_base_fd(va_arg(*args, long long), 10, 1, 0));
+//	if (c == 'i')
+//		return (0);
 	if (c == 'u')
-		return (0);
+		return (ft_putnbr_base_fd(va_arg(*args, long long), 10, 1, 0));
 	if (c == 'x')
-		return (0);
+		return (ft_putnbr_base_fd(va_arg(*args, long long), 16, 1, 0));
 	if (c == 'X')
-		return (0);
+		return (ft_putnbr_base_fd(va_arg(*args, long long), 16, 1, 1));
 	if (c == '%')
 		return (ft_putchar_fd('%',1));
 	return (0);
