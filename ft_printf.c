@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/05 21:06:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:46:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,49 +38,8 @@ static	int	ft_putstr_range(char const *s_begin, char const *s_end)
 	write(1, s_begin, n);
 	return (n);
 }
-static	int			ft_putstr(char const *s)
-{
-	int     len;
 
-	write(1, s, (len = ft_strlen(s)));
-	return (len);
-	// modify to return ssize_t from write
-}
-
-#include <stdio.h>
 //cspdiuxX
-
-/*
-static long long	modifier(long long)
-{
-
-}*/
-
-static void	ft_putnbru_base_fd(unsigned long long n, unsigned int *base, int *fd, int *upcase)
-{
-	char c;
-
-	if (n >= *base)
-		ft_putnbru_base_fd(n / *base, base, fd, upcase);
-	c = n % *base + '0';
-	if (c > '9')
-		c += 39;
-	if (*upcase)
-		c -= 32;
-	ft_putchar_fd(c, *fd);
-}
-
-static int		ft_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
-{
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putnbru_base_fd(-n, &base, &fd, &upcase);
-	}
-	else
-		ft_putnbru_base_fd(n, &base, &fd, &upcase);
-	return (-1000); // TODO return len
-}
 
 static int	parse(const char c, va_list *args)
 {
@@ -106,7 +65,21 @@ static int	parse(const char c, va_list *args)
 	if (c == '%')
 		return (ft_putchar_fd('%',1));
 	return (0);
+//nfge
 }
+
+static long long	flags(short flags, char *format)
+{
+	int i;
+
+	i = 0;
+	while ()
+	{
+
+	}
+	
+}
+
 
 int			ft_printf(const char *format, ...)
 {
@@ -114,7 +87,7 @@ int			ft_printf(const char *format, ...)
 	size_t	i;
 	int		len;
 	char	*str;
-	char	flags;
+	short	flags;
 
 	(void)flags;
 	va_start(args, format);
@@ -125,7 +98,7 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			//flags call
+			flags(&flags, format);
 			len += ft_putstr_range(str, format + i++);
 			len += parse(format[i++], &args);
 			str = (char *)format + i;
