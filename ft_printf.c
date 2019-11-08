@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/06 18:26:28 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/08 13:29:27 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@
 
 static int parse(const char c, va_list *args)
 {
-	
-	while ( )
+	const char *convs = CONVERSIONS;
+	int i;
+
+	i = -1;
+	while (convs[++i])
+	{
+		if ()
+			return ();
+	}
 }
 
 static long long	flags(short flags, char *format)
 {
-	const char *convs = "cspdiux%Xnfge";
 	int i;
 
-	i = 0;
-	while ()
-	{
-
-	}
-	
+	i = -1;
+	while (++i )
+		
 }
 
 
