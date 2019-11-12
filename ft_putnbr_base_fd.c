@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 13:28:35 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:48:21 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_u(unsigned long long n, unsigned int *base, int *fd, int *upcase)
 	write(*fd, &c, 1);
 }
 
-int			t_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
+int			ft_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
 {
 	if (n < 0)
 	{
@@ -38,3 +38,20 @@ int			t_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
 	return (-1000);
 	// TODO return len
 }
+
+int			conv_p(va_list *args, int fd)
+{
+	write(fd, "0x", 2);
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, fd, 0) + 2);
+}
+
+int			conv_d(va_list *args, int fd)
+{
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, fd, 0));
+}
+
+int			conv_i(va_list *args, int fd)
+{
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, fd, 0));
+}
+

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 13:24:26 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:49:26 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ static long long	flags(short flags, char *format)
 static int parse(const char c, va_list *args, int fd)
 {
 	const char *conv = "cspdiux%Xnfge";
-	handler jmp_table[3] =  {ft_putchar_fd, ft_putstr_fd}; // define in const ? 
+	handler jmp_table[113] ={ft_putchar_fd, 
+							 ft_putstr_fd, 
+							 conv_p, 
+							 conv_d, 
+							 conv_i }; // define in const ? 
 	int i;
 
 	i = -1;
