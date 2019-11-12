@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 13:48:21 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:03:59 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase)
 	// TODO return len
 }
 
+int			conv_c(va_list *args, int fd)
+{
+    const unsigned char c = va_arg(*args, int);
+
+    write(fd, &c, 1);
+	return (1);
+}
+
 int			conv_p(va_list *args, int fd)
 {
 	write(fd, "0x", 2);
@@ -55,3 +63,24 @@ int			conv_i(va_list *args, int fd)
 	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, fd, 0));
 }
 
+int			conv_u(va_list *args, int fd)
+{
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, fd, 0));
+}
+
+int			conv_x(va_list *args, int fd)
+{
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, fd, 0));
+}
+
+int			conv_X(va_list *args, int fd)
+{
+	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, fd, 1));
+}
+
+int			conv_mod(va_list *args, int fd)
+{
+	(void)args;
+	write(fd, "%", 1);	
+	return (1);
+}

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 13:48:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:01:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ typedef int (*handler)(va_list *args, int fd);
 
 int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
-int		ft_putchar_fd(va_list *args, int fd);
 int		ft_putstr_fd(va_list *args, int fd);
+int		conv_c(va_list *args, int fd);
 int		conv_p(va_list *args, int fd);
 int		conv_d(va_list *args, int fd);
 int		conv_i(va_list *args, int fd);
-
+int		conv_u(va_list *args, int fd);
+int		conv_x(va_list *args, int fd);
+int		conv_X(va_list *args, int fd);
+int		conv_mod(va_list *args, int fd);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);
 size_t	ft_strlen(const char *s);
