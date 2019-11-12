@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 14:01:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:11:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 # define F_DASH (1 << 0)
-# define F_0 (1 << 1)
+# define F_ZERO (1 << 1)
 # define F_DOT (1 << 2)
 # define F_STAR (1 << 3)
 # define F_L (1 << 4)
@@ -32,10 +32,9 @@
 
 typedef int (*handler)(va_list *args, int fd);
 
-int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
-
 int		ft_putstr_fd(va_list *args, int fd);
 int		conv_c(va_list *args, int fd);
+int		conv_s(va_list *args, int fd);
 int		conv_p(va_list *args, int fd);
 int		conv_d(va_list *args, int fd);
 int		conv_i(va_list *args, int fd);
@@ -46,7 +45,8 @@ int		conv_mod(va_list *args, int fd);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);
 size_t	ft_strlen(const char *s);
+int		ft_putnbr_base_fd(long long n, unsigned int base, int fd, int upcase);
+
+int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
 #endif
-
-

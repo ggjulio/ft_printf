@@ -6,17 +6,18 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/12 14:02:31 by juligonz         ###   ########.fr        #
+#    Updated: 2019/11/12 16:14:28 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
-SRCS =	ft_printf.c 				\
-		ft_putnbr_base_fd.c	\
-		ft_putstr_fd.c			\
+SRCS =	ft_printf.c 			\
+		ft_putnbr_base_fd.c		\
 		ft_putstr_range.c		\
-		ft_strlen.c			\
+		ft_strlen.c				\
+		conversions.c			\
+
 
 OBJ = $(SRCS:.c=.o)
 
