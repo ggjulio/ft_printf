@@ -6,12 +6,16 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 11:46:38 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:07:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+#include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 # define F_DASH (1 << 0)
 # define F_0 (1 << 1)
@@ -26,9 +30,15 @@
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
 
-typedef void (handler)(void);
+typedef int (*handler)(va_list *args, int fd);
 
 int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
+
+int		ft_putchar_fd(va_list *args, int fd);
+int		ft_putstr_fd(va_list *args, int fd);
+int		ft_putstr_range(char const *s_begin, char const *s_end);
+
+size_t	ft_strlen(const char *s);
 
 #endif
 

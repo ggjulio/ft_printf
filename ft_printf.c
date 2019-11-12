@@ -6,26 +6,12 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 11:50:36 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:24:26 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "ft_printf.h"
 
-static int parse(const char c, va_list *args)
-{
-	const char *conv = "cspdiux%Xnfge";
-	handler jmp_table[3] =  {, , ,};
-	int i;
-
-	i = -1;
-	while (conv[++i])
-		if (conv[i])
-			return (jmp_table[i]());
-}
 /*
 static long long	flags(short flags, char *format)
 {
@@ -37,6 +23,19 @@ static long long	flags(short flags, char *format)
 }
 */
 
+static int parse(const char c, va_list *args, int fd)
+{
+	const char *conv = "cspdiux%Xnfge";
+	handler jmp_table[3] =  {ft_putchar_fd, ft_putstr_fd}; // define in const ? 
+	int i;
+
+	i = -1;
+	while (conv[++i])
+		if (conv[i] == c)
+			return (jmp_table[i](args, fd));
+	return (0);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list	args;
@@ -46,7 +45,7 @@ int			ft_printf(const char *format, ...)
 	short	flags;
 
 	(void)flags;
-//	va_start(args, format);
+	va_start(args, format);
 	i = -1;
 	len = 0;
 	str = (char *)format;
@@ -54,9 +53,9 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			flags(&flags, format);
+//			flags(&flags, format);
 			len += ft_putstr_range(str, format + i++);
-			len += parse(format[i++], &args);
+			len += parse(format[i++], &args, 1);
 			str = (char *)format + i;
 		}
 	}

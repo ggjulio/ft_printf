@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 17:46:50 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/06 17:47:20 by juligonz         ###   ########.fr       */
+/*   Created: 2019/11/06 17:44:54 by juligonz          #+#    #+#             */
+/*   Updated: 2019/11/12 13:26:32 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	ft_strlen(const char *s)
-{
-	size_t i;
+#include "ft_printf.h"
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+int		ft_putstr_fd(va_list *args, int fd)
+{
+	char *s = va_arg(*args, char*);
+	int len;
+
+	write(fd, s, (len = ft_strlen(s)));
+	return (len);
+	// modify to return ssize_t from write
 }

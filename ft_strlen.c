@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 18:02:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/06 18:10:04 by juligonz         ###   ########.fr       */
+/*   Created: 2019/11/06 17:46:50 by juligonz          #+#    #+#             */
+/*   Updated: 2019/11/12 13:08:01 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_putchar_fd(unsigned char c, int fd)
+#include <unistd.h>
+
+size_t	ft_strlen(const char *s)
 {
-	write(fd, &c, 1);
-	return (1);
+	size_t i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
