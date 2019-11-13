@@ -6,16 +6,18 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 18:11:15 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:34:01 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+# define BUFFER_SIZE 5
 
 # define F_DASH (1 << 0)
 # define F_ZERO (1 << 1)
@@ -30,17 +32,28 @@
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
 
-typedef int (*handler)(va_list *args, int fd);
+typedef struct	s_str
+{
+	char	*s;
+	int		len;
+}				t_str;
 
-int		ft_putstr_fd(va_list *args, int fd);
+typedef struct	s_manager
+{
+	short	flags;
+	char	specifier;
+}				t_manager;
+
+typedef	int	(*handler)(va_list *args, int fd);
+
 int		conv_c(va_list *args, int fd);
 int		conv_s(va_list *args, int fd);
 int		conv_p(va_list *args, int fd);
 int		conv_d(va_list *args, int fd);
 int		conv_i(va_list *args, int fd);
 int		conv_u(va_list *args, int fd);
-int		conv_x(va_list *args, int fd);
-int		conv_X(va_list *args, int fd);
+int		conv_x_lowcase(va_list *args, int fd);
+int		conv_x_upcase(va_list *args, int fd);
 int		conv_mod(va_list *args, int fd);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);

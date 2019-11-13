@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 19:46:33 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:19:43 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static int read_flags(short *flags, const char *format)
 //	const char *conv = "cspdiuxXnfge%";
 //	const char c_flags[12][3]  = {"-", "0", ".", "*", "l", "ll", "h","hh", "'", "#", " ", "+"};
 	size_t i;
-	size_t j;
 
 	*flags = 0;
 	i = -1;
-	j = -1;
 	while (1)
 	{
 		if (format[i] == '-')
-			*flags |= ~(*flags & F_DASH);
+			*flags = ~(*flags & F_DASH);
 		else if (format[i] == '+')
 			*flags |= F_PLUS; 
 		else if (format[i] == '0')
@@ -44,14 +42,9 @@ static int read_flags(short *flags, const char *format)
 			*flags |= F_STAR; 
 		else
 			return (i);
-//			while (conv[++j])
-//				if (conv[j] == format[i])
-//					return (i);
-//		j = -1;
 		i++;
 	}
 }
-
 
 static int parse(const char c, va_list *args, int fd)
 {
@@ -62,8 +55,8 @@ static int parse(const char c, va_list *args, int fd)
 								  conv_d, 
 								  conv_i,
 								  conv_u,
-								  conv_x,
-								  conv_X,
+								  conv_x_lowcase,
+								  conv_x_upcase,
 								  NULL,
 								  NULL,
 								  NULL,
@@ -85,7 +78,9 @@ int			ft_printf(const char *format, ...)
 	int		len;
 	char	*str;
 	short	flags;
-
+	char	specifier;
+//	char	buffer[BUFFER_SIZE];
+	
 	(void)flags;
 	va_start(args, format);
 	i = -1;
@@ -97,7 +92,8 @@ int			ft_printf(const char *format, ...)
 		{
 			i += read_flags(&flags, format);
 			len += ft_putstr_range(str, format + i);
-			len += parse(format[i++], &args, 1);
+			specifier = format[i++];
+			len += parse(specifier, &args, 1);
 			str = (char *)format + i;
 		}
 	}

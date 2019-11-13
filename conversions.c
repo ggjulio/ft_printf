@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/12 16:16:21 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:19:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int			conv_u(va_list *args, int fd)
 	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, fd, 0));
 }
 
-int			conv_x(va_list *args, int fd)
+int			conv_x_upcase(va_list *args, int fd)
 {
 	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, fd, 0));
 }
 
-int			conv_X(va_list *args, int fd)
+int			conv_x_lowcase(va_list *args, int fd)
 {
 	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, fd, 1));
 }
@@ -67,3 +67,13 @@ int			conv_mod(va_list *args, int fd)
 	write(fd, "%", 1);	
 	return (1);
 }
+
+#include <math.h>
+
+/*
+void		do_flags(short *flags, char )
+{
+	if (F_DASH & *flags)
+		
+}
+*/
