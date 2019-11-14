@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 14:44:02 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:18:11 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_u(unsigned long long n, unsigned int *base, t_manager p)
+static void	ft_u(unsigned long long n, unsigned int *base, t_manager *p)
 {
 	char c;
 
@@ -23,20 +23,20 @@ static void	ft_u(unsigned long long n, unsigned int *base, t_manager p)
 	{
 		if (p->specifier == 'X')
 			c += 7;
-		else if (p->specifier == 'x')
+		else if (p->specifier == 'x' || p->specifier == 'p')
 			c += 39;
 	}
 	write(p->fd, &c, 1);
 }
 
-int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager p)
+int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 {
 	if (n < 0)
 	{
-		write(fd, "-", 1);
+		write(p->fd, "-", 1);
 		ft_u(-n, &base, p);
 	}
 	else
 		ft_u(n, &base, p);
-	return (-1000);
+	return (-1000); // to do
 }

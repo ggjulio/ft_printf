@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 14:51:44 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 19:04:43 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,28 @@ typedef struct	s_manager
 {
 	int		fd;
 	short	flags;
+	int		width;
 	char	specifier;
+	char	buffer[BUFFER_SIZE];
+	size_t	buffer_idx;
+	
 }				t_manager;
 
-typedef	int	(*handler)(va_list *args, t_manager p);
+typedef	int	(*handler)(va_list *args, t_manager *p);
 
-int		conv_c(va_list *args, t_manager p);
-int		conv_s(va_list *args, t_manager p);
-int		conv_p(va_list *args, t_manager p);
-int		conv_d(va_list *args, t_manager p);
-int		conv_i(va_list *args, t_manager p);
-int		conv_u(va_list *args, t_manager p);
-int		conv_x_lowcase(va_list *args, t_manager p);
-int		conv_x_upcase(va_list *args, t_manager p);
-int		conv_mod(va_list *args, t_manager p);
+int		conv_c(va_list *args, t_manager *p);
+int		conv_s(va_list *args, t_manager *p);
+int		conv_p(va_list *args, t_manager *p);
+int		conv_d(va_list *args, t_manager *p);
+int		conv_i(va_list *args, t_manager *p);
+int		conv_u(va_list *args, t_manager *p);
+int		conv_x_lowcase(va_list *args, t_manager *p);
+int		conv_x_upcase(va_list *args, t_manager *p);
+int		conv_mod(va_list *args, t_manager *p);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);
 size_t	ft_strlen(const char *s);
-int		ft_putnbr_base_fd(long long n, unsigned int base, t_manager p);
+int		ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p);
 
 int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
