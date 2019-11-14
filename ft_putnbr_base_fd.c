@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 18:18:11 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:17:06 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	ft_u(unsigned long long n, unsigned int *base, t_manager *p)
 		else if (p->specifier == 'x' || p->specifier == 'p')
 			c += 39;
 	}
-	write(p->fd, &c, 1);
+	write_buffer(p, &c, 1);
 }
 
 int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 {
 	if (n < 0)
 	{
-		write(p->fd, "-", 1);
+		write_buffer(p, "-", 1);
 		ft_u(-n, &base, p);
 	}
 	else

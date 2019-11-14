@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 19:04:43 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:37:18 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 5
+# define BUFFER_SIZE 2
 
 # define F_DASH (1 << 0)
 # define F_ZERO (1 << 1)
@@ -32,12 +32,6 @@
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
 
-typedef struct	s_str
-{
-	char	*s;
-	int		len;
-}				t_str;
-
 typedef struct	s_manager
 {
 	int		fd;
@@ -45,8 +39,7 @@ typedef struct	s_manager
 	int		width;
 	char	specifier;
 	char	buffer[BUFFER_SIZE];
-	size_t	buffer_idx;
-	
+	size_t	buffer_idx;	
 }				t_manager;
 
 typedef	int	(*handler)(va_list *args, t_manager *p);
@@ -64,7 +57,8 @@ int		conv_mod(va_list *args, t_manager *p);
 int		ft_putstr_range(char const *s_begin, char const *s_end);
 size_t	ft_strlen(const char *s);
 int		ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p);
+void	write_buffer(t_manager *p, char *s, size_t n);
 
-int		ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
+int		ft_printf(const char *format, ...)  __attribute__((format(printf,1,2)));
 
 #endif

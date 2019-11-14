@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 17:29:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:17:22 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			conv_c(va_list *args, t_manager *p)
 {
-    const unsigned char c = va_arg(*args, int);
+	char c = va_arg(*args, int);
 
-    write(p->fd, &c, 1);
+    write_buffer(p, &c, 1);
 	return (1);
 }
 
@@ -25,14 +25,13 @@ int			conv_s(va_list *args, t_manager *p)
 	char *s = va_arg(*args, char*);
     int len;
 
-    write(p->fd, s, (len = ft_strlen(s)));
+    write_buffer(p, s, (len = ft_strlen(s)));
     return (len);
-    // modify to return ssize_t from write
 }
 
 int			conv_p(va_list *args, t_manager *p)
 {
-	write(p->fd, "0x", 2);
+    write_buffer(p, "0x", 2);
 	return (ft_putnbr_base_fd(va_arg(*args, long long), 16, p) + 2);
 }
 

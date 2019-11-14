@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 19:12:00 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:47:32 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,22 @@ static int parse(va_list *args, t_manager *p)
 	return (0);
 }
 
+void		write_buffer(t_manager *p, char *s, size_t n)
+{
+	int i;
+
+	i = 0;
+	while (n--)
+	{
+		if (p->buffer_idx == BUFFER_SIZE)
+		{
+			write(p->fd, p->buffer, BUFFER_SIZE);
+			p->buffer_idx = 0;			
+		}
+		p->buffer[p->buffer_idx++] = s[i++];
+	}
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list	args;
@@ -86,19 +102,22 @@ int			ft_printf(const char *format, ...)
 	len = 0;
 	str = (char *)format;
 	p.fd = 1;
+	p.buffer_idx = 0;
 	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
-			len += ft_putstr_range(str, format + i);
+			write_buffer(&p, str, format + i - str);
 			i++;
 			i += read_flags(&p, format + i);
 			len += parse(&args, &p);
 			str = (char *)format + i;
 		}
 	}
-	if (str != format + i)
-			len += ft_putstr_range(str, format + i++);
+	write_buffer(&p, str, format + i - str);
+	if (p.buffer_idx != 0) // debug
+		write(1, p.buffer, p.buffer_idx);
+
 	va_end(args);
 	return (len);
 }
