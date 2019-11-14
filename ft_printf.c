@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/13 15:19:43 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 14:52:26 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int read_flags(short *flags, const char *format)
 	}
 }
 
-static int parse(const char c, va_list *args, int fd)
+static int parse(const char c, va_list *args, t_manager p)
 {
 	const char *conv = "cspdiuxXnfge%";
 	const handler jmp_table[13] ={conv_c, 
@@ -67,7 +67,7 @@ static int parse(const char c, va_list *args, int fd)
 	i = -1;
 	while (conv[++i])
 		if (conv[i] == c)
-			return (jmp_table[i](args, fd));
+			return (jmp_table[i](args, p));
 	return (0);
 }
 
@@ -77,9 +77,9 @@ int			ft_printf(const char *format, ...)
 	size_t	i;
 	int		len;
 	char	*str;
-	short	flags;
-	char	specifier;
-//	char	buffer[BUFFER_SIZE];
+	short	flags; //
+	char	specifier; //
+	t_manager p;
 	
 	(void)flags;
 	va_start(args, format);
@@ -93,7 +93,7 @@ int			ft_printf(const char *format, ...)
 			i += read_flags(&flags, format);
 			len += ft_putstr_range(str, format + i);
 			specifier = format[i++];
-			len += parse(specifier, &args, 1);
+			len += parse(specifier, &args, p);
 			str = (char *)format + i;
 		}
 	}
