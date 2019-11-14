@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 14:52:26 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:03:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int read_flags(short *flags, const char *format)
 	}
 }
 
-static int parse(const char c, va_list *args, t_manager p)
+static int parse(va_list *args, t_manager p)
 {
 	const char *conv = "cspdiuxXnfge%";
 	const handler jmp_table[13] ={conv_c, 
@@ -78,7 +78,7 @@ int			ft_printf(const char *format, ...)
 	int		len;
 	char	*str;
 	short	flags; //
-	char	specifier; //
+//	char	specifier; //
 	t_manager p;
 	
 	(void)flags;
@@ -92,8 +92,8 @@ int			ft_printf(const char *format, ...)
 		{
 			i += read_flags(&flags, format);
 			len += ft_putstr_range(str, format + i);
-			specifier = format[i++];
-			len += parse(specifier, &args, p);
+			p.specifier = format[i++];
+			len += parse(p.specifier, &args, p);
 			str = (char *)format + i;
 		}
 	}
