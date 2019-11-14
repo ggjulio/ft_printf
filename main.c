@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 22:17:01 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 22:23:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int 	main(void)
 	ft_printf("_-_%s-_-%s\n", "ok","bien");
 
 
-	ft_printf("%d\n", -42);
-	printf("%d\n", -42);
+	ft_printf("%i\n", -42);
+	printf("%i\n", -42);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 22:17:09 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/14 22:24:02 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			conv_d(va_list *args, t_manager *p)
 
 int			conv_i(va_list *args, t_manager *p)
 {
-	return (ft_putnbr_base_fd(va_arg(*args, long long), 10, p));
+	return (ft_putnbr_base_fd(va_arg(*args, int), 10, p));
 }
 
 int			conv_u(va_list *args, t_manager *p)
