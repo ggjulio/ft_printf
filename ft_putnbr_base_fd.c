@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/15 20:14:11 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/15 13:20:40 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 	char	c;
 
 	idx_buffer = MAX_DIGIT_LL;
-	n_u = (n < 0 ? -n : n);
+	n_u = (n < 0 && p->specifier != 'p' ? -n : n);
 	while (n_u)
 	{
 		c = n_u % base + '0';
@@ -78,9 +78,9 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 		buffer[--idx_buffer] = c;
 		n_u /= base;
 	}
-	if (n < 0 || (F_PLUS & p->flags))
+	if ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p')
 		buffer[--idx_buffer] = (n < 0 ? '-' : '+');
-	if (p->width != 0 && (F_DASH & p->flags) != F_DASH)
+	if (p->width != 0 && (((F_DASH & p->flags) != F_DASH) || (F_DOT & p->flags)))
 		put_width(p, p->width - (MAX_DIGIT_LL - idx_buffer));
 	write_buffer(p, buffer + idx_buffer, MAX_DIGIT_LL - idx_buffer);
 	if ((F_DASH & p->flags) & !(F_DOT & p->flags))

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/15 16:58:50 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:59:10 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		write_buffer(t_manager *p, char *s, size_t n)
 	i = 0;
 	while (n--)
 	{
-		if (p->buffer_idx == BUFFER_SIZE)
+		if (p->buffer_idx== BUFFER_SIZE)
 		{
 			write(p->fd, p->buffer, BUFFER_SIZE);
 			p->buffer_idx = 0;			
@@ -110,6 +110,8 @@ int			ft_printf(const char *format, ...)
 			write_buffer(&p, str, format + i - str);
 			i++;
 			i += read_flags(&p, format + i);
+			if (F_STAR & p.flags)
+				p.width = va_arg(args, int);
 			len += parse(&args, &p);
 			str = (char *)format + i;
 		}

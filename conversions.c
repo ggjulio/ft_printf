@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/15 18:56:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:31:27 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int			conv_c(va_list *args, t_manager *p)
 
 int			conv_s(va_list *args, t_manager *p)
 {
-	char *s = va_arg(*args, char*);
-    int len;
+	char	*s = va_arg(*args, char*);
+    int		len;
 
     write_buffer(p, s, (len = ft_strlen(s)));
     return (len);
