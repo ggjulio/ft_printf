@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/14 21:47:32 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:58:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int read_flags(t_manager *p, const char *format)
 	while (1)
 	{
 		if (format[i] == '-')
-			p->flags = ~(p->flags & F_DASH);
+			p->flags ^= F_DASH;
 		else if (format[i] == '+')
 			p->flags |= F_PLUS; 
 		else if (format[i] == '0')
