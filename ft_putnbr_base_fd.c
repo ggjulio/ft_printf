@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 18:53:05 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 21:51:39 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 	}
 	show_sign = ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p');
 	nb_digits = MAX_DIGIT_LL - idx_buffer;
-	if (F_SPACE & p->flags)
+	if ((F_SPACE & p->flags) && !show_sign)
 		write_buffer(p, " ", 1);
 	if (!(F_DASH & p->flags) && (!(F_ZERO & p->flags) || (F_DOT & p->flags)))
 		put_width(p, nb_digits, show_sign);
