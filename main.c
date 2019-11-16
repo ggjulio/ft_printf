@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 21:21:52 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 21:34:18 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,9 @@ int 	main(void)
 	ft_printf("%d%d_\n",40, 45);
 	printf("%d%d_\n",40, 45);
 
-*/
 
-//	ft_printf("%32s\n", "abc");
+
+
 	ft_printf("%32s\n", "abc");
 	printf("%32s\n", "abc");
 
@@ -163,6 +163,12 @@ int 	main(void)
 
 	printf("hello, %s.\n", NULL);
 	ft_printf("hello, %s.\n", NULL);
+*/
+
+	ft_printf("%3c_\n", 'C');
+	printf("%3c_\n", 'C');
+	ft_printf("%-3c_\n", 'C');
+	printf("%-3c_\n", 'C');
 
 
 
