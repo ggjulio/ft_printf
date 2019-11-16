@@ -6,11 +6,24 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 18:39:17 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:46:25 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+long long	cast_len(t_manager *p, long long n)
+{
+	return (n);
+	if (F_H & p->flags)
+		return ((short)n);
+	if (F_HH & p->flags)
+		return ((signed char)n);
+	if (F_L & p->flags)
+		return ((long)n);
+	if (F_LL & p->flags)
+		return ((long long)n);
+}
 
 int			conv_c(va_list *args, t_manager *p)
 {
@@ -37,7 +50,8 @@ int			conv_p(va_list *args, t_manager *p)
 
 int			conv_d(va_list *args, t_manager *p)
 {
-	return (ft_putnbr_base_fd(va_arg(*args, int), 10, p));
+	return (ft_putnbr_base_fd(cast_len(p, va_arg(*args, int)), 10, p));
+//	return (ft_putnbr_base_fd(va_arg(*args, int), 10, p));
 }
 
 int			conv_i(va_list *args, t_manager *p)
