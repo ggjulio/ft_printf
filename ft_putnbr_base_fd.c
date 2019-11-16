@@ -6,58 +6,40 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 13:16:27 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 18:53:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	put_width(t_manager *p, int n)
+static void	put_width(t_manager *p, int nb_char, int show_sign)
 {
-	char c = (((F_ZERO | F_DOT) & p->flags) ? '0' : ' ');
-	
-	while (n-- > 0)
+	char	c = ' ';
+	int		i;
+
+	i = p->width - show_sign;
+	while (i > p->precision && i > nb_char)
 	{
 		write_buffer(p, &c, 1);
-//		p->width--;
+		i--;
 	}
+
 }
 
-/*
-static void	ft_u(unsigned long long n, unsigned int *base, t_manager *p, int idx)
+static void	put_precision(t_manager *p, int nb_char, int show_sign)
 {
-	char c;
+	int i;
 
-	if (n >= *base)
-		ft_u(n / *base, base, p, idx + 1);
-	else if (p->width != 0)
-	{
-		if (!(F_DASH & p->flags))
-			put_width(p, p->width - idx);
-		else
-			p->width = p->width - idx;
-	}
-	c = n % *base + '0';
-	if (c > '9')
-		c += (p->specifier == 'X' ? 7 : 39);
-	write_buffer(p, &c, 1);
-}
-
-int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
-{
-	if (n < 0 && p->specifier != 'p')
-	{
-		write_buffer(p, "-", 1);
-		p->width--;
-		ft_u(-n, &base, p, 1);
-	}
+	if ((F_ZERO & p->flags) && !(F_DOT & p->flags))
+		i = p->width - show_sign;
 	else
-		ft_u(n, &base, p, 1);
-	if ((F_DASH & p->flags))
-		put_width(p, p->width);
-	return (-1000); // to do
+		i = p->precision;
+	while (i > nb_char)
+	{
+		write_buffer(p, "0", 1);
+		i--;
+	}
 }
-*/
 
 #define MAX_DIGIT_LL 21
 
@@ -67,9 +49,13 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 	short	idx_buffer;
 	char	buffer[MAX_DIGIT_LL];
 	char	c;
+	int		nb_digits;
+	int		show_sign;
 
 	idx_buffer = MAX_DIGIT_LL;
 	n_u = (n < 0 && p->specifier != 'p' ? -n : n);
+	if (!n_u)
+		buffer[--idx_buffer] = '0';
 	while (n_u)
 	{
 		c = n_u % base + '0';
@@ -78,12 +64,21 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 		buffer[--idx_buffer] = c;
 		n_u /= base;
 	}
+	show_sign = ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p');
+	nb_digits = MAX_DIGIT_LL - idx_buffer;
+	if (F_SPACE & p->flags)
+		write_buffer(p, " ", 1);
+	if (!(F_DASH & p->flags) && (!(F_ZERO & p->flags) || (F_DOT & p->flags)))
+		put_width(p, nb_digits, show_sign);
+
 	if ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p')
-		buffer[--idx_buffer] = (n < 0 ? '-' : '+');
-	if (p->width > 0 && (((F_DASH & p->flags) != F_DASH) || (F_DOT & p->flags)))
-		put_width(p, p->width - (MAX_DIGIT_LL - idx_buffer));
-	write_buffer(p, buffer + idx_buffer, MAX_DIGIT_LL - idx_buffer);
-	if (p->width > 0 && (F_DASH & p->flags) && !(F_DOT & p->flags))
-		put_width(p, p->width - (MAX_DIGIT_LL  - idx_buffer));
+		write_buffer(p, (n < 0 ? "-" : "+"), 1);
+
+	put_precision(p, nb_digits, show_sign);
+
+	write_buffer(p, buffer + idx_buffer, nb_digits);
+
+	if ((F_DASH & p->flags))
+		put_width(p, nb_digits, show_sign);
 	return (-1000); // to do
 }
