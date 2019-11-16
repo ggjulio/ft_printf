@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 21:33:46 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 21:44:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,16 @@ int			conv_x_lowcase(va_list *args, t_manager *p)
 
 int			conv_mod(va_list *args, t_manager *p)
 {
+	char c;
 	(void)args;
-	write(p->fd, "%", 1);	
+
+	c = (F_ZERO & p->flags ? '0': ' ');
+	if (!(F_DASH & p->flags))
+		while (--p->width > 0)
+			write_buffer(p, &c, 1);
+	write_buffer(p, "%", 1);	
+	if ((F_DASH & p->flags))
+		while (--p->width > 0)
+			write_buffer(p, " ", 1);
 	return (1);
 }
