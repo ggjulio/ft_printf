@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 19:36:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 20:19:02 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int read_flags(t_manager *p, va_list *args, const char *format)
 	p->precision = 0;
 	p->specifier = 0;
 	i = 0;
-	while (!p->specifier)
+	while (1)
 	{
 		read_len_specifier(p, format, &i);
 		if (format[i] == '-' && ++i)
@@ -98,9 +98,11 @@ static int read_flags(t_manager *p, va_list *args, const char *format)
 			p->flags |= F_STAR;
 		}
 		else
-			p->specifier = format[i++];
+		{
+			p->specifier = format[i];
+			return (i);
+		}
 	}
-	return (i);
 }
 
 static int parse(va_list *args, t_manager *p)
@@ -169,9 +171,9 @@ int			ft_printf(const char *format, ...)
 			i += read_flags(&p, &args, format + i);
 //			debug_flags(&p);
 			len += parse(&args, &p);
-			str = (char *)format + i;
-			if (!format[i])
-				break;
+			str = (char *)format + i + 1;
+//			if (!format[i])
+//				break;
 		}
 	}
 	write_buffer(&p, str, format + i - str);

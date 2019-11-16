@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 19:46:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:50:26 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 long long	cast_len(t_manager *p, long long n)
 {
-	return (n);
 	if (F_H & p->flags)
 		return ((short)n);
 	if (F_HH & p->flags)
@@ -23,6 +22,7 @@ long long	cast_len(t_manager *p, long long n)
 		return ((long)n);
 	if (F_LL & p->flags)
 		return ((long long)n);
+	return (n);
 }
 
 int			conv_c(va_list *args, t_manager *p)

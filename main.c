@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 19:36:18 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 20:15:29 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,10 @@ int 	main(void)
 	ft_printf("%.4d\n", 5263);
 	printf("%.4d\n", 5263);
 
-	ft_printf("%hhd_\n", (char)45);
-	printf("%hhd_\n", (char)45);
+	ft_printf("%d%d_\n",40, 45);
+	printf("%d%d_\n",40, 45);
+
+	printf("%");
+	ft_printf("%");
+//	printf("%hhd_\n", (char)45);
 }
