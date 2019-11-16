@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/15 14:59:10 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 13:36:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ static int read_flags(t_manager *p, const char *format)
 		else if (format[i] >= '1' && format[i] <= '9')
 			p->width = (p->width * 10) + format[i] - '0';
 		else if (format[i] == '.')
+		{
 			p->flags |= F_DOT;  
+			while (format[i] >= '1' && format[i] <= '9')
+				p->precision = (p->precision * 10) + format[i++] - '0';
+		}
 		else if (format[i] == '*')
 			p->flags |= F_STAR; 
 		else
@@ -78,7 +82,7 @@ void		write_buffer(t_manager *p, char *s, size_t n)
 	i = 0;
 	while (n--)
 	{
-		if (p->buffer_idx== BUFFER_SIZE)
+		if (p->buffer_idx == BUFFER_SIZE)
 		{
 			write(p->fd, p->buffer, BUFFER_SIZE);
 			p->buffer_idx = 0;			
@@ -95,7 +99,7 @@ int			ft_printf(const char *format, ...)
 	char	*str;
 	short	flags;
 	t_manager p;
-	
+
 	(void)flags;
 	va_start(args, format);
 	i = -1;
@@ -114,12 +118,13 @@ int			ft_printf(const char *format, ...)
 				p.width = va_arg(args, int);
 			len += parse(&args, &p);
 			str = (char *)format + i;
+			if (!format[i])
+				break;
 		}
 	}
 	write_buffer(&p, str, format + i - str);
-	if (p.buffer_idx != 0) // debug
+	if (p.buffer_idx)
 		write(1, p.buffer, p.buffer_idx);
-
 	va_end(args);
 	return (len);
 }

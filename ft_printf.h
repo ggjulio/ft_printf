@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/15 15:40:26 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/16 12:59:46 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 2
+# define BUFFER_SIZE 100
 
 # define F_DASH (1 << 0)
 # define F_ZERO (1 << 1)
@@ -37,6 +37,7 @@ typedef struct	s_manager
 	int		fd;
 	short	flags;
 	int		width;
+	int		precision;
 	char	specifier;
 	char	buffer[BUFFER_SIZE];
 	size_t	buffer_idx;	
