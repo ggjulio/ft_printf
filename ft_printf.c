@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 21:55:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 12:23:49 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static int read_flags(t_manager *p, va_list *args, const char *format)
 	}
 }
 
-static int parse(va_list *args, t_manager *p)
+static void parse(va_list *args, t_manager *p)
 {
 	const char *conv = "cspdiuxXnfge%";
 	const handler jmp_table[13] ={conv_c, 
@@ -116,7 +116,7 @@ static int parse(va_list *args, t_manager *p)
 								  conv_u,
 								  conv_x_lowcase,
 								  conv_x_upcase,
-								  NULL,
+								  conv_n,
 								  NULL,
 								  NULL,
 								  NULL,
@@ -126,8 +126,7 @@ static int parse(va_list *args, t_manager *p)
 	i = -1;
 	while (conv[++i])
 		if (conv[i] == p->specifier)
-			return (jmp_table[i](args, p));
-	return (0);
+			jmp_table[i](args, p);
 }
 
 void		write_buffer(t_manager *p, char *s, size_t n)
@@ -143,6 +142,7 @@ void		write_buffer(t_manager *p, char *s, size_t n)
 			p->buffer_idx = 0;			
 		}
 		p->buffer[p->buffer_idx++] = s[i++];
+		p->len++;
 	}
 }
 
@@ -150,7 +150,6 @@ int			ft_printf(const char *format, ...)
 {
 	va_list	args;
 	size_t	i;
-	int		len;
 	char	*str;
 	short	flags;
 	t_manager p;
@@ -158,7 +157,7 @@ int			ft_printf(const char *format, ...)
 	(void)flags;
 	va_start(args, format);
 	i = -1;
-	len = 0;
+	p.len = 0;
 	str = (char *)format;
 	p.fd = 1;
 	p.buffer_idx = 0;
@@ -170,7 +169,7 @@ int			ft_printf(const char *format, ...)
 			i++;
 			i += read_flags(&p, &args, format + i);
 //			debug_flags(&p);
-			len += parse(&args, &p);
+			parse(&args, &p);
 			str = (char *)format + i + 1;
 //			if (!format[i])
 //				break;
@@ -180,5 +179,5 @@ int			ft_printf(const char *format, ...)
 	if (p.buffer_idx)
 		write(1, p.buffer, p.buffer_idx);
 	va_end(args);
-	return (len);
+	return (p.len);
 }

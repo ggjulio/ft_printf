@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 21:56:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 12:24:12 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,11 +169,14 @@ int 	main(void)
 	printf("%3c_\n", 'C');
 	ft_printf("%-3c_\n", 'C');
 	printf("%-3c_\n", 'C');
-	printf("%5");
-	ft_printf("%5");
-
-
-
+//	printf("%5");
+//	ft_printf("%5");
+	
+	int n;
+	printf("12345%n", &n);
+	printf("|%d|\n", n);
+	ft_printf("12345%n", &n);
+	ft_printf("|%d|\n", n);
 
 //	printf("%");
 //	ft_printf("%");

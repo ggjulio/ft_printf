@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/16 21:51:39 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 12:11:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 
 #define MAX_DIGIT_LL 21
 
-int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
+void			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 {
 	unsigned long long n_u;
 	short	idx_buffer;
@@ -80,5 +80,4 @@ int			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 
 	if ((F_DASH & p->flags))
 		put_width(p, nb_digits, show_sign);
-	return (-1000); // to do
 }
