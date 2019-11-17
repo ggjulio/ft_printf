@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 16:31:55 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:00:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 
 	idx_buffer = MAX_DIGIT_DEC_LL;
 	n_u = (n < 0 && p->specifier != 'p' ? -n : n);
-	if (!n_u)
+	if (!n_u && !(GET(F_DOT) && n == 0))
 		buffer[--idx_buffer] = '0';
 	while (n_u)
 	{

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 16:27:28 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:17:30 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	read_flags_norm(t_manager *p, const char *format, size_t *i)
 
 /*
 **	{"-", "0", ".", "*", "l", "ll", "h","hh", "'", "#", " ", "+"};
-**	{   ,    ,    ,    , "l", "ll", "h","hh", "'", "#",    ,     };
+**	{   ,    ,    ,    , "l", "ll", "h","hh", "'",    ,    ,     };
 */
 
 static int	read_flags(t_manager *p, va_list *args, const char *format)
@@ -87,6 +87,8 @@ static int	read_flags(t_manager *p, va_list *args, const char *format)
 			p->flags |= F_SPACE;
 		else if (format[i] == '0' && ++i)
 			p->flags |= F_ZERO;
+		else if (format[i] == '#' && ++i)
+			p->flags |= F_HASH;
 		else if (is_digit(format[i]))
 			while (is_digit(format[i]))
 				p->width = (p->width * 10) + format[i++] - '0';

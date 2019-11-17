@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 14:10:36 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:26:07 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,6 @@ int 	main(void)
 //	printf("%08d|\n", 5, 42);
 //	ft_printf("%08*d|\n", 5, 42);
 
-
-//	printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d\n", -2, -2, 8, -2, -2, -12, -2, 0, 123456789, -2, -2, 0, -4, 0, -12345678, -2, -2, 'a');
-//	ft_printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", -2, -2, 8, -2, -2, -12, -2, 0, 123456789, -2, -2, 0, -4, 0, -12345678, -2, -2, 'a');
-
-
 	printf("12--------------------\n");
 	printf("%3.3d_\n", 42);
 	ft_printf("%3.3d_\n", 42);
@@ -123,73 +118,138 @@ int 	main(void)
 
 
 
+	printf("----------------------\n");
 	printf("%.5d_\n", 42);
 	ft_printf("%.5d_\n", 42);
+
+	printf("----------------------\n");
 	printf("%5d_\n", 42);
 	ft_printf("%5d_\n", 42);
+
+	printf("----------------------\n");
 	printf("%05d_\n", 42);
 	ft_printf("%05d_\n", 42);
 	
-
+	printf("----------------------\n");
 	ft_printf("%5.3d_\n", 42);
 	printf("%5.3d_\n", 42);
+
+	printf("----------------------\n");
 	ft_printf("%1.3d_\n", 42);
 	printf("%1.3d_\n", 42);
 
+	printf("----------------------\n");
 	ft_printf("%10.5d_\n", -216);
 	printf("%10.5d_\n", -216);
 
+
+	printf("----------------------\n");
 	ft_printf("% .4d\n", 5263);
 	printf("% .4d\n", 5263);
+
+	printf("----------------------\n");
+	printf("15--------------------\n");
 	ft_printf("%.4d\n", 5263);
 	printf("%.4d\n", 5263);
 
+	printf("----------------------\n");
 	ft_printf("%d%d_\n",40, 45);
 	printf("%d%d_\n",40, 45);
 
 
 
 
+	printf("----------------------\n");
 	ft_printf("%32s\n", "abc");
 	printf("%32s\n", "abc");
 
+	printf("----------------------\n");
 	ft_printf("%.2s_\n", "abc");
 	printf("%.2s_\n", "abc");
+
+	printf("----------------------\n");
 	ft_printf("%3.1s_\n", "abc");
 	printf("%3.1s_\n", "abc");
 
+	printf("----------------------\n");
 	ft_printf("%-32s_\n", "abc");
 	printf("%-32s_\n", "abc");
 
+
+	printf("----------------------\n");
 	printf("hello, %s.\n", NULL);
 	ft_printf("hello, %s.\n", NULL);
 
 
+	printf("----------------------\n");
 	ft_printf("%3c_\n", 'C');
 	printf("%3c_\n", 'C');
+
+	printf("----------------------\n");
 	ft_printf("%-3c_\n", 'C');
 	printf("%-3c_\n", 'C');
 
-*/
 
-//	printf("%5");
-//	ft_printf("%5");
-	
-//	int n;
-//	printf("12345%n", &n);
-//	printf("|%d|\n", n);
-//	ft_printf("12345%n", &n);
-//	ft_printf("|%d|\n", n);
 
-//	printf("%0d_\n", 0);
-//	ft_printf("%0d_\n", 0);
+	printf("----------------------\n");
+	int n;
+	printf("12345%n", &n);
+	printf("|%d|\n", n);
+	ft_printf("12345%n", &n);
+	ft_printf("|%d|\n", n);
 
+	printf("----------------------\n");
+	printf("%0d_\n", 0);
+	ft_printf("%0d_\n", 0);
+
+	printf("----------------------\n");
 	printf("%0.d_\n", 1);
-	printf("%0.d_\n", 1);
+	ft_printf("%0.d_\n", 1);
+
+	printf("----------------------\n");
 	printf("%0.d_\n", 0);
 	ft_printf("%0.d_\n", 0);
 
+	printf("----------------------\n");
+	printf("%0.i_\n", 0);
+	ft_printf("%0.i_\n", 0);
 
+	printf("----------------------\n");
+	printf("%0.u_\n", 0);
+	ft_printf("%0.u_\n", 0);
+
+	printf("----------------------\n");
+	printf("%0.x_\n", 0);
+	ft_printf("%0.x_\n", 0);
+*/
+
+//	printf("----------------------\n");
+//	printf("%ld\n", 22337203685477);
+//	ft_printf("%ld\n", 22337203685477);
+
+	printf("----------------------\n");
+	printf("%#x\n", 31);
+	ft_printf("%#x\n", 31);
+
+	printf("----------------------\n");
+	printf("%x\n", 31);
+	ft_printf("%x\n", 31);
+
+	printf("----------------------\n");
+	printf("%#X\n", 31);
+	ft_printf("%#X\n", 31); 
+
+	printf("----------------------\n");
+	printf("%X\n", 31);
+	ft_printf("%X\n", 31); 
+
+	printf("----------------------\n");
+	printf("%#5.3X\n", 31);
+	ft_printf("%#5.3X\n", 31);
+
+	printf("----------------------\n");
+	printf("%5.3X\n", 31);
+	ft_printf("%5.3X\n", 31);
 
 
 //	printf("%");

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 15:43:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:28:39 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,15 @@ void		conv_u(va_list *args, t_manager *p)
 
 void		conv_x_upcase(va_list *args, t_manager *p)
 {
+	if (GET(F_HASH))
+		write_buffer(p, "0X", 2);
 	ft_putnbr_base_fd(va_arg(*args, long long), 16, p);
 }
 
 void		conv_x_lowcase(va_list *args, t_manager *p)
 {
+	if (GET(F_HASH))
+		write_buffer(p, "0x", 2);
 	ft_putnbr_base_fd(va_arg(*args, long long), 16, p);
 }
 
