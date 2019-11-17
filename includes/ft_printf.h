@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 13:53:23 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 21:35:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,13 @@ void	conv_mod(va_list *args, t_manager *p);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);
 size_t	ft_strlen(const char *s);
-void	ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p);
+void	ft_put_d_i(long long n, t_manager *p);
+long long cast_d_i(t_manager *p, va_list *args);
+
 void	write_buffer(t_manager *p, char *s, size_t n);
+
+void	ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p);
+
 
 int		ft_printf(const char *format, ...)  __attribute__((format(printf,1,2)));
 
