@@ -6,27 +6,25 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 13:33:59 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:31:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	put_width(t_manager *p, int nb_char, int show_sign)
+static void		put_width(t_manager *p, int nb_char, int show_sign)
 {
-	char	c = ' ';
 	int		i;
 
 	i = p->width - show_sign;
 	while (i > p->precision && i > nb_char)
 	{
-		write_buffer(p, &c, 1);
+		write_buffer(p, " ", 1);
 		i--;
 	}
-
 }
 
-static void	put_precision(t_manager *p, int nb_char, int show_sign)
+static void		put_precision(t_manager *p, int nb_char, int show_sign)
 {
 	int i;
 
@@ -45,12 +43,12 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 
 void			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 {
-	unsigned long long n_u;
-	short	idx_buffer;
-	char	buffer[MAX_DIGIT_DEC_LL];
-	char	c;
-	int		nb_digits;
-	int		show_sign;
+	unsigned long long	n_u;
+	short				idx_buffer;
+	char				buffer[MAX_DIGIT_DEC_LL];
+	char				c;
+	int					nb_digits;
+	int					show_sign;
 
 	idx_buffer = MAX_DIGIT_DEC_LL;
 	n_u = (n < 0 && p->specifier != 'p' ? -n : n);

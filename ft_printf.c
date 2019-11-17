@@ -6,26 +6,35 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 12:59:56 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 16:27:28 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-static int is_digit(char c)
+void		*ft_memset(void *s, int c, size_t n)
+{
+	char *str;
+
+	str = s;
+	while (n-- > 0)
+		*str++ = c;
+	return (s);
+}
+
+static int	is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-#include <stdio.h>
-
-void debug_flags(t_manager *p)
+void		debug_flags(t_manager *p)
 {
 	printf("|#|#|#|#|#|#|#|#|#|#|# FLAGS #|#|#|#|#|#|#|#|#|#|#|#|\n");
 	printf("test  : %u || ", !(F_DASH & p->flags));
 	printf("DASH  : %d || ", F_DASH & p->flags);
 	printf("ZERO  : %d || ", F_ZERO & p->flags);
-	printf("DOT   : %d || ", F_DOT  & p->flags);
+	printf("DOT   : %d || ", F_DOT & p->flags);
 	printf("STAR  : %d || ", F_STAR & p->flags);
 	printf("PLUS  : %d\n", F_PLUS & p->flags);
 	printf("L     : %d || ", F_LL & p->flags);
@@ -38,7 +47,7 @@ void debug_flags(t_manager *p)
 	printf("|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|\n");
 }
 
-static void read_len_specifier(t_manager *p, const char *format, size_t *i)
+static void	read_flags_norm(t_manager *p, const char *format, size_t *i)
 {
 	if (format[*i] == 'l' && ++(*i))
 	{
@@ -54,37 +63,39 @@ static void read_len_specifier(t_manager *p, const char *format, size_t *i)
 	}
 }
 
-static int read_flags(t_manager *p, va_list *args, const char *format)
+/*
+**	{"-", "0", ".", "*", "l", "ll", "h","hh", "'", "#", " ", "+"};
+**	{   ,    ,    ,    , "l", "ll", "h","hh", "'", "#",    ,     };
+*/
+
+static int	read_flags(t_manager *p, va_list *args, const char *format)
 {
-//	const char c_flags[12][3]  = {"-", "0", ".", "*", "l", "ll", "h","hh", "'", "#", " ", "+"};
-//	const char c_flags[12][3]  = {   ,    ,    ,    , "l", "ll", "h","hh", "'", "#",    ,     };
 	size_t i;
 
 	p->flags = 0;
 	p->width = 0;
 	p->precision = 0;
-	p->specifier = 0;
 	i = 0;
 	while (1)
 	{
-		read_len_specifier(p, format, &i);
+		read_flags_norm(p, format, &i);
 		if (format[i] == '-' && ++i)
 			p->flags |= F_DASH;
 		else if (format[i] == '+' && ++i)
-			p->flags |= F_PLUS; 
+			p->flags |= F_PLUS;
 		else if (format[i] == ' ' && ++i)
-			p->flags |= F_SPACE; 
+			p->flags |= F_SPACE;
 		else if (format[i] == '0' && ++i)
-			p->flags |= F_ZERO; 
+			p->flags |= F_ZERO;
 		else if (is_digit(format[i]))
 			while (is_digit(format[i]))
 				p->width = (p->width * 10) + format[i++] - '0';
 		else if (format[i] == '.' && ++i)
 		{
-			p->flags |= F_DOT;  
+			p->flags |= F_DOT;
 			if (format[i] == '*' && ++i)
 				p->precision = va_arg(*args, int);
-			else 
+			else
 				while (is_digit(format[i]))
 					p->precision = (p->precision * 10) + format[i++] - '0';
 		}
@@ -105,23 +116,23 @@ static int read_flags(t_manager *p, va_list *args, const char *format)
 	}
 }
 
-static void parse(va_list *args, t_manager *p)
+static void	parse(va_list *args, t_manager *p)
 {
-	const char *conv = "cspdiuxXnfge%";
-	const handler jmp_table[13] ={conv_c, 
-								  conv_s, 
-								  conv_p, 
-								  conv_d, 
-								  conv_i,
-								  conv_u,
-								  conv_x_lowcase,
-								  conv_x_upcase,
-								  conv_n,
-								  NULL,
-								  NULL,
-								  NULL,
-								  conv_mod}; 
-	int i;
+	const char		*conv = "cspdiuxXnfge%";
+	const handler	jmp_table[13] = {conv_c,
+									conv_s,
+									conv_p,
+									conv_d,
+									conv_i,
+									conv_u,
+									conv_x_lowcase,
+									conv_x_upcase,
+									conv_n,
+									NULL,
+									NULL,
+									NULL,
+									conv_mod};
+	int				i;
 
 	i = -1;
 	while (conv[++i])
@@ -139,7 +150,7 @@ void		write_buffer(t_manager *p, char *s, size_t n)
 		if (p->buffer_idx == BUFFER_SIZE)
 		{
 			write(p->fd, p->buffer, BUFFER_SIZE);
-			p->buffer_idx = 0;			
+			p->buffer_idx = 0;
 		}
 		p->buffer[p->buffer_idx++] = s[i++];
 		p->len++;
@@ -148,33 +159,27 @@ void		write_buffer(t_manager *p, char *s, size_t n)
 
 int			ft_printf(const char *format, ...)
 {
-	va_list	args;
-	size_t	i;
-	char	*str;
-	short	flags;
-	t_manager p;
+	va_list		args;
+	size_t		i;
+	char		*str;
+	t_manager	p;
 
-	(void)flags;
-	va_start(args, format);
-	i = -1;
-	p.len = 0;
 	str = (char *)format;
+	ft_memset(&p, 0, sizeof(t_manager));
 	p.fd = 1;
-	p.buffer_idx = 0;
+	i = -1;
+	va_start(args, format);
 	while (format[++i])
-	{
 		if (format[i] == '%')
 		{
-			write_buffer(&p, str, format + i - str);
-			i++;
+			write_buffer(&p, str, format + i++ - str);
 			i += read_flags(&p, &args, format + i);
 //			debug_flags(&p);
+			if (!p.specifier)
+				break ;
 			parse(&args, &p);
 			str = (char *)format + i + 1;
-//			if (!format[i])
-//				break;
 		}
-	}
 	write_buffer(&p, str, format + i - str);
 	if (p.buffer_idx)
 		write(1, p.buffer, p.buffer_idx);

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 13:48:00 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 15:43:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ long long	cast_len(t_manager *p, long long n)
 
 void		conv_c(va_list *args, t_manager *p)
 {
-	char c = va_arg(*args, int);
+	char c;
 
+	c = va_arg(*args, int);
 	if (!GET(F_DASH))
 		while (--p->width > 0)
-			write_buffer(p, " ", 1);	
-    write_buffer(p, &c, 1);
+			write_buffer(p, " ", 1);
+	write_buffer(p, &c, 1);
 	if (GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
@@ -40,9 +41,10 @@ void		conv_c(va_list *args, t_manager *p)
 
 void		conv_s(va_list *args, t_manager *p)
 {
-	char	*s = va_arg(*args, char*);
-    int		len;
+	char	*s;
+	int		len;
 
+	s = va_arg(*args, char*);
 	if (!s)
 		s = "(null)";
 	len = ft_strlen(s);
@@ -51,7 +53,7 @@ void		conv_s(va_list *args, t_manager *p)
 	if (!GET(F_DASH))
 		while (p->width-- > 0)
 			write_buffer(p, " ", 1);
-    write_buffer(p, s, len);
+	write_buffer(p, s, len);
 	if (GET(F_DASH))
 		while (p->width-- > 0)
 			write_buffer(p, " ", 1);
@@ -59,14 +61,13 @@ void		conv_s(va_list *args, t_manager *p)
 
 void		conv_p(va_list *args, t_manager *p)
 {
-    write_buffer(p, "0x", 2);
+	write_buffer(p, "0x", 2);
 	ft_putnbr_base_fd(va_arg(*args, unsigned long), 16, p);
 }
 
 void		conv_d(va_list *args, t_manager *p)
 {
 	ft_putnbr_base_fd(cast_len(p, va_arg(*args, int)), 10, p);
-//	ft_putnbr_base_fd(va_arg(*args, int), 10, p);
 }
 
 void		conv_i(va_list *args, t_manager *p)
@@ -91,21 +92,22 @@ void		conv_x_lowcase(va_list *args, t_manager *p)
 
 void		conv_n(va_list *args, t_manager *p)
 {
-	int *n = va_arg(*args, int *);
+	int *n;
 
+	n = va_arg(*args, int *);
 	*n = p->len;
 }
 
 void		conv_mod(va_list *args, t_manager *p)
 {
 	char c;
-	(void)args;
 
-	c = (GET(F_ZERO) ? '0': ' ');
+	(void)args;
+	c = (GET(F_ZERO) ? '0' : ' ');
 	if (!GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, &c, 1);
-	write_buffer(p, "%", 1);	
+	write_buffer(p, "%", 1);
 	if (GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
