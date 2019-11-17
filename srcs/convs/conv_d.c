@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:06 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 21:46:23 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 22:22:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		ft_put_d_i(long long n, t_manager *p)
 	int is_neg;
 	int nb_digit;
 
-	if (n == 0 && GET(F_DOT) && p->precision == 0)
+	if (n == 0 && GET(F_DOT)  && p->precision == 0) // PB
 		return ;
 	is_neg = 0;
 	nb_digit = 0;
