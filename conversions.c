@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 12:20:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 13:48:00 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 long long	cast_len(t_manager *p, long long n)
 {
-	if (F_H & p->flags)
+	if (GET(F_H))
 		return ((short)n);
-	if (F_HH & p->flags)
+	if (GET(F_HH))
 		return ((signed char)n);
-	if (F_L & p->flags)
+	if (GET(F_L))
 		return ((long)n);
-	if (F_LL & p->flags)
+	if (GET(F_LL))
 		return ((long long)n);
 	return (n);
 }
@@ -29,11 +29,11 @@ void		conv_c(va_list *args, t_manager *p)
 {
 	char c = va_arg(*args, int);
 
-	if (!(F_DASH & p->flags))
+	if (!GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);	
     write_buffer(p, &c, 1);
-	if ((F_DASH & p->flags))
+	if (GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
 }
@@ -46,13 +46,13 @@ void		conv_s(va_list *args, t_manager *p)
 	if (!s)
 		s = "(null)";
 	len = ft_strlen(s);
-	len = ((F_DOT & p->flags) && p->precision < len ? p->precision : len);
+	len = (GET(F_DOT) && p->precision < len ? p->precision : len);
 	p->width -= len;
-	if (!(F_DASH & p->flags))
+	if (!GET(F_DASH))
 		while (p->width-- > 0)
 			write_buffer(p, " ", 1);
     write_buffer(p, s, len);
-	if ((F_DASH & p->flags))
+	if (GET(F_DASH))
 		while (p->width-- > 0)
 			write_buffer(p, " ", 1);
 }
@@ -101,12 +101,12 @@ void		conv_mod(va_list *args, t_manager *p)
 	char c;
 	(void)args;
 
-	c = (F_ZERO & p->flags ? '0': ' ');
-	if (!(F_DASH & p->flags))
+	c = (GET(F_ZERO) ? '0': ' ');
+	if (!GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, &c, 1);
 	write_buffer(p, "%", 1);	
-	if ((F_DASH & p->flags))
+	if (GET(F_DASH))
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
 }

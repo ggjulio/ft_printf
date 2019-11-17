@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 12:11:55 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 13:33:59 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 	}
 }
 
-#define MAX_DIGIT_LL 21
+#define MAX_DIGIT_DEC_LL 21
 
 void			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 {
 	unsigned long long n_u;
 	short	idx_buffer;
-	char	buffer[MAX_DIGIT_LL];
+	char	buffer[MAX_DIGIT_DEC_LL];
 	char	c;
 	int		nb_digits;
 	int		show_sign;
 
-	idx_buffer = MAX_DIGIT_LL;
+	idx_buffer = MAX_DIGIT_DEC_LL;
 	n_u = (n < 0 && p->specifier != 'p' ? -n : n);
 	if (!n_u)
 		buffer[--idx_buffer] = '0';
@@ -64,20 +64,16 @@ void			ft_putnbr_base_fd(long long n, unsigned int base, t_manager *p)
 		buffer[--idx_buffer] = c;
 		n_u /= base;
 	}
-	show_sign = ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p');
-	nb_digits = MAX_DIGIT_LL - idx_buffer;
-	if ((F_SPACE & p->flags) && !show_sign)
+	show_sign = ((n < 0 || GET(F_PLUS)) && p->specifier != 'p');
+	nb_digits = MAX_DIGIT_DEC_LL - idx_buffer;
+	if (GET(F_SPACE) && !show_sign)
 		write_buffer(p, " ", 1);
-	if (!(F_DASH & p->flags) && (!(F_ZERO & p->flags) || (F_DOT & p->flags)))
+	if (!GET(F_DASH) && (!GET(F_ZERO) || GET(F_DOT)))
 		put_width(p, nb_digits, show_sign);
-
-	if ((n < 0 || (F_PLUS & p->flags)) && p->specifier != 'p')
+	if ((n < 0 || GET(F_PLUS)) && p->specifier != 'p')
 		write_buffer(p, (n < 0 ? "-" : "+"), 1);
-
 	put_precision(p, nb_digits, show_sign);
-
 	write_buffer(p, buffer + idx_buffer, nb_digits);
-
-	if ((F_DASH & p->flags))
+	if (GET(F_DASH))
 		put_width(p, nb_digits, show_sign);
 }

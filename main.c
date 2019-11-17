@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 12:24:12 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 13:21:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,20 +163,32 @@ int 	main(void)
 
 	printf("hello, %s.\n", NULL);
 	ft_printf("hello, %s.\n", NULL);
-*/
+
 
 	ft_printf("%3c_\n", 'C');
 	printf("%3c_\n", 'C');
 	ft_printf("%-3c_\n", 'C');
 	printf("%-3c_\n", 'C');
+
+*/
+
 //	printf("%5");
 //	ft_printf("%5");
 	
-	int n;
-	printf("12345%n", &n);
-	printf("|%d|\n", n);
-	ft_printf("12345%n", &n);
-	ft_printf("|%d|\n", n);
+//	int n;
+//	printf("12345%n", &n);
+//	printf("|%d|\n", n);
+//	ft_printf("12345%n", &n);
+//	ft_printf("|%d|\n", n);
+
+//	printf("%0d_\n", 0);
+//	ft_printf("%0d_\n", 0);
+	printf("%0.d_\n", 1);
+	printf("%0.d_\n", 0);
+	ft_printf("%0.d_\n", 0);
+
+
+
 
 //	printf("%");
 //	ft_printf("%");

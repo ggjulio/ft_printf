@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 12:22:09 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/17 13:53:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 100
+
+# define GET(f) (f & p->flags)
 
 # define F_DASH (1 << 0)
 # define F_ZERO (1 << 1)
