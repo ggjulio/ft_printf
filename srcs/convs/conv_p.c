@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 19:15:59 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:44:47 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		conv_p(va_list *args, t_manager *p)
 {
-	write_buffer(p, "0x", 2);
-	ft_putnbr_base_fd(va_arg(*args, unsigned long), 16, p);
+	(void)args;
+	(void)p;
+//	write_buffer(p, "0x", 2);
+//	ft_putnbr_base_fd(va_arg(*args, unsigned long), 16, p);
 }

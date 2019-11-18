@@ -6,16 +6,16 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/17 19:19:24 by juligonz         ###   ########.fr        #
+#    Updated: 2019/11/18 14:58:57 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
 SRCS =	srcs/ft_printf.c 				\
-		srcs/ft_putnbr_base_fd.c		\
 		srcs/ft_putstr_range.c			\
 		srcs/ft_strlen.c				\
+		srcs/cast_len_modifier.c		\
 		srcs/convs/conv_c.c				\
 		srcs/convs/conv_s.c				\
 		srcs/convs/conv_p.c				\
