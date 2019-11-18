@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 15:14:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 20:53:42 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void     put_precision(t_manager *p, int nb_char, int show_sign)
 {
     int i;
 
-    if (GET(F_ZERO) && !GET(F_DOT))
+    if (GET(F_ZERO) && !GET(F_DOT)) //PB HERE WHEN "%0*d_\n", -4, 0
         i = p->width - show_sign;
     else
         i = p->precision;

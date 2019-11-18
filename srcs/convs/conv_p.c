@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 19:18:58 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 20:12:41 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,10 @@ static void		ft_putu_p(unsigned long long n, t_manager *p, int *nb_digit)
 		ft_putu_p(n / 16, p, nb_digit);
 	else
 	{
-	    if (!GET(F_DASH))
+		p->width -= 2;
+		if (!GET(F_DASH))
 			put_width(p, *nb_digit);
 		write_buffer(p, "0x", 2);
-//		put_precision(p, *nb_digit);
-		if (*nb_digit != 0 || !GET(F_DOT) || p->precision != 0)
-			write_buffer(p, &c, 1);
-		return ;
 	}
 	write_buffer(p, &c, 1);
 }
