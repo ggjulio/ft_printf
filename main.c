@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 19:06:22 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:17:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int 	main(void)
 {
     setlocale(LC_NUMERIC, "da_DK");
-/*
+
 	printf("||||||||||||||||||||| c:\n");
 	printf("ok_%c_ok\n", 'B');
 	ft_printf("ok_%c_ok\n", 'B');
@@ -267,10 +267,10 @@ int 	main(void)
 //	printf("%hhd_\n", (char)45);
 
 
-*/
 
-	printf("%'G_\n", 148934.1432);
-	printf("%'d_\n", 1000000000);
+
+//	printf("%'G_\n", 148934.1432);
+//	printf("%'d_\n", 1000000000);
 
 
 
