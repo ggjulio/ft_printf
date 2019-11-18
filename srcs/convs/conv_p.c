@@ -6,14 +6,19 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 16:14:28 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:58:56 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
+
+
+
+
+
 void		conv_p(va_list *args, t_manager *p)
 {
-//	write_buffer(p, "0x", 2);
     ft_put_x_x(va_arg(*args, unsigned long), p);
 }
