@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/18 15:12:42 by juligonz         ###   ########.fr        #
+#    Updated: 2019/11/18 18:48:00 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,6 +26,9 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/convs/conv_x_lowcase.c		\
 		srcs/convs/conv_x_upcase.c		\
 		srcs/convs/conv_n.c				\
+		srcs/convs/conv_f.c				\
+		srcs/convs/conv_g.c				\
+		srcs/convs/conv_e.c				\
 		srcs/convs/conv_mod.c			\
 
 OBJ = $(SRCS:.c=.o)

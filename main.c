@@ -6,15 +6,17 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 16:58:14 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:06:22 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <locale.h>
 
 int 	main(void)
 {
+    setlocale(LC_NUMERIC, "da_DK");
 /*
 	printf("||||||||||||||||||||| c:\n");
 	printf("ok_%c_ok\n", 'B');
@@ -253,12 +255,23 @@ int 	main(void)
 	printf("%5.3X\n", 31);
 	ft_printf("%5.3X\n", 31);
 
+	printf("----------------------\n");
+	printf("%'%_\n");
+	ft_printf("%'%_\n");
 
+	printf("----------------------\n");
 	printf("% 08.3d\n", 8375);
 	ft_printf("% 08.3d\n", 8375);
 //	printf("%");
 //	ft_printf("%");
 //	printf("%hhd_\n", (char)45);
+
+
 */
+
+	printf("%'G_\n", 148934.1432);
+	printf("%'d_\n", 1000000000);
+
+
 
 }

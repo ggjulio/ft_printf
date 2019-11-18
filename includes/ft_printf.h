@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 16:18:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 18:46:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ void	conv_u(va_list *args, t_manager *p);
 void	conv_x_lowcase(va_list *args, t_manager *p);
 void	conv_x_upcase(va_list *args, t_manager *p);
 void	conv_n(va_list *args, t_manager *p);
+void	conv_f(va_list *args, t_manager *p);
+void	conv_g(va_list *args, t_manager *p);
+void	conv_e(va_list *args, t_manager *p);
 void	conv_mod(va_list *args, t_manager *p);
 
 int		ft_putstr_range(char const *s_begin, char const *s_end);
