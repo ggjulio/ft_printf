@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:06 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 22:22:50 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 13:16:12 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void     put_precision(t_manager *p, int nb_char, int show_sign)
 {
     int i;
 
-    if ((F_ZERO & p->flags) && !(F_DOT & p->flags))
+    if (GET(F_ZERO) && !GET(F_DOT))
         i = p->width - show_sign;
     else
         i = p->precision;
@@ -51,13 +51,26 @@ static void	ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb
 	else
 	{
 		if (GET(F_SPACE) && !(*is_neg || GET(F_PLUS)))
-				write_buffer(p, " ", 1);
+		{
+			write_buffer(p, " ", 1);
+			p->width--;	
+		}
 	    if (!GET(F_DASH) && (!GET(F_ZERO) || GET(F_DOT)))
 			put_width(p, *nb_digit, (*is_neg || GET(F_PLUS)));
-		if (*is_neg || GET(F_PLUS))
-			write_buffer(p, (*is_neg ? "-" : "+"), 1);
-		put_precision(p, *nb_digit, (*is_neg || GET(F_PLUS)));
-		write_buffer(p, &c, 1);
+		if (c == '0' && *nb_digit && GET(F_DOT) && p->precision == 0)
+		{
+			if (*is_neg || GET(F_PLUS))
+				write_buffer(p, (*is_neg ? "-" : "+"), 1);
+			put_precision(p, *nb_digit, (*is_neg || GET(F_PLUS)));
+
+		}
+		else
+		{
+			if (*is_neg || GET(F_PLUS))
+				write_buffer(p, (*is_neg ? "-" : "+"), 1);
+			put_precision(p, *nb_digit, (*is_neg || GET(F_PLUS)));
+			write_buffer(p, &c, 1);
+		}
 		return ;
 	}
 	write_buffer(p, &c, 1);
@@ -68,8 +81,6 @@ void		ft_put_d_i(long long n, t_manager *p)
 	int is_neg;
 	int nb_digit;
 
-	if (n == 0 && GET(F_DOT)  && p->precision == 0) // PB
-		return ;
 	is_neg = 0;
 	nb_digit = 0;
 	if (n < 0)
@@ -80,7 +91,7 @@ void		ft_put_d_i(long long n, t_manager *p)
 	else
 		ft_putu_d_i(n, p, &is_neg, &nb_digit);
 	if (GET(F_DASH))
-		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
+		put_width(p, nb_digit, (is_neg || GET(F_PLUS))); // PB HERE
 }
 
 long long	cast_d_i(t_manager *p, va_list *args)
