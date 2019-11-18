@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:15 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 15:01:13 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:52:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ long long	cast_u_x_x(t_manager *p, va_list *args)
 		return (va_arg(*args, long long));
 	return (va_arg(*args, unsigned int));
 }
+
