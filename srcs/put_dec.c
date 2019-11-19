@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 20:53:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:32:40 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static void     put_precision(t_manager *p, int nb_char, int show_sign)
     int i;
 
     if (GET(F_ZERO) && !GET(F_DOT)) //PB HERE WHEN "%0*d_\n", -4, 0
+	{
         i = p->width - show_sign;
+		p->width = (p->width < 0 ? -(p->width) : p->width);
+	}
     else
         i = p->precision;
     while (i > nb_char)
@@ -41,9 +44,11 @@ static void     put_precision(t_manager *p, int nb_char, int show_sign)
 
 void	ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb_digit)
 {
-	char c;
+	char 	c;
+	int		idx;
 
 	(*nb_digit)++;
+	idx = *nb_digit;
 	c = n % 10 + '0';
 	if (n >= 10)
 		ft_putu_d_i(n / 10, p, is_neg, nb_digit);
@@ -65,6 +70,8 @@ void	ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb_digit)
 			write_buffer(p, &c, 1);
 		return ;
 	}
+	if (GET(F_APOSTROPHE) && idx % 3 == 0)
+		write_buffer(p, "^", 1);
 	write_buffer(p, &c, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 17:17:30 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:29:42 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ static void	read_flags_norm(t_manager *p, const char *format, size_t *i)
 	}
 }
 
-/*
-**	{"-", "0", ".", "*", "l", "ll", "h","hh", "'", "#", " ", "+"};
-**	{   ,    ,    ,    , "l", "ll", "h","hh", "'",    ,    ,     };
-*/
-
 static int	read_flags(t_manager *p, va_list *args, const char *format)
 {
 	size_t i;
@@ -89,6 +84,8 @@ static int	read_flags(t_manager *p, va_list *args, const char *format)
 			p->flags |= F_ZERO;
 		else if (format[i] == '#' && ++i)
 			p->flags |= F_HASH;
+		else if (format[i] == '\'' && ++i)
+			p->flags |= F_APOSTROPHE;
 		else if (is_digit(format[i]))
 			while (is_digit(format[i]))
 				p->width = (p->width * 10) + format[i++] - '0';
@@ -96,14 +93,17 @@ static int	read_flags(t_manager *p, va_list *args, const char *format)
 		{
 			p->flags |= F_DOT;
 			if (format[i] == '*' && ++i)
-				p->precision = va_arg(*args, int);
+			{
+				p->precision = va_arg(*args, size_t);
+//				p->precision = (p->precision < 0 ? 0 : p->precision);
+			}
 			else
 				while (is_digit(format[i]))
 					p->precision = (p->precision * 10) + format[i++] - '0';
 		}
 		else if (format[i] == '*' && ++i)
 		{
-			if ((p->width = va_arg(*args, int)) < 0)
+			if ((p->width = va_arg(*args, size_t)) < 0)
 			{
 				p->flags |= F_DASH;
 				p->width = -(p->width);

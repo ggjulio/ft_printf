@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 18:46:23 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:28:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define F_LL (1 << 5)
 # define F_H (1 << 6)
 # define F_HH (1 << 7)
-# define F_SINGLE_QUOTE (1 << 8)
+# define F_APOSTROPHE (1 << 8)
 # define F_HASH (1 << 9)
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
