@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 15:59:08 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 19:00:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ int			read_flags(t_manager *p, va_list *args, const char *format)
 	{
 		read_flags_norm(p, format, &i);
 		if (format[i] == '-' && ++i)
+		{
 			p->flags |= F_DASH;
+			p->flags &= ~(F_ZERO);
+		}
 		else if (format[i] == '+' && ++i)
 			p->flags |= F_PLUS;
 		else if (format[i] == ' ' && ++i)
 			p->flags |= F_SPACE;
-		else if (format[i] == '0' && ++i)
+		else if (format[i] == '0' && !GET(F_DASH) && ++i)
 			p->flags |= F_ZERO;
 		else if (format[i] == '#' && ++i)
 			p->flags |= F_HASH;
@@ -69,6 +72,7 @@ int			read_flags(t_manager *p, va_list *args, const char *format)
 			{
 				p->flags |= F_DASH;
 				p->width = -(p->width);
+				p->flags &= ~(F_ZERO);
 			}
 			p->flags |= F_STAR;
 		}
