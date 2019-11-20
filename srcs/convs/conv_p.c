@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 14:59:38 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:16:49 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ static void		put_ptr(unsigned long long n, t_manager *p, int *nb_digit)
 		put_ptr(n / 16, p, nb_digit);
 	else
 	{
+		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
+			*nb_digit = 0;
 		p->width -= 2;
 		if (!GET(F_DASH))
 			put_width(p, *nb_digit);
 		write_buffer(p, "0x", 2);
+		if (*nb_digit)
+			write_buffer(p, &c, 1);
+		return ;
 	}
 	write_buffer(p, &c, 1);
 }

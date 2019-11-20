@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 15:59:38 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 19:18:59 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	parse(va_list *args, t_manager *p)
 									conv_x_lowcase,
 									conv_x_upcase,
 									conv_n,
-									NULL,
+									conv_f,
 									NULL,
 									NULL,
 									conv_mod};
