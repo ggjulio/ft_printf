@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_p.c                                           :+:      :+:    :+:   */
+/*   put_hex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 14:59:38 by juligonz         ###   ########.fr       */
+/*   Created: 2019/11/20 15:00:49 by juligonz          #+#    #+#             */
+/*   Updated: 2019/11/20 15:06:56 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,22 @@ static void		put_width(t_manager *p, int nb_char)
 	}
 }
 
-static void		put_ptr(unsigned long long n, t_manager *p, int *nb_digit)
+static void		put_precision(t_manager *p, int nb_char)
+{
+	int	i;
+
+	if (GET(F_ZERO) && !GET(F_DOT))
+		i = p->width;
+	else
+		i = p->precision;
+	while (i > nb_char)
+	{
+		write_buffer(p, "0", 1);
+		i--;
+	}
+}
+
+void			ft_putu_x_x(unsigned long long n, t_manager *p, int *nb_digit)
 {
 	char c;
 
@@ -33,23 +48,31 @@ static void		put_ptr(unsigned long long n, t_manager *p, int *nb_digit)
 	if (c > '9')
 		c += (p->specifier == 'X' ? 7 : 39);
 	if (n >= 16)
-		put_ptr(n / 16, p, nb_digit);
+		ft_putu_x_x(n / 16, p, nb_digit);
 	else
 	{
-		p->width -= 2;
-		if (!GET(F_DASH))
+		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
+			(*nb_digit) = 0;
+		if (GET(F_HASH) && *nb_digit > 0 && c != '0')
+			p->width -= 2;
+		if (!GET(F_DASH) && (!GET(F_ZERO) || GET(F_DOT)))
 			put_width(p, *nb_digit);
-		write_buffer(p, "0x", 2);
+		if ((GET(F_HASH) && *nb_digit > 0 && c != '0'))
+			write_buffer(p, (p->specifier == 'X' ? "0X" : "0x"), 2);
+		put_precision(p, *nb_digit);
+		if (*nb_digit != 0 || !GET(F_DOT) || p->precision != 0)
+			write_buffer(p, &c, 1);
+		return ;
 	}
 	write_buffer(p, &c, 1);
 }
 
-void			conv_p(va_list *args, t_manager *p)
+void			ft_put_x_x(long long n, t_manager *p)
 {
 	int nb_digit;
 
 	nb_digit = 0;
-	put_ptr(va_arg(*args, unsigned long), p, &nb_digit);
+	ft_putu_x_x(n, p, &nb_digit);
 	if (GET(F_DASH))
 		put_width(p, nb_digit);
 }
