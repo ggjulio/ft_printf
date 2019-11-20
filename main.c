@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/19 18:30:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 14:50:27 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,7 @@ int 	main(void)
 //	int *i1 = i0;
 //	int *i2 = i1;
 //	printf("%-32p%-32p%-32p%-32p%-32p%-32p_", &i, &i0, &i1, &i2, &i, &i);
-	
+/*	
 	ft_printf("%0*d_\n", -4, 0);
 	printf("%0*d_\n", -4, 0);
 	ft_printf("%0*d_\n", -4, 1);
@@ -291,9 +291,24 @@ int 	main(void)
     setlocale(LC_NUMERIC, "da_DK");
 	printf("%'d_\n", 1000000);
 	ft_printf("%'d_\n", 1000000);
+*/
+
+	int i = -1;
+	int j = -1;
+
+	(void)i;
+	(void)j;
+
+	i = -1;	j = -1;	
+	printf("|%d|\n", printf("12345%n", &i));
+	printf("|%d|\n", ft_printf("12345%n", &j));
 
 
+	i = -1;	j = -1;	
+	printf("|%d|\n", printf("%n", &i));
+	printf("|%d|\n", ft_printf("%n", &j));
 
+//	printf("12345%n\n", 1000000);
 
 
 

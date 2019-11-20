@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 13:01:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:44:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_put_x_x(long long n, t_manager *p);
 
 long long			cast_signed(t_manager *p, va_list *args);
 unsigned long long	cast_unsigned(t_manager *p, va_list *args);
+void				*cast_ptr(t_manager *p, va_list *args);
 
 void	write_buffer(t_manager *p, char *s, size_t n);
 
