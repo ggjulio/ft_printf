@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:36 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 16:45:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:00:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void        ft_put_x_x(long long n, t_manager *p)
 
 void		conv_x_lowcase(va_list *args, t_manager *p)
 {
-	ft_put_x_x(cast_u_x_x(p, args), p);
+	ft_put_x_x(cast_unsigned(p, args), p);
 }

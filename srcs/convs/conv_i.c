@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/17 21:37:41 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:00:02 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		conv_i(va_list *args, t_manager *p)
 {
-    ft_put_d_i(cast_d_i(p, args), p);
+    ft_put_d_i(cast_signed(p, args), p);
 }
