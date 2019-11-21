@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 14:30:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/21 15:53:22 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_put_d_i(long long n, t_manager *p);
 void	ft_put_u(unsigned long long n, t_manager *p);
 void	ft_put_x_x(long long n, t_manager *p);
 void	put_oct(long long n, t_manager *p);
+void	put_double(double n, t_manager *p);
 
 void    write_buffer(t_manager *p, char *s, size_t n);
 
