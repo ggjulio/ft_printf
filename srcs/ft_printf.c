@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 19:18:59 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/21 14:29:12 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void		debug_flags(t_manager *p)
 
 static void	parse(va_list *args, t_manager *p)
 {
-	const char		*conv = "cspdiuxXnfge%";
-	const handler	jmp_table[13] = {conv_c,
+	const char		*conv = "cspdiuxXnfgeo%";
+	const handler	jmp_table[14] = {conv_c,
 									conv_s,
 									conv_p,
 									conv_d,
@@ -47,6 +47,7 @@ static void	parse(va_list *args, t_manager *p)
 									conv_f,
 									NULL,
 									NULL,
+									conv_o,
 									conv_mod};
 	int				i;
 

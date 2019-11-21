@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/20 15:58:56 by juligonz         ###   ########.fr        #
+#    Updated: 2019/11/21 14:28:38 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,6 +20,7 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/cast_len_modifier.c		\
 		srcs/put_dec.c					\
 		srcs/put_hex.c					\
+		srcs/put_oct.c					\
 		srcs/read_flags.c				\
 		srcs/write_buffer.c				\
 		srcs/convs/conv_c.c				\
@@ -34,6 +35,7 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/convs/conv_f.c				\
 		srcs/convs/conv_g.c				\
 		srcs/convs/conv_e.c				\
+		srcs/convs/conv_o.c				\
 		srcs/convs/conv_mod.c			\
 
 OBJ = $(SRCS:.c=.o)

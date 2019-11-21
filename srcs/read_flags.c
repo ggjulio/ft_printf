@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 19:00:05 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/21 14:13:14 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			read_flags(t_manager *p, va_list *args, const char *format)
 		{
 			p->flags |= F_DOT;
 			if (format[i] == '*' && ++i)
-				p->precision = va_arg(*args, size_t);
+				p->precision = va_arg(*args, int);
 			else
 				while (is_digit(format[i]))
 					p->precision = (p->precision * 10) + format[i++] - '0';
