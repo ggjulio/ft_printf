@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 17:14:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/21 20:32:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ char		get_round(double mantissa)
 }
 
 
+void		put_mantissa(double mantissa, int prec, t_manager *p, int *nb_digit)
+{
+	char c;
+
+	(*nb_digit)++;
+	mantissa *= 10;
+	c = (long)mantissa + '0';
+	mantissa -= (long)mantissa;
+	write_buffer(p, &c, 1);
+	if (prec > 0)
+		put_mantissa(mantissa, --prec, p, nb_digit);
+		
+}
+
 void		put_double(double n, t_manager *p)
 {
 	int nb_digit;
@@ -50,29 +64,31 @@ void		put_double(double n, t_manager *p)
 	long long exp;
 	double mantissa;
 	unsigned int precision;
+	char buffer[100]
+
 
 	is_neg = (n < 0 ? 1 : 0);	
 	exp = (long long)n;
 	mantissa = (n - exp < 0 ? -(n - exp) : n - exp);
 	nb_digit = 0;
+	precision = (p->precision != 0 ? p->precision : 6);
 
 	ft_putu_d_i((exp < 0 ? -exp : exp), p, &is_neg, &nb_digit);
-
-
 	write_buffer(p, ".", 1);
 
-	char c;
-	precision = (p->precision != 0 ? p->precision : 6);
-	while (--precision > 0)
+	put_mantissa(mantissa, --precision, p, &nb_digit);
+
+/*	char c;
+	while (--precision)
 	{
 		mantissa *= 10;
 		c = (long)mantissa + '0';
 		mantissa -= (long)mantissa;
 		write_buffer(p, &c, 1);
 	}
-	c = get_round(mantissa);
-	write_buffer(p, &c, 1);
-
+	put_round(mantissa);
+//	write_buffer(p, &c, 1);
+*/
 
 
 

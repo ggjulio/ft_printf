@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 17:15:11 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/21 20:32:02 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,15 +303,18 @@ int 	main(void)
 */
 
 	double d = 42.1234;
+	double e = 42.1277;
 
 	printf("%f_\n", d);
 	ft_printf("%f_\n", d);
-	printf("%f_\n", 43.924);
+	printf("%f_\n", e);
+	ft_printf("%f_\n", e);
+/*	printf("%f_\n", 43.924);
 	printf("%f_\n", 42.925);
 	printf("%f_\n", 43.925);
 	printf("%f_\n", 42.926);
 	printf("%f_\n", 43.926);
-	ft_printf("%f_\n", 42.12345);
+	ft_printf("%f_\n", 42.12345);*/
 //	printf("% %_\n");
 
 
