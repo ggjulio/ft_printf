@@ -6,98 +6,106 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 13:08:47 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/22 19:04:58 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void put_width(t_manager *p, int nb_char, int show_sign)
-{
-    int i;
 
-    i = p->width - show_sign;
-    while (i > p->precision && i > nb_char)
-    {
-        write_buffer(p, " ", 1);
-        i--;
-    }
+#include <stdio.h>
+
+static char		get_last_d(double mantis, int precision)
+{
+	char d;
+
+	while (precision--)
+	{
+		mantis *=10;
+		d = (int)mantis;
+		mantis -= (int)mantis;
+	}
+	return (d);
 }
 
-char		get_round(double mantissa)
+static double		get_dprecision(int64_t exp, double mantis, t_manager *p)
 {
-	char c;
-	char c2;
+	char d;
+	int precision;
+	double res;
 
-	mantissa *= 10;
-	c = (long)mantissa + '0';
-	mantissa -= (long)mantissa;
-	mantissa *= 10;
-	c2 = (long)mantissa + '0';
-	if (c2 > '5')
-		return (c + 1);
-	else if (c2 < '5')
-		return (c);
-	else 
-		return (c);
+	precision = (GET(F_DOT) ? p->precision : 6);
+	p->precision = precision;
+	if ((GET(F_DOT) && p->precision == 0) || !precision)
+		return (0.0);
+	d = get_last_d(mantis, precision);
+	if (d < 5)
+		return (0.0);
+	res = 0.1;
+
+	if (d == 5)
+	{
+		while (--precision)
+			res /= 10;
+		return (exp % 2 == 0 ? res : 0.0);
+	}	
+	while (--precision)
+		res /= 10;
+	return (res);
 }
 
-
-void		put_mantissa(double mantissa, int prec, t_manager *p, int *nb_digit)
+void		put_exp(int64_t exp, t_manager *p)
 {
 	char c;
 
-	(*nb_digit)++;
-	mantissa *= 10;
-	c = (long)mantissa + '0';
-	mantissa -= (long)mantissa;
-	if (prec > 0)
-		put_mantissa(mantissa, --prec, p, nb_digit);
+	c = exp % 10 + '0';
+	if (exp >= 10)
+		put_exp(exp / 10, p);
 	write_buffer(p, &c, 1);
-		
+}
+
+void		put_mantis(double mantis, int precision,  t_manager *p)
+{
+	char c;
+
+	mantis *= 10;
+	c = (int)mantis +'0';
+	write_buffer (p, &c, 1);
+	if (precision > 1)
+		put_mantis(mantis - (int)mantis, --precision, p);
+
 }
 
 void		put_double(double n, t_manager *p)
 {
-	int nb_digit;
-	int is_neg;
-	long long exp;
-	double mantissa;
-	unsigned int precision;
+	short	is_neg;
+	int64_t exp;
+	double	mantis;
+	double	dprec;
 
-
-	is_neg = (n < 0 ? 1 : 0);	
-	exp = (long long)n;
-	mantissa = (n - exp < 0 ? -(n - exp) : n - exp);
-//	mantissa = n & ;
-	nb_digit = 0;
-	precision = (p->precision != 0 ? p->precision : 6);
-
-	ft_putu_d_i((exp < 0 ? -exp : exp), p, &is_neg, &nb_digit);
-	write_buffer(p, ".", 1);
-
-//	put_mantissa(mantissa, --precision, p, &nb_digit);
-
-	
-
-	
-
-/*	char c;
-	while (--precision)
+	is_neg = 0;
+	if (n < 0)
 	{
-		mantissa *= 10;
-		c = (long)mantissa + '0';
-		mantissa -= (long)mantissa;
-		write_buffer(p, &c, 1);
+		is_neg = 1;
+		n = -n;
 	}
-	put_round(mantissa);
-//	write_buffer(p, &c, 1);
-*/
-
-
-
-
-
-	if (GET(F_DASH))
-		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
+//	n += dprec;
+	exp = (int64_t)n;
+	mantis = n - exp;
+	dprec =  get_dprecision(exp, mantis, p);
+	if (is_neg)
+		write_buffer(p, "-", 1);
+	put_exp(exp, p);
+	if (GET(F_DOT) && p->precision == 0)
+		;
+	else
+	{
+		write_buffer(p, ".", 1);
+		put_mantis(mantis + dprec, p->precision, p);
+//		put_mantis(mantis, p->precision, p);
+	}
+//	while ()
+		
+//	if (GET(F_DASH))
+//		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
 }
