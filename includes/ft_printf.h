@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 15:53:22 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:17:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-
+# include <stdint.h>
 # define BUFFER_SIZE 100
 
 # define GET(f) (f & p->flags)
@@ -68,23 +68,23 @@ size_t	ft_strlen(const char *s);
 void	*ft_memset(void *s, int c, size_t n);
 int		is_digit(char c);
 
-void	ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb_digit);
-void	ft_putu_x_x(unsigned long long n, t_manager *p, int *nb_digit);
-void	ft_put_d_i(long long n, t_manager *p);
-void	ft_put_u(unsigned long long n, t_manager *p);
-void	ft_put_x_x(long long n, t_manager *p);
-void	put_oct(long long n, t_manager *p);
+void	ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit);
+void	ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit);
+void	ft_put_d_i(int64_t n, t_manager *p);
+void	ft_put_u(uint64_t n, t_manager *p);
+void	ft_put_x_x(int64_t n, t_manager *p);
+void	put_oct(int64_t n, t_manager *p);
 void	put_double(double n, t_manager *p);
 
 void    write_buffer(t_manager *p, char *s, size_t n);
 
-long long			cast_signed(t_manager *p, va_list *args);
-unsigned long long	cast_unsigned(t_manager *p, va_list *args);
-void				*cast_ptr(t_manager *p, va_list *args);
+int64_t		cast_signed(t_manager *p, va_list *args);
+uint64_t	cast_unsigned(t_manager *p, va_list *args);
+void		*cast_ptr(t_manager *p, va_list *args);
 
 void	write_buffer(t_manager *p, char *s, size_t n);
 int		read_flags(t_manager *p, va_list *args, const char *format);
 
-int		ft_printf(const char *format, ...)  __attribute__((format(printf,1,2)));
+int			ft_printf(const char *format, ...)  __attribute__((format(printf,1,2)));
 
 #endif

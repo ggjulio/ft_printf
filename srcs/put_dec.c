@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 16:32:33 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:12:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 	}
 }
 
-void		ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb_digit)
+void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 {
 	char	c;
 	int		idx;
@@ -71,7 +71,7 @@ void		ft_putu_d_i(unsigned long long n, t_manager *p, int *is_neg, int *nb_digit
 	write_buffer(p, &c, 1);
 }
 
-void		ft_put_d_i(long long n, t_manager *p)
+void		ft_put_d_i(int64_t n, t_manager *p)
 {
 	int is_neg;
 	int nb_digit;
@@ -89,7 +89,7 @@ void		ft_put_d_i(long long n, t_manager *p)
 		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
 }
 
-void		ft_put_u(unsigned long long n, t_manager *p)
+void		ft_put_u(uint64_t n, t_manager *p)
 {
 	int is_neg;
 	int nb_digit;

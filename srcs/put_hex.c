@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:00:49 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 15:06:56 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:06:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		put_precision(t_manager *p, int nb_char)
 	}
 }
 
-void			ft_putu_x_x(unsigned long long n, t_manager *p, int *nb_digit)
+void			ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit)
 {
 	char c;
 
@@ -67,7 +67,7 @@ void			ft_putu_x_x(unsigned long long n, t_manager *p, int *nb_digit)
 	write_buffer(p, &c, 1);
 }
 
-void			ft_put_x_x(long long n, t_manager *p)
+void			ft_put_x_x(int64_t n, t_manager *p)
 {
 	int nb_digit;
 
