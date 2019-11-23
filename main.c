@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 19:01:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/23 23:41:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int 	main(void)
 {
-/*
+
 	printf("||||||||||||||||||||| c:\n");
 	printf("ok_%c_ok\n", 'B');
 	ft_printf("ok_%c_ok\n", 'B');
@@ -271,7 +271,7 @@ int 	main(void)
 //	printf("%'G_\n", 148934.1432);
 //	printf("%'d_\n", 1000000000);
 
-*/
+
 //	int i = 42;
 //	int *i0 = &i;
 //	int *i1 = i0;
@@ -286,7 +286,7 @@ int 	main(void)
 //	ft_printf("%'d_\n", 1000000);
 
 //	printf("%0-6d_\n", 1);
-/*	printf("%0*.*i\n", 2, 2, 8);
+	printf("%0*.*i\n", 2, 2, 8);
 	printf("%0*.*i\n", 2, -2, 8);
 	ft_printf("%0*.*i\n", 2, 2, 8);
 	ft_printf("%0*.*i\n", 2, -2, 8);
@@ -316,10 +316,10 @@ int 	main(void)
 	ft_printf("%f_\n", -3.85);
 	printf("%f_\n", 3.85);
 	ft_printf("%f_\n", 3.85);
-*/
+
 	printf("%f\n", 23.00041);
 	ft_printf("%f\n", 23.00041);
-/*
+
 	printf("%f\n",  0.999999);
 	ft_printf("%f\n",  0.999999);
 	printf("%f\n", 42.123);
@@ -348,8 +348,12 @@ int 	main(void)
 //	printf("%5.p", NULL);
 //	ft_printf("%5.p", NULL);
 
-*/
-
-
+	printf("\n\n");
+	printf("%0*.*i_\n", 2, -2, 8);
+	ft_printf("%0*.*i_\n", 2, -2, 8);
+	printf("%.*i_\n", -3, 8);
+	ft_printf("%.*i_\n", -3, 8);
+	printf("%*.*i_\n", 2, -2, 8);
+	ft_printf("%*.*i_\n", 2, -2, 8);
 
 }
