@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:26:02 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/23 22:55:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 18:52:25 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		put_precision(t_manager *p, int nb_char, char c)
 	if (GET(F_ZERO) && !GET(F_DOT))
 		i = p->width;
 	else
-		i = (GET(F_HASH) && c != '0' ? p->precision -1 : p->precision);
+		i = (GET(F_HASH) && c != '0' ? p->precision - 1 : p->precision);
 	while (i > nb_char)
 	{
 		write_buffer(p, "0", 1);
@@ -39,7 +39,7 @@ static void		put_precision(t_manager *p, int nb_char, char c)
 	}
 }
 
-void		put_uoct(uint64_t n, t_manager *p, int *nb_digit)
+void			put_uoct(uint64_t n, t_manager *p, int *nb_digit)
 {
 	char c;
 
