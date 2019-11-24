@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 16:06:49 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 17:11:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,7 +316,7 @@ int 	main(void)
 	ft_printf("%f_\n", -3.85);
 	printf("%f_\n", 3.85);
 	ft_printf("%f_\n", 3.85);
-*/
+
 	printf("|%d|\n",    printf("%f", 23.00041));
 	printf("|%d|\n", ft_printf("%f", 23.00041));
 
@@ -353,20 +353,16 @@ int 	main(void)
 
 	printf("|%d|\n",    printf("%f", 42.12345));
 	printf("|%d|\n", ft_printf("%f", 42.12345));
-
-
-//	printf("% %_\n");
-
-/*
-	printf("%f_\n", 42.12345);
-	Test 1343 (f_prec0_1) : FAILED.
-		First line of code: {return test("this %.0f float", 1.6);}
-	expected output : "this 2 float"
-		your output     : "this 2. float"
-		expected (nonprintable as hex) : "this 2 float"
-		actual   (nonprintable as hex) : "this 2. float"
-
 */
+
+	printf("\n\n\n");
+
+    printf("%0*.*i_\n", 2, -2, 8);
+    ft_printf("%0*.*i_\n", 2, -2, 8);
+    printf("%.*i_\n", -4, 8);
+    ft_printf("%.*i_\n", -4, 8);
+
+
 
 
 
