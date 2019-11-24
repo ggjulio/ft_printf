@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 18:40:22 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 20:11:49 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,6 @@ static int	width(t_manager *p, const char *format, size_t *i, va_list *args)
 	if (is_digit(format[*i]))
 		while (is_digit(format[*i]))
 			p->width = (p->width * 10) + format[(*i)++] - '0';
-	else if (format[*i] == '.' && ++(*i))
-	{
-		p->flags |= F_DOT;
-		if (format[*i] == '*' && ++(*i))
-			p->precision = va_arg(*args, int);
-		else
-			while (is_digit(format[*i]))
-				p->precision = (p->precision * 10) + format[(*i)++] - '0';
-	}
 	else if (format[*i] == '*' && ++(*i))
 	{
 		if ((p->width = va_arg(*args, size_t)) < 0)
@@ -76,6 +67,24 @@ static int	width(t_manager *p, const char *format, size_t *i, va_list *args)
 			p->flags &= ~(F_ZERO);
 		}
 		p->flags |= F_STAR;
+	}
+	else
+		return (0);
+	return (1);
+}
+
+static int	preci(t_manager *p, const char *format, size_t *i, va_list *args)
+{
+	if (format[*i] == '.' && ++(*i))
+	{
+		p->flags |= F_DOT;
+		if (format[*i] == '*' && ++(*i))
+			p->precision = va_arg(*args, int);
+		else
+			while (is_digit(format[*i]))
+				p->precision = (p->precision * 10) + format[(*i)++] - '0';
+		if (p->precision < 0)
+			p->flags &= ~GET(F_DOT);
 	}
 	else
 		return (0);
@@ -94,7 +103,8 @@ int			read_flags(t_manager *p, va_list *args, const char *format)
 	{
 		if (!primary_flags(p, format, &i)
 			&& !len_modifier(p, format, &i)
-			&& !width(p, format, &i, args))
+			&& !width(p, format, &i, args)
+			&& !preci(p, format, &i, args))
 		{
 			p->specifier = format[i];
 			return (i);
