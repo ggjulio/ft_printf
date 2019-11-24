@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 16:04:44 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 15:57:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int			read_flags(t_manager *p, va_list *args, const char *format)
 			}
 			p->flags |= F_STAR;
 		}
-		else if (format[i] == 'L') //remove after
-			i++;
+//		else if (format[i] == 'L') //remove after
+//			i++;
 		else
 		{
 			p->specifier = format[i];

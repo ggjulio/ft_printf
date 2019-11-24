@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/23 23:41:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 16:06:49 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int 	main(void)
 {
-
+/*
 	printf("||||||||||||||||||||| c:\n");
 	printf("ok_%c_ok\n", 'B');
 	ft_printf("ok_%c_ok\n", 'B');
@@ -271,7 +271,7 @@ int 	main(void)
 //	printf("%'G_\n", 148934.1432);
 //	printf("%'d_\n", 1000000000);
 
-
+*/
 //	int i = 42;
 //	int *i0 = &i;
 //	int *i1 = i0;
@@ -286,7 +286,7 @@ int 	main(void)
 //	ft_printf("%'d_\n", 1000000);
 
 //	printf("%0-6d_\n", 1);
-	printf("%0*.*i\n", 2, 2, 8);
+/*	printf("%0*.*i\n", 2, 2, 8);
 	printf("%0*.*i\n", 2, -2, 8);
 	ft_printf("%0*.*i\n", 2, 2, 8);
 	ft_printf("%0*.*i\n", 2, -2, 8);
@@ -316,44 +316,59 @@ int 	main(void)
 	ft_printf("%f_\n", -3.85);
 	printf("%f_\n", 3.85);
 	ft_printf("%f_\n", 3.85);
+*/
+	printf("|%d|\n",    printf("%f", 23.00041));
+	printf("|%d|\n", ft_printf("%f", 23.00041));
 
-	printf("%f\n", 23.00041);
-	ft_printf("%f\n", 23.00041);
+	printf("|%d|\n",    printf("%f", 0.9999999));
+	printf("|%d|\n", ft_printf("%f", 0.9999999));
 
-	printf("%f\n",  0.999999);
-	ft_printf("%f\n",  0.999999);
-	printf("%f\n", 42.123);
-	ft_printf("%f\n", 42.123);
-	printf("%f\n", 0.000039);
-	ft_printf("%f\n", 0.000039);
-	printf("%.7f\n", 0.000039);
-	ft_printf("%.7f\n", 0.000039);
-	printf("%f\n",  999.999999);
-	ft_printf("%f\n",  999.999999);
+	printf("|%d|\n",    printf("%f", 42.123));
+	printf("|%d|\n", ft_printf("%f", 42.123));
+
+	printf("|%d|\n",    printf("%f", 0.000039));
+	printf("|%d|\n", ft_printf("%f", 0.000039));
+
+	printf("|%d|\n",    printf("%.7f", 0.000039));
+	printf("|%d|\n", ft_printf("%.7f", 0.000039));
+
+	printf("|%d|\n",    printf("%f", 999.999999));
+	printf("|%d|\n", ft_printf("%f", 999.999999));
+
 //	printf("%f_\n", 0.0);
 //	ft_printf("%f_\n", 0.0);
 //	printf("%f_\n", f);
 //	ft_printf("%f_\n", f);
 //	printf("%f_\n", e);
 //	ft_printf("%f_\n", e);
-	printf("%f_\n", 43.924);
-	printf("%f_\n", 42.925);
-	printf("%f_\n", 43.925);
-	printf("%f_\n", 42.926);
-	printf("%f_\n", 43.926);
-	ft_printf("%f_\n", 42.12345);
+
+	printf("|%d|\n",    printf("%f", 43.924));
+	printf("|%d|\n", ft_printf("%f", 43.924));
+
+	printf("|%d|\n",    printf("%f", 42.925));
+	printf("|%d|\n", ft_printf("%f", 42.925));
+
+	printf("|%d|\n",    printf("%f", 42.926));
+	printf("|%d|\n", ft_printf("%f", 42.926));
+
+	printf("|%d|\n",    printf("%f", 42.12345));
+	printf("|%d|\n", ft_printf("%f", 42.12345));
+
+
 //	printf("% %_\n");
 
+/*
+	printf("%f_\n", 42.12345);
+	Test 1343 (f_prec0_1) : FAILED.
+		First line of code: {return test("this %.0f float", 1.6);}
+	expected output : "this 2 float"
+		your output     : "this 2. float"
+		expected (nonprintable as hex) : "this 2 float"
+		actual   (nonprintable as hex) : "this 2. float"
 
-//	printf("%5.p", NULL);
-//	ft_printf("%5.p", NULL);
+*/
 
-	printf("\n\n");
-	printf("%0*.*i_\n", 2, -2, 8);
-	ft_printf("%0*.*i_\n", 2, -2, 8);
-	printf("%.*i_\n", -3, 8);
-	ft_printf("%.*i_\n", -3, 8);
-	printf("%*.*i_\n", 2, -2, 8);
-	ft_printf("%*.*i_\n", 2, -2, 8);
+
+
 
 }

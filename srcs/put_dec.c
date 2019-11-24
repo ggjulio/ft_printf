@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 13:12:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 15:55:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 	}
 	ft_putu_d_i(n / 10, p, is_neg, nb_digit);
 	if (GET(F_APOSTROPHE) && idx % 3 == 0)
-		write_buffer(p, "^", 1);
+		write_buffer(p, ",", 1);
 	write_buffer(p, &c, 1);
 }
 

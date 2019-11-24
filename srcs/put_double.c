@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 19:04:58 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 16:05:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,35 @@
 
 #include <stdio.h>
 
-static char		get_last_d(double mantis, int precision)
+static void put_width(t_manager *p, int nb_char)
 {
-	char d;
+    int i;
 
-	while (precision--)
-	{
-		mantis *=10;
-		d = (int)mantis;
-		mantis -= (int)mantis;
-	}
-	return (d);
+	if (GET(F_ZERO))
+		return ;
+    i = p->width;
+    while (i > nb_char)
+    {
+        write_buffer(p, " ", 1);
+        i--;
+    }
 }
 
-static double		get_dprecision(int64_t exp, double mantis, t_manager *p)
+static void put_zero(t_manager *p, int nb_char)
 {
-	char d;
-	int precision;
-	double res;
+    int i;
 
-	precision = (GET(F_DOT) ? p->precision : 6);
-	p->precision = precision;
-	if ((GET(F_DOT) && p->precision == 0) || !precision)
-		return (0.0);
-	d = get_last_d(mantis, precision);
-	if (d < 5)
-		return (0.0);
-	res = 0.1;
-
-	if (d == 5)
-	{
-		while (--precision)
-			res /= 10;
-		return (exp % 2 == 0 ? res : 0.0);
-	}	
-	while (--precision)
-		res /= 10;
-	return (res);
+	if (!GET(F_ZERO))
+		return ;
+	i = p->width;
+    while (i > nb_char)
+    {
+        write_buffer(p, "0", 1);
+        i--;
+    }
 }
 
-void		put_exp(int64_t exp, t_manager *p)
+void           put_exp(int64_t exp, t_manager *p)
 {
 	char c;
 
@@ -76,36 +65,57 @@ void		put_mantis(double mantis, int precision,  t_manager *p)
 
 }
 
+double		ft_round(double n, size_t precision)
+{
+    double  rnd;
+
+    rnd = 0.5;
+    while (precision-- > 0)
+        rnd /= 10;
+    return (n + rnd);
+}
+
+size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
+{
+	size_t nb_char;
+
+	nb_char = (is_neg || GET(F_PLUS));
+	if (p->precision > 0 || GET(F_HASH))
+		nb_char++; // +1 point
+	while ((exp /= 10))
+		nb_char++;
+	nb_char++;
+	nb_char += p->precision;
+	return (nb_char);
+}
+
+void		write_double(double n, t_manager *p)
+{
+	put_exp((int64_t)n, p);
+	if (p->precision > 0 || GET(F_HASH))
+		write_buffer(p, ".", 1);
+	if (p->precision > 0 )
+		put_mantis(n - (int64_t)n, p->precision, p);
+}
+
 void		put_double(double n, t_manager *p)
 {
-	short	is_neg;
-	int64_t exp;
-	double	mantis;
-	double	dprec;
+	char	is_neg;
+	int		nb_char;
 
-	is_neg = 0;
-	if (n < 0)
-	{
-		is_neg = 1;
-		n = -n;
-	}
-//	n += dprec;
-	exp = (int64_t)n;
-	mantis = n - exp;
-	dprec =  get_dprecision(exp, mantis, p);
-	if (is_neg)
-		write_buffer(p, "-", 1);
-	put_exp(exp, p);
-	if (GET(F_DOT) && p->precision == 0)
-		;
-	else
-	{
-		write_buffer(p, ".", 1);
-		put_mantis(mantis + dprec, p->precision, p);
-//		put_mantis(mantis, p->precision, p);
-	}
-//	while ()
-		
-//	if (GET(F_DASH))
-//		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
+	p->precision = (GET(F_DOT) ? p->precision : 6);
+	is_neg = (n < 0 ? 1 : 0);
+	n = (n < 0 ? -n : n);
+	n = ft_round(n, p->precision);
+	nb_char = get_nb_char(n - (int64_t)n, is_neg, p);
+	if (!GET(F_DASH))
+		put_width(p, nb_char);
+	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
+		write_buffer(p, " ", 1);
+	if (is_neg || GET(F_PLUS))
+		write_buffer(p, (is_neg ? "-" : "+") , 1);
+	put_zero(p, nb_char);
+	write_double(n, p);
+	if (GET(F_DASH))
+		put_width(p, nb_char);
 }
