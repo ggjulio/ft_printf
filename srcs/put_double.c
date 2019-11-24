@@ -6,14 +6,11 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 16:05:15 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 19:21:01 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
-#include <stdio.h>
 
 static void put_width(t_manager *p, int nb_char)
 {
@@ -81,7 +78,7 @@ size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
 
 	nb_char = (is_neg || GET(F_PLUS));
 	if (p->precision > 0 || GET(F_HASH))
-		nb_char++; // +1 point
+		nb_char++;
 	while ((exp /= 10))
 		nb_char++;
 	nb_char++;
@@ -94,7 +91,7 @@ void		write_double(double n, t_manager *p)
 	put_exp((int64_t)n, p);
 	if (p->precision > 0 || GET(F_HASH))
 		write_buffer(p, ".", 1);
-	if (p->precision > 0 )
+	if (p->precision > 0)
 		put_mantis(n - (int64_t)n, p->precision, p);
 }
 
@@ -113,7 +110,7 @@ void		put_double(double n, t_manager *p)
 	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
 		write_buffer(p, " ", 1);
 	if (is_neg || GET(F_PLUS))
-		write_buffer(p, (is_neg ? "-" : "+") , 1);
+		write_buffer(p, (is_neg ? "-" : "+"), 1);
 	put_zero(p, nb_char);
 	write_double(n, p);
 	if (GET(F_DASH))

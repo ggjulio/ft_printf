@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 15:55:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 20:44:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 	c = n % 10 + '0';
 	if (n < 10)
 	{
-		if ((GET(F_SPACE) && !(*is_neg || GET(F_PLUS))) && (p->width-- || 1))
+		if ((GET(F_SPACE) && !(*is_neg || GET(F_PLUS))) && p->specifier != 'u' && (p->width-- || 1))
 			write_buffer(p, " ", 1);
 		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
 			(*nb_digit) = 0;
 		if (!GET(F_DASH) && (!GET(F_ZERO) || GET(F_DOT)))
 			put_width(p, *nb_digit, (*is_neg || GET(F_PLUS)));
-		if (*is_neg || GET(F_PLUS))
+		if ((*is_neg || GET(F_PLUS)) && p->specifier != 'u')
 			write_buffer(p, (*is_neg ? "-" : "+"), 1);
 		put_precision(p, *nb_digit, (*is_neg || GET(F_PLUS)));
 		if (*nb_digit != 0 || !GET(F_DOT) || p->precision != 0)

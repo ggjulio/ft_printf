@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 18:01:04 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 20:30:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int 	main(void)
 {
-
+    setlocale(LC_NUMERIC, "en_US");
+/*
 	printf("||||||||||||||||||||| c:\n");
 	printf("ok_%c_ok\n", 'B');
 	ft_printf("ok_%c_ok\n", 'B');
@@ -278,10 +279,8 @@ int 	main(void)
 //	int *i2 = i1;
 //	printf("%-32p%-32p%-32p%-32p%-32p%-32p_", &i, &i0, &i1, &i2, &i, &i);
 	
-//    setlocale(LC_NUMERIC, "fr_FR");
 //	printf("%'f_\n", 1000000.655412);
 
-//    setlocale(LC_NUMERIC, "da_DK");
 //	printf("%'d_\n", 1000000);
 //	ft_printf("%'d_\n", 1000000);
 
@@ -362,8 +361,28 @@ int 	main(void)
     printf("%.*i_\n", -4, 8);
     ft_printf("%.*i_\n", -4, 8);
 
+*/
+
+	printf("%+u\n", 4294967295);
+	ft_printf("%+u\n", 4294967295);
+	printf("% u\n", 4294967295);
+	ft_printf("% u\n", 4294967295);
 
 
+	   printf("%'d\n", 10);
+	ft_printf("%'d\n", 10);
+	   printf("%'d\n", 100);
+	ft_printf("%'d\n", 100);
+	   printf("%'d\n", 1000);
+	ft_printf("%'d\n", 1000);
+	   printf("%'d\n", 10000);
+	ft_printf("%'d\n", 10000);
+	   printf("%'d\n", 100000);
+	ft_printf("%'d\n", 100000);
+	   printf("%'d\n", 1000000);
+	ft_printf("%'d\n", 1000000);
+	   printf("%'d\n", 10000000);
+	ft_printf("%'d\n", 10000000);
 
 
 
