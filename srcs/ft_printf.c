@@ -6,37 +6,16 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 15:07:40 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 18:50:22 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-
-void		debug_flags(t_manager *p)
-{
-	printf("|#|#|#|#|#|#|#|#|#|#|# FLAGS #|#|#|#|#|#|#|#|#|#|#|#|\n");
-	printf("test  : %u || ", !(F_DASH & p->flags));
-	printf("DASH  : %d || ", F_DASH & p->flags);
-	printf("ZERO  : %d || ", F_ZERO & p->flags);
-	printf("DOT   : %d || ", F_DOT & p->flags);
-	printf("STAR  : %d || ", F_STAR & p->flags);
-	printf("PLUS  : %d\n", F_PLUS & p->flags);
-	printf("L     : %d || ", F_LL & p->flags);
-	printf("LL    : %d || ", F_LL & p->flags);
-	printf("H     : %d || ", F_H & p->flags);
-	printf("HH    : %d\n", F_HH & p->flags);
-	printf("-----------------------\n");
-	printf("width : %d || ", p->width);
-	printf("precision : %d\n", p->precision);
-	printf("|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|#|\n");
-}
 
 static void	parse(va_list *args, t_manager *p)
 {
 	const char		*conv = "cspdiuxXnfgeo%";
-//	const handler	jmp_table[14] = {conv_c,
-	void (*jmp_table[14])(va_list *args, t_manager *p) = {conv_c,
+	const t_handler	jmp_table[14] = {conv_c,
 									conv_s,
 									conv_p,
 									conv_d,
@@ -58,7 +37,6 @@ static void	parse(va_list *args, t_manager *p)
 			jmp_table[i](args, p);
 }
 
-
 int			ft_printf(const char *format, ...)
 {
 	va_list		args;
@@ -76,7 +54,6 @@ int			ft_printf(const char *format, ...)
 		{
 			write_buffer(&p, str, format + i++ - str);
 			i += read_flags(&p, &args, format + i);
-//			debug_flags(&p);
 			if (!p.specifier)
 				break ;
 			parse(&args, &p);

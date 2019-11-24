@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:12 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 19:12:00 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 17:58:09 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void		conv_s(va_list *args, t_manager *p)
 	if (!s)
 		s = "(null)";
 	len = ft_strlen(s);
-	len = (GET(F_DOT) && p->precision < len  && p->precision >= 0 ? p->precision : len);
+	if (GET(F_DOT) && p->precision < len && p->precision >= 0)
+		len = p->precision;
 	p->width -= len;
 	if (!GET(F_DASH))
 		while (p->width-- > 0)

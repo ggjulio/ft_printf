@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:15 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/23 22:53:50 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 17:52:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int64_t			cast_signed(t_manager *p, va_list *args)
+int64_t		cast_signed(t_manager *p, va_list *args)
 {
 	if (GET(F_HH))
 		return ((char)va_arg(*args, int));
@@ -38,7 +38,7 @@ uint64_t	cast_unsigned(t_manager *p, va_list *args)
 	return (va_arg(*args, unsigned int));
 }
 
-void				*cast_ptr(t_manager *p, va_list *args)
+void		*cast_ptr(t_manager *p, va_list *args)
 {
 	if (GET(F_HH))
 		return ((char *)va_arg(*args, int *));

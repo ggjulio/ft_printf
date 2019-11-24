@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/22 15:14:58 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 18:47:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,19 @@
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
 
-typedef struct  s_manager
+typedef struct	s_manager
 {
-    int		fd;
-    short	flags;
-    int		width;
-    int		len;
-    int		precision;
-    char	specifier;
-    char	buffer[BUFFER_SIZE];
-    size_t	buffer_idx;
+	int		fd;
+	short	flags;
+	int		width;
+	int		len;
+	int		precision;
+	char	specifier;
+	char	buffer[BUFFER_SIZE];
+	size_t	buffer_idx;
 }				t_manager;
 
+typedef void	(*t_handler)(va_list *args, t_manager *p);
 
 void			conv_c(va_list *args, t_manager *p);
 void			conv_s(va_list *args, t_manager *p);

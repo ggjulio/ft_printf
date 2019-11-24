@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 18:44:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 15:35:56 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/24 17:55:10 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 void	conv_f(va_list *args, t_manager *p)
-{	
+{
 	put_double(va_arg(*args, double), p);
 }
