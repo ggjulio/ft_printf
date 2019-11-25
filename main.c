@@ -6,11 +6,13 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 20:37:44 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 20:55:06 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+//#include "ft_printf.h"
+//#include "printf_proto.h"
+
 #include <stdio.h>
 #include <locale.h>
 
@@ -418,8 +420,8 @@ int 	main(void)
 	ft_printf("%Lf\n", -958.125L);
 	printf("%Lf\n", -958.125l);
 	printf("%Lf\n", -958.125L);
-	printf("%#0-8.5o_\n", 34);
-	printf("%0-8.5o_\n", 34);
+//	printf("%#0-8.5o_\n", 34);
+//	printf("%0-8.5o_\n", 34);
 
 
 }

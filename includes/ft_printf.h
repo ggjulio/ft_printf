@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 19:25:30 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 20:46:30 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,5 @@ void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
 void			write_buffer(t_manager *p, char *s, size_t n);
 int				read_flags(t_manager *p, va_list *args, const char *format);
-
-/*
-** ****************** ft_printf **** ****************
-*/
-
-int				ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
 #endif
