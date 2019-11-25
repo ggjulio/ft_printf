@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:45 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 14:57:54 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:53:09 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		conv_x_upcase(va_list *args, t_manager *p)
 {
-	ft_put_x_x(cast_unsigned(p, args), p);
+	put_hex(cast_unsigned(p, args), p);
 }

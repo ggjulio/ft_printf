@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 18:47:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:51:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ size_t			ft_strlen(const char *s);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
 
-void			ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit);
-void			ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit);
-void			ft_put_d_i(int64_t n, t_manager *p);
-void			ft_put_u(uint64_t n, t_manager *p);
-void			ft_put_x_x(int64_t n, t_manager *p);
+void			put_int(int64_t n, t_manager *p);
+void			put_uint(uint64_t n, t_manager *p);
+void			put_hex(int64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
 void			put_double(double n, t_manager *p);
 

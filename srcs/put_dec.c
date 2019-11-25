@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 13:30:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:48:14 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 	write_buffer(p, &c, 1);
 }
 
-void		ft_put_d_i(int64_t n, t_manager *p)
+void		put_int(int64_t n, t_manager *p)
 {
 	int is_neg;
 	int nb_digit;
@@ -89,7 +89,7 @@ void		ft_put_d_i(int64_t n, t_manager *p)
 		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
 }
 
-void		ft_put_u(uint64_t n, t_manager *p)
+void		put_uint(uint64_t n, t_manager *p)
 {
 	int is_neg;
 	int nb_digit;

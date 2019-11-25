@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 14:57:14 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:47:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void		conv_u(va_list *args, t_manager *p)
 {
-	ft_put_u(cast_unsigned(p, args), p);
+	put_uint(cast_unsigned(p, args), p);
 }
