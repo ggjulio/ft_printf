@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 17:25:59 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 19:13:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static size_t	get_nb_char(int64_t exp, char is_neg, t_manager *p)
 	return (nb_char);
 }
 
-void			put_f(double n, t_manager *p)
+void			put_f(long double n, t_manager *p)
 {
 	char	is_neg;
 	int		nb_char;

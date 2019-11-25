@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 17:34:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 19:25:30 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define F_HASH (1 << 9)
 # define F_SPACE (1 << 10)
 # define F_PLUS (1 << 11)
+# define F_FLOAT_L (1 << 12)
 
 typedef struct	s_manager
 {
@@ -76,15 +77,15 @@ void			put_int(int64_t n, t_manager *p);
 void			put_uint(uint64_t n, t_manager *p);
 void			put_hex(uint64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
-void			put_f(double n, t_manager *p);
+void			put_f(long double n, t_manager *p);
 void			put_e(double n, t_manager *p);
 
 /*
 ** ***************** floats utils ******************
 */
 
-double			ft_round(double n, size_t precision);
-void			put_double(double n, t_manager *p);
+long double		ft_round(long double n, size_t precision);
+void			put_double(long double n, t_manager *p);
 
 /*
 ** **************** Lenght modifier ****************
