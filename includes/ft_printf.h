@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 14:04:41 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 17:20:38 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef struct	s_manager
 
 typedef void	(*t_handler)(va_list *args, t_manager *p);
 
+/*
+** ***************** conversions ******************
+*/
+
 void			conv_c(va_list *args, t_manager *p);
 void			conv_s(va_list *args, t_manager *p);
 void			conv_p(va_list *args, t_manager *p);
@@ -64,25 +68,48 @@ void			conv_e(va_list *args, t_manager *p);
 void			conv_o(va_list *args, t_manager *p);
 void			conv_mod(va_list *args, t_manager *p);
 
-int				ft_putstr_range(char const *s_begin, char const *s_end);
-size_t			ft_strlen(const char *s);
-void			*ft_memset(void *s, int c, size_t n);
-int				is_digit(char c);
+/*
+** **************** print in buffer ****************
+*/
 
 void			put_int(int64_t n, t_manager *p);
 void			put_uint(uint64_t n, t_manager *p);
 void			put_hex(uint64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
+void			put_f(double n, t_manager *p);
+void			put_e(double n, t_manager *p);
+
+/*
+** ***************** floats utils ******************
+*/
+
+void			put_exp(int64_t exp, t_manager *p);
+void			put_mantis(double mantis, int precision, t_manager *p);
+double			ft_round(double n, size_t precision);
 void			put_double(double n, t_manager *p);
 
-void			write_buffer(t_manager *p, char *s, size_t n);
+/*
+** **************** Lenght modifier ****************
+*/
 
 int64_t			cast_signed(t_manager *p, va_list *args);
 uint64_t		cast_unsigned(t_manager *p, va_list *args);
 void			*cast_ptr(t_manager *p, va_list *args);
 
+/*
+** ******************* Utility  ********************
+*/
+
+int				ft_putstr_range(char const *s_begin, char const *s_end);
+size_t			ft_strlen(const char *s);
+void			*ft_memset(void *s, int c, size_t n);
+int				is_digit(char c);
 void			write_buffer(t_manager *p, char *s, size_t n);
 int				read_flags(t_manager *p, va_list *args, const char *format);
+
+/*
+** ****************** ft_printf **** ****************
+*/
 
 int				ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 

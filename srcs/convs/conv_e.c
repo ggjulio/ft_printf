@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 18:47:35 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/18 18:47:40 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:45:43 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	conv_e(va_list *args, t_manager *p)
 {
-	(void)args;
-	(void)p;
+	put_e(va_arg(*args, double), p);
 }
