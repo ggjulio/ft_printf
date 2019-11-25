@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 17:09:54 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 17:51:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,31 @@ int			get_e(double n)
 		e++;
 		n /= 10;
 	}
+	while ((int64_t)n == 0)
+	{
+		e--;
+		n *= 10;
+	}
 	return (e);
+}
+
+void		show_exp(int e, t_manager *p)
+{
+	char	s[2];
+
+	write_buffer(p, "e", 1);
+	write_buffer(p, (e < 0 ? "-" : "+") , 1);
+	e = (e < 0 ? -e : e);
+	s[0] = (e / 10) % 10 + '0';
+	s[1] = e % 10 + '0';
+	write_buffer(p, s, 2);	
 }
 
 void		put_e(double n, t_manager *p)
 {
 	char	is_neg;
 //	int		nb_char;
+	int 	i;
 	int		e;
 
 
@@ -91,11 +109,15 @@ void		put_e(double n, t_manager *p)
 	if (is_neg || GET(F_PLUS))
 		write_buffer(p, (is_neg ? "-" : "+"), 1);
 //	put_zero(p, nb_char);
-	while (e-- != 0)
-		n /= 10;
+	i = e;
+	if (i > 0)
+		while (i-- != 0)
+			n /= 10;
+	else
+		while (i++ != 0)
+			n *= 10;
 	put_double(n, p);
-
-
+	show_exp(e, p);
 //	if (GET(F_DASH))
 //		put_width(p, nb_char);
 }
