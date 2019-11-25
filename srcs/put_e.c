@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_double.c                                       :+:      :+:    :+:   */
+/*   put_e.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 14:44:28 by juligonz         ###   ########.fr       */
+/*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
+/*   Updated: 2019/11/25 17:09:54 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,38 +40,7 @@ static void	put_zero(t_manager *p, int nb_char)
 	}
 }
 
-void		put_exp(int64_t exp, t_manager *p)
-{
-	char c;
-
-	c = exp % 10 + '0';
-	if (exp >= 10)
-		put_exp(exp / 10, p);
-	write_buffer(p, &c, 1);
-}
-
-void		put_mantis(double mantis, int precision, t_manager *p)
-{
-	char c;
-
-	mantis *= 10;
-	c = (int)mantis + '0';
-	write_buffer(p, &c, 1);
-	if (precision > 1)
-		put_mantis(mantis - (int)mantis, --precision, p);
-}
-
-double		ft_round(double n, size_t precision)
-{
-	double	rnd;
-
-	rnd = 0.5;
-	while (precision-- > 0)
-		rnd /= 10;
-	return (n + rnd);
-}
-
-size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
+static size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
 {
 	size_t nb_char;
 
@@ -85,33 +54,48 @@ size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
 	return (nb_char);
 }
 
-void		write_double(double n, t_manager *p)
+int			get_e(double n)
 {
-	put_exp((int64_t)n, p);
-	if (p->precision > 0 || GET(F_HASH))
-		write_buffer(p, ".", 1);
-	if (p->precision > 0)
-		put_mantis(n - (int64_t)n, p->precision, p);
+	int e;
+
+	e = 0;
+	while (n >= 10)
+	{
+		e++;
+		n /= 10;
+	}
+	return (e);
 }
 
-void		put_double(double n, t_manager *p)
+void		put_e(double n, t_manager *p)
 {
 	char	is_neg;
-	int		nb_char;
+//	int		nb_char;
+	int		e;
 
+
+	(void)put_zero;
+	(void)put_width;
+	(void)get_nb_char;
+	
 	p->precision = (GET(F_DOT) ? p->precision : 6);
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
 	n = ft_round(n, p->precision);
-	nb_char = get_nb_char(n - (int64_t)n, is_neg, p);
-	if (!GET(F_DASH))
-		put_width(p, nb_char);
-	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
-		write_buffer(p, " ", 1);
+	e = get_e(n);
+//	nb_char = get_nb_char(n - (int64_t)n, is_neg, p);
+//	if (!GET(F_DASH))
+//		put_width(p, nb_char);
+//	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
+//		write_buffer(p, " ", 1);
 	if (is_neg || GET(F_PLUS))
 		write_buffer(p, (is_neg ? "-" : "+"), 1);
-	put_zero(p, nb_char);
-	write_double(n, p);
-	if (GET(F_DASH))
-		put_width(p, nb_char);
+//	put_zero(p, nb_char);
+	while (e-- != 0)
+		n /= 10;
+	put_double(n, p);
+
+
+//	if (GET(F_DASH))
+//		put_width(p, nb_char);
 }

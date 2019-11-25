@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 17:07:05 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 17:33:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		put_exp(int64_t exp, t_manager *p)
+static void	put_exp(int64_t exp, t_manager *p)
 {
 	char c;
 
@@ -22,7 +22,7 @@ void		put_exp(int64_t exp, t_manager *p)
 	write_buffer(p, &c, 1);
 }
 
-void		put_mantis(double mantis, int precision, t_manager *p)
+static void	put_mantis(double mantis, int precision, t_manager *p)
 {
 	char c;
 

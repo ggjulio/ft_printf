@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 17:20:38 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 17:34:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void			put_e(double n, t_manager *p);
 ** ***************** floats utils ******************
 */
 
-void			put_exp(int64_t exp, t_manager *p);
-void			put_mantis(double mantis, int precision, t_manager *p);
 double			ft_round(double n, size_t precision);
 void			put_double(double n, t_manager *p);
 
