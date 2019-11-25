@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 13:51:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:04:41 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				is_digit(char c);
 
 void			put_int(int64_t n, t_manager *p);
 void			put_uint(uint64_t n, t_manager *p);
-void			put_hex(int64_t n, t_manager *p);
+void			put_hex(uint64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
 void			put_double(double n, t_manager *p);
 

@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:26:02 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 18:52:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:07:42 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		put_width(t_manager *p, int nb_char)
+static void	put_width(t_manager *p, int nb_char)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static void		put_width(t_manager *p, int nb_char)
 	}
 }
 
-static void		put_precision(t_manager *p, int nb_char, char c)
+static void	put_precision(t_manager *p, int nb_char, char c)
 {
 	int	i;
 
@@ -39,14 +39,14 @@ static void		put_precision(t_manager *p, int nb_char, char c)
 	}
 }
 
-void			put_uoct(uint64_t n, t_manager *p, int *nb_digit)
+static void	recursive(uint64_t n, t_manager *p, int *nb_digit)
 {
 	char c;
 
 	(*nb_digit)++;
 	c = n % 8 + '0';
 	if (n >= 8)
-		put_uoct(n / 8, p, nb_digit);
+		recursive(n / 8, p, nb_digit);
 	else
 	{
 		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
@@ -65,12 +65,12 @@ void			put_uoct(uint64_t n, t_manager *p, int *nb_digit)
 	write_buffer(p, &c, 1);
 }
 
-void			put_oct(int64_t n, t_manager *p)
+void		put_oct(int64_t n, t_manager *p)
 {
 	int nb_digit;
 
 	nb_digit = 0;
-	put_uoct(n, p, &nb_digit);
+	recursive(n, p, &nb_digit);
 	if (GET(F_DASH))
 		put_width(p, nb_digit);
 }

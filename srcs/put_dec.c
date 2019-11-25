@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 13:48:14 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:02:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 	}
 }
 
-void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
+static void	recursive(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 {
 	char	c;
 	int		idx;
@@ -65,7 +65,7 @@ void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 			write_buffer(p, &c, 1);
 		return ;
 	}
-	ft_putu_d_i(n / 10, p, is_neg, nb_digit);
+	recursive(n / 10, p, is_neg, nb_digit);
 	if (GET(F_APOSTROPHE) && idx % 3 == 0)
 		write_buffer(p, ",", 1);
 	write_buffer(p, &c, 1);
@@ -81,10 +81,10 @@ void		put_int(int64_t n, t_manager *p)
 	if (n < 0)
 	{
 		is_neg = 1;
-		ft_putu_d_i(-n, p, &is_neg, &nb_digit);
+		recursive(-n, p, &is_neg, &nb_digit);
 	}
 	else
-		ft_putu_d_i(n, p, &is_neg, &nb_digit);
+		recursive(n, p, &is_neg, &nb_digit);
 	if (GET(F_DASH))
 		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
 }
@@ -96,7 +96,7 @@ void		put_uint(uint64_t n, t_manager *p)
 
 	is_neg = 0;
 	nb_digit = 0;
-	ft_putu_d_i(n, p, &is_neg, &nb_digit);
+	recursive(n, p, &is_neg, &nb_digit);
 	if (GET(F_DASH))
 		put_width(p, nb_digit, (is_neg || GET(F_PLUS)));
 }

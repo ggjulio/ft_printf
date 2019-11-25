@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:00:49 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 13:52:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:04:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	put_precision(t_manager *p, int nb_char)
 	}
 }
 
-void		ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit)
+static void	recursive(uint64_t n, t_manager *p, int *nb_digit)
 {
 	char c;
 
@@ -48,7 +48,7 @@ void		ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit)
 	if (c > '9')
 		c += (p->specifier == 'X' ? 7 : 39);
 	if (n >= 16)
-		ft_putu_x_x(n / 16, p, nb_digit);
+		recursive(n / 16, p, nb_digit);
 	else
 	{
 		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
@@ -67,12 +67,12 @@ void		ft_putu_x_x(uint64_t n, t_manager *p, int *nb_digit)
 	write_buffer(p, &c, 1);
 }
 
-void		put_hex(int64_t n, t_manager *p)
+void		put_hex(uint64_t n, t_manager *p)
 {
 	int nb_digit;
 
 	nb_digit = 0;
-	ft_putu_x_x(n, p, &nb_digit);
+	recursive(n, p, &nb_digit);
 	if (GET(F_DASH))
 		put_width(p, nb_digit);
 }
