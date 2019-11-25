@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 20:44:23 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:30:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void		ft_putu_d_i(uint64_t n, t_manager *p, int *is_neg, int *nb_digit)
 	char	c;
 	int		idx;
 
-	(*nb_digit)++;
-	idx = *nb_digit;
+	idx = ++(*nb_digit);
 	c = n % 10 + '0';
 	if (n < 10)
 	{
-		if ((GET(F_SPACE) && !(*is_neg || GET(F_PLUS))) && p->specifier != 'u' && (p->width-- || 1))
+		if ((GET(F_SPACE) && !(*is_neg || GET(F_PLUS)))
+			&& p->specifier != 'u' && (p->width-- || 1))
 			write_buffer(p, " ", 1);
 		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
 			(*nb_digit) = 0;
