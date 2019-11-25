@@ -6,41 +6,41 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/24 19:21:01 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:42:02 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void put_width(t_manager *p, int nb_char)
+static void	put_width(t_manager *p, int nb_char)
 {
-    int i;
+	int	i;
 
 	if (GET(F_ZERO))
 		return ;
-    i = p->width;
-    while (i > nb_char)
-    {
-        write_buffer(p, " ", 1);
-        i--;
-    }
+	i = p->width;
+	while (i > nb_char)
+	{
+		write_buffer(p, " ", 1);
+		i--;
+	}
 }
 
-static void put_zero(t_manager *p, int nb_char)
+static void	put_zero(t_manager *p, int nb_char)
 {
-    int i;
+	int i;
 
 	if (!GET(F_ZERO))
 		return ;
 	i = p->width;
-    while (i > nb_char)
-    {
-        write_buffer(p, "0", 1);
-        i--;
-    }
+	while (i > nb_char)
+	{
+		write_buffer(p, "0", 1);
+		i--;
+	}
 }
 
-void           put_exp(int64_t exp, t_manager *p)
+void		put_exp(int64_t exp, t_manager *p)
 {
 	char c;
 
@@ -50,26 +50,25 @@ void           put_exp(int64_t exp, t_manager *p)
 	write_buffer(p, &c, 1);
 }
 
-void		put_mantis(double mantis, int precision,  t_manager *p)
+void		put_mantis(double mantis, int precision, t_manager *p)
 {
 	char c;
 
 	mantis *= 10;
-	c = (int)mantis +'0';
-	write_buffer (p, &c, 1);
+	c = (int)mantis + '0';
+	write_buffer(p, &c, 1);
 	if (precision > 1)
 		put_mantis(mantis - (int)mantis, --precision, p);
-
 }
 
 double		ft_round(double n, size_t precision)
 {
-    double  rnd;
+	double	rnd;
 
-    rnd = 0.5;
-    while (precision-- > 0)
-        rnd /= 10;
-    return (n + rnd);
+	rnd = 0.5;
+	while (precision-- > 0)
+		rnd /= 10;
+	return (n + rnd);
 }
 
 size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
