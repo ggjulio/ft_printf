@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 19:13:52 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/26 18:20:12 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void			put_f(long double n, t_manager *p)
 	n = (n < 0 ? -n : n);
 	n = ft_round(n, p->precision);
 	nb_char = get_nb_char(n - (int64_t)n, is_neg, p);
-	if (!GET(F_DASH))
-		put_width(p, nb_char);
 	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
 		write_buffer(p, " ", 1);
+	if (!GET(F_DASH))
+		put_width(p, nb_char);
 	if (is_neg || GET(F_PLUS))
 		write_buffer(p, (is_neg ? "-" : "+"), 1);
 	put_zero(p, nb_char);
