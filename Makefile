@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/27 17:01:05 by juligonz         ###   ########.fr        #
+#    Updated: 2019/11/27 18:24:50 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,6 +23,7 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/put_oct.c					\
 		srcs/put_double.c				\
 		srcs/put_e.c					\
+		srcs/put_g.c					\
 		srcs/read_flags.c				\
 		srcs/double_utils.c				\
 		srcs/double_utils_2.c			\

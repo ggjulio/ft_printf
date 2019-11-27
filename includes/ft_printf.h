@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 17:39:28 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:24:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			put_uint(uint64_t n, t_manager *p);
 void			put_hex(uint64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
 void			put_f(long double n, t_manager *p);
+void			put_g(long double n, t_manager *p);
 void			put_e(long double n, t_manager *p);
 
 /*

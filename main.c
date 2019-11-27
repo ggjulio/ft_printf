@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 16:17:17 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:23:43 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,22 +108,9 @@ int 	main(void)
 
 	printf("\n\n\n");
 	printf("\n\n\n");
-	   printf("%g\n", 1.13);
-	ft_printf("%g\n", 1.13);
-	   printf("%f\n", 1.13);
-	ft_printf("%f\n", 1.13);
-	   printf("%e\n", 1.13);
-	ft_printf("%e\n", 1.13);
-	   printf("%e\n", 1.13);
-	ft_printf("%e\n", 1.13);
-	printf("\n\n\n");
 
 
-*/
-//	printf("%#8.5o_\n", 34);
-//	ft_printf("%#8.5o_\n", 34);
-//	printf("%#-8.5o_\n", 34);
-//	ft_printf("%#-8.5o_\n", 34);
+
 
 
 	   printf("%-15e_\n", 1.13);
@@ -185,5 +172,27 @@ int 	main(void)
 
        printf("%.6e_\n", -100.00006);
     ft_printf("%.6e_\n", -100.00006);
+*/
+
+//	printf("%#8.5o_\n", 34);
+//	ft_printf("%#8.5o_\n", 34);
+//	printf("%#-8.5o_\n", 34);
+//	ft_printf("%#-8.5o_\n", 34);
+
+
+	printf("\n\n\n");
+	   printf("%g\n", 1.13);
+	ft_printf("%g\n", 1.13);
+	   printf("%f\n", 1.13);
+	ft_printf("%f\n", 1.13);
+	   printf("%e\n", 1.13);
+	ft_printf("%e\n", 1.13);
+	   printf("%e\n", 1.13);
+	ft_printf("%e\n", 1.13);
+
+
+	   printf("%Le\n", 10.1391L);
+	   ft_printf("%g\n", 10.1391);
+
 
 }
