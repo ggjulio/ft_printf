@@ -6,39 +6,11 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 16:30:47 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:40:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	put_width(t_manager *p, int nb_char)
-{
-	int i;
-
-	if (GET(F_ZERO))
-		return ;
-	i = p->width;
-	while (i > nb_char)
-	{
-		write_buffer(p, " ", 1);
-		i--;
-	}
-}
-
-static void	put_zero(t_manager *p, int nb_char)
-{
-	int i;
-
-	if (!GET(F_ZERO))
-		return ;
-	i = p->width;
-	while (i > nb_char)
-	{
-		write_buffer(p, "0", 1);
-		i--;
-	}
-}
 
 static int	get_e(long double n)
 {
@@ -98,12 +70,12 @@ void		put_e(long double n, t_manager *p)
 	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
 		write_buffer(p, " ", 1);
 	if (!GET(F_DASH))
-		put_width(p, nb_char);
+		put_double_width(p, nb_char);
 	if (is_neg || GET(F_PLUS))
 		write_buffer(p, (is_neg ? "-" : "+"), 1);
-	put_zero(p, nb_char);
+	put_double_zero(p, nb_char);
 	put_double(n, p);
 	show_exp(e, p);
 	if (GET(F_DASH))
-		put_width(p, nb_char);
+		put_double_width(p, nb_char);
 }
