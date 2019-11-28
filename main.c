@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 18:23:43 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:19:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 int 	main(void)
 {
     setlocale(LC_NUMERIC, "en_US");
-/*
+
 	double d = 42.1234;
 	double e = 42.1277;
 	double f = 40.19;
@@ -172,7 +172,7 @@ int 	main(void)
 
        printf("%.6e_\n", -100.00006);
     ft_printf("%.6e_\n", -100.00006);
-*/
+
 
 //	printf("%#8.5o_\n", 34);
 //	ft_printf("%#8.5o_\n", 34);
@@ -192,7 +192,9 @@ int 	main(void)
 
 
 	   printf("%Le\n", 10.1391L);
-	   ft_printf("%g\n", 10.1391);
+	ft_printf("%Le\n", 10.1391L);
+   
+
 
 
 }
