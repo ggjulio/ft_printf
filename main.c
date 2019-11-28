@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 15:44:23 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 19:51:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 int 	main(void)
 {
     setlocale(LC_NUMERIC, "en_US");
-/*
+
 	double d = 42.1234;
 	double e = 42.1277;
 	double f = 40.19;
@@ -173,13 +173,17 @@ int 	main(void)
        printf("%.6e_\n", -100.00006);
     ft_printf("%.6e_\n", -100.00006);
 
+	   printf("%e\n", 0.000001);
+	ft_printf("%e\n", 0.000001);
+	   printf("%e\n", 0.00001);
+	ft_printf("%e\n", 0.00001);
 
 //	printf("%#8.5o_\n", 34);
 //	ft_printf("%#8.5o_\n", 34);
 //	printf("%#-8.5o_\n", 34);
 //	ft_printf("%#-8.5o_\n", 34);
 
-*/
+/*
 	printf("\n\n\n");
 	   printf("%g\n", 1.13);
 	ft_printf("%g\n", 1.13);
@@ -211,14 +215,26 @@ int 	main(void)
 	ft_printf("%.0g\n", 1.1244343243210);
 	   printf("%.21g\n", 1.1244343243210);
 	ft_printf("%.21g\n", 1.1244343243210);
-	   printf("%g\n", 0.000001);
-	ft_printf("%g\n", 0.000001);
 	   printf("%g\n", 0.0000000001);
 	ft_printf("%g\n", 0.0000000001);
+	   printf("%e\n", 0.0000000001);
+	ft_printf("%e\n", 0.0000000001);
 	   printf("%.3g\n", 0.1);
 	ft_printf("%.3g\n", 0.1);
-	   printf("%g\n", 0.00001);
-	ft_printf("%g\n", 0.00001);
+	   printf("%g\n", 0.0001);
+	ft_printf("%g\n", 0.0001);
+*/
+	   printf("\n\n\n");
+	   printf("%e\n", 0.000001);
+	ft_printf("%e\n", 0.000001);
+//	   printf("%g\n", 0.00001);
+//	ft_printf("%g\n", 0.00001);
+//	   printf("%g\n", 0.000001);
+//	ft_printf("%g\n", 0.000001);
+	   printf("%e\n", 0.00001);
+	ft_printf("%e\n", 0.00001);
+	   printf("%e\n", 0.0000000001);
+	ft_printf("%e\n", 0.0000000001);
 
 
 }

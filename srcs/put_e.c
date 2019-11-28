@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 17:40:55 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 20:04:57 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_e(long double n)
+static int	get_exponent(long double n)
 {
 	int e;
 
@@ -63,7 +63,7 @@ void		put_e(long double n, t_manager *p)
 	p->precision = (GET(F_DOT) ? p->precision : 6);
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
-	e = get_e(n);
+	e = get_exponent(n);
 	n = ft_round(n, p->precision + (e < 0 || is_neg ? -e : e));
 	update_n(&n, e);
 	nb_char = p->precision + 6 + (GET(F_PLUS) ? 1 : 0);
