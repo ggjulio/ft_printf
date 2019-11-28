@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/27 18:24:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:37:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ long double		ft_round(long double n, size_t precision);
 void			put_double(long double n, t_manager *p);
 void			put_double_width(t_manager *p, int nb_char);
 void			put_double_zero(t_manager *p, int nb_char);
-
+int				trailing_zero(long double mantis, int precision);
 /*
 ** **************** Lenght modifier ****************
 */

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 21:19:04 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:35:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void		put_e(long double n, t_manager *p)
 	e = get_exponent(n);
 	n = ft_round(n, p->precision + (e < 0 || is_neg ? -e : e));
 	e = update_n(&n, e);
+	if (p->specifier == 'g')
+		p->precision = trailing_zero(n - (int)n, p->precision);
 	nb_char = p->precision + 6 + (GET(F_PLUS) ? 1 : 0);
 	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
 		write_buffer(p, " ", 1);
