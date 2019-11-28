@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 21:39:16 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 22:39:11 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,41 @@ static size_t	get_nb_char(int64_t exp, char is_neg, t_manager *p)
 	return (nb_char);
 }
 
-static int		exp_format(long double n, int precision)
+static int		get_exponent(long double n)
 {
-	while (precision--)
+    int e;
+
+    if (!n)
+        return (0);
+    e = 0;
+    while (n >= 10)
+    {
+        e++;
+        n /= 10;
+    }
+    while ((int64_t)n == 0)
+    {
+        e--;
+        n *= 10;
+    }
+    return (e);
+}
+
+static int		exp_format(long double n, int precision, t_manager *p)
+{
+	int e;
+
+	e = get_exponent(n);
+	if (precision > e && e >= -4)
+		return (0);
+	else
 	{
-		if ((int)n)
-			return (0);
-		n *= 10;
+		p->precision--;
+		put_e(n, p);		
 	}
+//		return (0);
 	return (1);
+		
 }
 
 void			put_g(long double n, t_manager *p)
@@ -42,13 +68,12 @@ void			put_g(long double n, t_manager *p)
 	char	is_neg;
 	int		nb_char;
 
+	(void)exp_format;
+
 	p->precision = (GET(F_DOT) ? p->precision : 6);
-	p->precision = (p->precision > 0 ? p->precision - 1 : 0);
-	if (exp_format(n, p->precision))
-	{
-		put_e(n, p);
+	p->precision = (p->precision == 0 ? 1 : p->precision);
+	if (exp_format(n, p->precision, p))
 		return ;
-	}
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
 	n = ft_round(n, p->precision);

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 21:33:32 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 22:28:31 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,18 +195,19 @@ int 	main(void)
 
 
 	printf("\n\n\n");
-	   printf("%g\n", 1.13);
-	ft_printf("%g\n", 1.13);
 	   printf("%f\n", 1.13);
 	ft_printf("%f\n", 1.13);
 	   printf("%e\n", 1.13);
 	ft_printf("%e\n", 1.13);
 	   printf("%e\n", 1.13);
 	ft_printf("%e\n", 1.13);
-
-
 	   printf("%Le\n", 10.1391L);
-	ft_printf("%Le\n", 10.1391L);
+	ft_printf("%Le\n\n", 10.1391L);
+	printf("\n||||||||||| G :\n\n");
+	   printf("%g\n", 1.13);
+	ft_printf("%g\n", 1.13);
+
+
    
 	   printf("%g\n", 1.13);
 	ft_printf("%g\n", 1.13);
@@ -222,11 +223,11 @@ int 	main(void)
 	   printf("%.6g\n", 1.1244343243210);
 	ft_printf("%.6g\n", 1.1244343243210);
 	   printf("%.0g\n", 1.1244343243210);
-	ft_printf("%.0g\n", 1.1244343243210);
+	ft_printf("%.0g\n\n", 1.1244343243210);
 	   printf("%.21g\n", 1.1244343243210);
 	ft_printf("%.21g\n", 1.1244343243210);
 	   printf("%g\n", 0.0000000001);
-	ft_printf("%g\n", 0.0000000001);
+	ft_printf("%g\n\n", 0.0000000001);
 	   printf("%e\n", 0.0000000001);
 	ft_printf("%e\n", 0.0000000001);
 	   printf("%.3g\n", 0.1);
@@ -235,10 +236,24 @@ int 	main(void)
 	ft_printf("%g\n", 0.0001);
 
 	   printf("\n\n\n");
-//	   printf("%g\n", 0.00001);
-//	ft_printf("%g\n", 0.00001);
-//	   printf("%g\n", 0.000001);
-//	ft_printf("%g\n", 0.000001);
+	   printf("%g\n", 0.00001);
+	ft_printf("%g\n", 0.00001);
+	   printf("%g\n", 0.000001);
+	ft_printf("%g\n", 0.000001);
+	   printf("%.10g\n", 104857.493753);
+	ft_printf("%.10g\n", 104857.493753);
+	   printf("%.4g\n", 0.05);
+	ft_printf("%.4g\n", 0.05);
+	   printf("%g\n", 9.493753);
+	ft_printf("%g\n", 9.493753);
+	   printf("%g\n", 10.493753);
+	ft_printf("%g\n", 10.493753);
+	   printf("%g\n", 104857.493753);
+	ft_printf("%g\n", 104857.493753);
+	   printf("%.5g\n", 104857.493753);
+	ft_printf("%.5g\n", 104857.493753);
+
+
 
 
 }
