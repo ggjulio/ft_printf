@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 15:27:47 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 15:49:36 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,27 @@ static int      trailing_zero(long double mantis, int precision)
     return (new_precision);
 }
 
+static int exp_format(long double n, int precision)
+{
+	while (precision--)
+	{
+		if ((int)n)
+			return (0);
+		n *=10;
+	}
+	return (1);
+}
+
 void			put_g(long double n, t_manager *p)
 {
 	char	is_neg;
 	int		nb_char;
 
+	if (exp_format(n, p->precision))
+	{
+		put_e(n, p);
+		return ;
+	}
 	p->precision = (GET(F_DOT) ? p->precision : 6);
 	p->precision = (p->precision > 0 ? p->precision - 1 : 0);
 	is_neg = (n < 0 ? 1 : 0);
