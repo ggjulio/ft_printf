@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 14:19:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 15:30:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 int 	main(void)
 {
     setlocale(LC_NUMERIC, "en_US");
-
+/*
 	double d = 42.1234;
 	double e = 42.1277;
 	double f = 40.19;
@@ -179,7 +179,7 @@ int 	main(void)
 //	printf("%#-8.5o_\n", 34);
 //	ft_printf("%#-8.5o_\n", 34);
 
-
+*/
 	printf("\n\n\n");
 	   printf("%g\n", 1.13);
 	ft_printf("%g\n", 1.13);
@@ -194,7 +194,25 @@ int 	main(void)
 	   printf("%Le\n", 10.1391L);
 	ft_printf("%Le\n", 10.1391L);
    
+	   printf("%g\n", 1.13);
+	ft_printf("%g\n", 1.13);
+	   printf("%g\n", 1.00010);
+	ft_printf("%g\n", 1.00010);
+	   printf("%g\n", 1.00000010);
+	ft_printf("%g\n", 1.00000010);
+	   printf("%.0f\n", 1.00000010);
+	ft_printf("%.0f\n", 1.00000010);
 
+	   printf("%g\n", 1.1244343243210);
+	ft_printf("%g\n", 1.1244343243210);
+	   printf("%.6g\n", 1.1244343243210);
+	ft_printf("%.6g\n", 1.1244343243210);
+	   printf("%.0g\n", 1.1244343243210);
+	ft_printf("%.0g\n", 1.1244343243210);
+	   printf("%.21g\n", 1.1244343243210);
+	ft_printf("%.21g\n", 1.1244343243210);
+	   printf("%g\n", 0.000001);
+	ft_printf("%g\n", 0.000001);
 
 
 }
