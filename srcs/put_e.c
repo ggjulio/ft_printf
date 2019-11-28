@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 20:04:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:19:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,23 @@ static int	get_exponent(long double n)
 	return (e);
 }
 
-static void	update_n(long double *n, int e)
+static int	update_n(long double *n, int e)
 {
-	if (e > 0)
-		while (e-- != 0)
+	int i;
+
+	i = e;
+	if (i > 0)
+		while (i-- != 0)
 			*n /= 10;
 	else
-		while (e++ != 0)
+		while (i++ != 0)
 			*n *= 10;
+	if ((int64_t)*n > 9)
+	{
+		e = (e < 0 ? e + 1 : e - 1);
+		*n /= 10;
+	}
+	return (e);
 }
 
 static void	show_exp(int e, t_manager *p)
@@ -65,7 +74,7 @@ void		put_e(long double n, t_manager *p)
 	n = (n < 0 ? -n : n);
 	e = get_exponent(n);
 	n = ft_round(n, p->precision + (e < 0 || is_neg ? -e : e));
-	update_n(&n, e);
+	e = update_n(&n, e);
 	nb_char = p->precision + 6 + (GET(F_PLUS) ? 1 : 0);
 	if ((GET(F_SPACE) && !(is_neg || GET(F_PLUS))) && (p->width-- || 1))
 		write_buffer(p, " ", 1);
