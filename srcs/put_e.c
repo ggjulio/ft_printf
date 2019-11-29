@@ -6,35 +6,27 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/29 16:45:39 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:05:38 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_exponent(long double *n)
+static int			get_exponent(long double *n, int e)
 {
-	int e;
-
 	if (!*n)
 		return (0);
-	e = 0;
 	while (*n >= 10)
 	{
 		e++;
 		*n /= 10;
 	}
-	while ((int64_t)*n == 0)
+	while ((int64_t)(*n) == 0)
 	{
 		e--;
 		*n *= 10;
 	}
-	return (e);
-}
-
-static int	update_n(long double *n, int e)
-{
-	if ((int64_t)*n > 9)
+	if ((int64_t)(*n) > 9)
 	{
 		e = (e < 0 ? e + 1 : e - 1);
 		*n /= 10;
@@ -42,7 +34,7 @@ static int	update_n(long double *n, int e)
 	return (e);
 }
 
-static void	show_exp(int e, t_manager *p)
+static void			show_exp(int e, t_manager *p)
 {
 	char	s[2];
 
@@ -54,21 +46,23 @@ static void	show_exp(int e, t_manager *p)
 	write_buffer(p, s, 2);
 }
 
-long double     ft_round_e(long double n, size_t precision, int e)
+static long double	ft_round_e(long double n, size_t precision, int e)
 {
-    long double rnd;
+	long double rnd;
 
-    rnd = 0.5;
+	if (!n)
+		return (0);
+	rnd = 0.5;
 	if (e >= 10)
 		while (precision-- > 0)
 			rnd *= 10;
 	else
 		while (precision-- > 0)
 			rnd /= 10;
-    return (n + rnd);
+	return (n + rnd);
 }
 
-void		put_e(long double n, t_manager *p)
+void				put_e(long double n, t_manager *p)
 {
 	char	is_neg;
 	int		e;
@@ -77,9 +71,9 @@ void		put_e(long double n, t_manager *p)
 	p->precision = (GET(F_DOT) ? p->precision : 6);
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
-	e = get_exponent(&n);
+	e = get_exponent(&n, 0);
 	n = ft_round_e(n, p->precision, e);
-	e = update_n(&n, e);
+	e = get_exponent(&n, e);
 	if (p->specifier == 'g')
 		p->precision = trailing_zero(n - (int)n, p->precision);
 	nb_char = p->precision + 6 + (GET(F_PLUS) ? 1 : 0);
