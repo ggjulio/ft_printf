@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 22:28:31 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:58:23 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,35 +163,33 @@ int 	main(void)
 	ft_printf("%.5e_\n", -0.00003567);
 
 	printf("\n\n\n\n");
+
        printf("%.5e_\n", -61.13567);
     ft_printf("%.5e_\n", -61.13567);
        printf("%.6e_\n", -61.13567);
     ft_printf("%.6e_\n", -61.13567);
+	printf("\n");
        printf("%.6e_\n", -100.13567);
     ft_printf("%.6e_\n", -100.13567);
-
        printf("%.6e_\n", -100.00006);
     ft_printf("%.6e_\n", -100.00006);
+	printf("\n");
 
 	   printf("%e\n", 0.000001);
 	ft_printf("%e\n", 0.000001);
 	   printf("%e\n", 0.00001);
 	ft_printf("%e\n", 0.00001);
-
+	printf("\n");
 	   printf("%e\n", 0.00001);
 	ft_printf("%e\n", 0.00001);
 	   printf("%e\n", 0.0000000001);
 	ft_printf("%e\n", 0.0000000001);
+	printf("\n");
 	   printf("%e\n", 0.000001);
 	ft_printf("%e\n", 0.000001);
+	printf("\n");
 	   printf("%e\n", -0.000001);
 	ft_printf("%e\n", -0.000001);
-*/
-
-//	printf("%#8.5o_\n", 34);
-//	ft_printf("%#8.5o_\n", 34);
-//	printf("%#-8.5o_\n", 34);
-//	ft_printf("%#-8.5o_\n", 34);
 
 
 	printf("\n\n\n");
@@ -203,25 +201,82 @@ int 	main(void)
 	ft_printf("%e\n", 1.13);
 	   printf("%Le\n", 10.1391L);
 	ft_printf("%Le\n\n", 10.1391L);
+
+	   printf("%e\n", 0.000001);
+	ft_printf("%e\n", 0.000001);
+
+	   printf("\n\n\n");
+	   printf("%.1e\n", 126.0);
+	ft_printf("%.1e\n", 126.0);
+	   printf("%.3e\n", 19999.0);
+	ft_printf("%.3e\n", 19999.0);
+	   printf("%.2e\n", 19999.0);
+	ft_printf("%.2e\n", 19999.0);
+	   printf("%.1e\n", 19999.0);
+	ft_printf("%.1e\n", 19999.0);
+	   printf("%e\n", 634599.0);
+	ft_printf("%e\n", 634599.0);
+	   printf("%e\n", 634599.0);
+	ft_printf("%e\n", 634599.0);
+	   printf("%.10e\n", 634599.0);
+	ft_printf("%.10e\n", 634599.0);
+	   printf("%.18e\n", 634599.0);
+	ft_printf("%.18e\n", 634599.0);
+
+	   printf("%.4e\n", 104857.0);
+	ft_printf("%.4e\n", 104857.0);
+
+	   printf("%.4e\n", 104857.493753);
+	ft_printf("%.4e\n", 104857.493753);
+	   printf("%.3e\n", 104857.493753);
+	ft_printf("%.3e\n", 104857.493753);
+	   printf("%.2e\n", 104857.493753);
+	ft_printf("%.2e\n", 104857.493753);
+	   printf("%.2e\n", 1.001);
+	ft_printf("%.2e\n", 1.001);
+
+
+
+
+	   printf("%.1e\n", 104857.493753);
+	ft_printf("%.1e\n", 104857.493753);
+	   printf("%.0e\n", 104857.493753);
+	ft_printf("%.0e\n", 104857.493753);
+
+*/
+
+
 	printf("\n||||||||||| G :\n\n");
-	   printf("%g\n", 1.13);
-	ft_printf("%g\n", 1.13);
 
 
-   
+	   printf("%g\n", 1.1244343243210);
+	ft_printf("%g\n", 1.1244343243210);
+
+
 	   printf("%g\n", 1.13);
 	ft_printf("%g\n", 1.13);
+	   printf("%g\n", 1.13);
+	ft_printf("%g\n", 1.13);
+	printf("\n");
+
 	   printf("%g\n", 1.00010);
 	ft_printf("%g\n", 1.00010);
 	   printf("%g\n", 1.00000010);
 	ft_printf("%g\n", 1.00000010);
+	printf("\n");
+
 	   printf("%.0f\n", 1.00000010);
 	ft_printf("%.0f\n", 1.00000010);
-
 	   printf("%g\n", 1.1244343243210);
 	ft_printf("%g\n", 1.1244343243210);
+	printf("\n");
+
+	   printf("%.7g\n", 1.1244343243210);
+	ft_printf("%.7g\n", 1.1244343243210);
 	   printf("%.6g\n", 1.1244343243210);
 	ft_printf("%.6g\n", 1.1244343243210);
+	printf("\n");
+
 	   printf("%.0g\n", 1.1244343243210);
 	ft_printf("%.0g\n\n", 1.1244343243210);
 	   printf("%.21g\n", 1.1244343243210);
@@ -255,5 +310,11 @@ int 	main(void)
 
 
 
+
+
+//	printf("%#8.5o_\n", 34);
+//	ft_printf("%#8.5o_\n", 34);
+//	printf("%#-8.5o_\n", 34);
+//	ft_printf("%#-8.5o_\n", 34);
 
 }
