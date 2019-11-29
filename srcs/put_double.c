@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:53:52 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/29 17:57:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:14:28 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	get_nb_char(int64_t exp, char is_neg, t_manager *p)
+static size_t		get_nb_char(int64_t exp, char is_neg, t_manager *p)
 {
 	size_t nb_char;
 
@@ -26,7 +26,17 @@ static size_t	get_nb_char(int64_t exp, char is_neg, t_manager *p)
 	return (nb_char);
 }
 
-void			put_f(long double n, t_manager *p)
+static long double	ft_round(long double n, size_t precision)
+{
+	long double rnd;
+
+	rnd = 0.5;
+	while (precision-- > 0)
+		rnd /= 10;
+	return (n + rnd);
+}
+
+void				put_f(long double n, t_manager *p)
 {
 	char	is_neg;
 	int		nb_char;

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 17:36:20 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/26 19:15:49 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:11:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,6 @@ static void		put_mantis(long double mantis, int precision, t_manager *p)
 	write_buffer(p, &c, 1);
 	if (precision > 1)
 		put_mantis(mantis - (int)mantis, --precision, p);
-}
-
-long double		ft_round(long double n, size_t precision)
-{
-	long double	rnd;
-
-	rnd = 0.5;
-	while (precision-- > 0)
-		rnd /= 10;
-	return (n + rnd);
 }
 
 void			put_double(long double n, t_manager *p)
