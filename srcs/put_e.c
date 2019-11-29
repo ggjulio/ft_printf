@@ -6,43 +6,34 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/28 21:35:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:45:39 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_exponent(long double n)
+static int	get_exponent(long double *n)
 {
 	int e;
 
-	if (!n)
+	if (!*n)
 		return (0);
 	e = 0;
-	while (n >= 10)
+	while (*n >= 10)
 	{
 		e++;
-		n /= 10;
+		*n /= 10;
 	}
-	while ((int64_t)n == 0)
+	while ((int64_t)*n == 0)
 	{
 		e--;
-		n *= 10;
+		*n *= 10;
 	}
 	return (e);
 }
 
 static int	update_n(long double *n, int e)
 {
-	int i;
-
-	i = e;
-	if (i > 0)
-		while (i-- != 0)
-			*n /= 10;
-	else
-		while (i++ != 0)
-			*n *= 10;
 	if ((int64_t)*n > 9)
 	{
 		e = (e < 0 ? e + 1 : e - 1);
@@ -63,6 +54,20 @@ static void	show_exp(int e, t_manager *p)
 	write_buffer(p, s, 2);
 }
 
+long double     ft_round_e(long double n, size_t precision, int e)
+{
+    long double rnd;
+
+    rnd = 0.5;
+	if (e >= 10)
+		while (precision-- > 0)
+			rnd *= 10;
+	else
+		while (precision-- > 0)
+			rnd /= 10;
+    return (n + rnd);
+}
+
 void		put_e(long double n, t_manager *p)
 {
 	char	is_neg;
@@ -72,8 +77,8 @@ void		put_e(long double n, t_manager *p)
 	p->precision = (GET(F_DOT) ? p->precision : 6);
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
-	e = get_exponent(n);
-	n = ft_round(n, p->precision + (e < 0 || is_neg ? -e : e));
+	e = get_exponent(&n);
+	n = ft_round_e(n, p->precision, e);
 	e = update_n(&n, e);
 	if (p->specifier == 'g')
 		p->precision = trailing_zero(n - (int)n, p->precision);
