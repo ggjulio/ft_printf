@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 14:56:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:15:48 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	len_modifier(t_manager *p, const char *format, size_t *i)
 		if (F_HH & p->flags)
 			(*i)++;
 	}
+	else if (format[*i] == 'j' && ++(*i))
+		p->flags |= F_J;
 	else if (format[*i] == 'L' && ++(*i))
 		p->flags |= F_FLOAT_L;
 	else

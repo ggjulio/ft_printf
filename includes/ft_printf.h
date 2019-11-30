@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:51:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:15:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@
 # define F_LL (1U << 5U)
 # define F_H (1U << 6U)
 # define F_HH (1U << 7U)
-# define F_APOSTROPHE (1U << 8U)
-# define F_HASH (1U << 9U)
-# define F_SPACE (1U << 10U)
-# define F_PLUS (1U << 11U)
-# define F_FLOAT_L (1U << 12U)
+# define F_J (1U << 8U)
+# define F_APOSTROPHE (1U << 9U)
+# define F_HASH (1U << 10U)
+# define F_SPACE (1U << 11U)
+# define F_PLUS (1U << 12U)
+# define F_FLOAT_L (1U << 13U)
 
 typedef struct	s_manager
 {

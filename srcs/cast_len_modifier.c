@@ -6,11 +6,12 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:15 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:30:46 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:15:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <inttypes.h>
 
 int64_t		cast_signed(t_manager *p, va_list *args)
 {
@@ -22,6 +23,8 @@ int64_t		cast_signed(t_manager *p, va_list *args)
 		return (va_arg(*args, long));
 	if (F_LL & p->flags)
 		return (va_arg(*args, long long));
+	if (F_J & p->flags)
+		return (va_arg(*args, intmax_t));
 	return (va_arg(*args, int));
 }
 
@@ -35,6 +38,8 @@ uint64_t	cast_unsigned(t_manager *p, va_list *args)
 		return (va_arg(*args, unsigned long));
 	if (F_LL & p->flags)
 		return (va_arg(*args, unsigned long long));
+	if (F_J & p->flags)
+		return (va_arg(*args, uintmax_t));
 	return (va_arg(*args, unsigned int));
 }
 
