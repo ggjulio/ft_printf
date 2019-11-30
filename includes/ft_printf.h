@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/29 18:12:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:51:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,30 @@
 
 # define BUFFER_SIZE 100
 
-# define GET(f) (f & p->flags)
-
-# define F_DASH (1 << 0)
-# define F_ZERO (1 << 1)
-# define F_DOT (1 << 2)
-# define F_STAR (1 << 3)
-# define F_L (1 << 4)
-# define F_LL (1 << 5)
-# define F_H (1 << 6)
-# define F_HH (1 << 7)
-# define F_APOSTROPHE (1 << 8)
-# define F_HASH (1 << 9)
-# define F_SPACE (1 << 10)
-# define F_PLUS (1 << 11)
-# define F_FLOAT_L (1 << 12)
+# define F_DASH (1U << 0U)
+# define F_ZERO (1U << 1U)
+# define F_DOT (1U << 2U)
+# define F_STAR (1U << 3U)
+# define F_L (1U << 4U)
+# define F_LL (1U << 5U)
+# define F_H (1U << 6U)
+# define F_HH (1U << 7U)
+# define F_APOSTROPHE (1U << 8U)
+# define F_HASH (1U << 9U)
+# define F_SPACE (1U << 10U)
+# define F_PLUS (1U << 11U)
+# define F_FLOAT_L (1U << 12U)
 
 typedef struct	s_manager
 {
-	int		fd;
-	short	flags;
-	int		width;
-	int		len;
-	int		precision;
-	char	specifier;
-	char	buffer[BUFFER_SIZE];
-	size_t	buffer_idx;
+	int				fd;
+	unsigned short	flags;
+	int				width;
+	int				len;
+	int				precision;
+	char			specifier;
+	char			buffer[BUFFER_SIZE];
+	size_t			buffer_idx;
 }				t_manager;
 
 typedef void	(*t_handler)(va_list *args, t_manager *p);

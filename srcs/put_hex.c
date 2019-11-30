@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:00:49 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 14:04:50 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 14:33:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	put_precision(t_manager *p, int nb_char)
 {
 	int	i;
 
-	if (GET(F_ZERO) && !GET(F_DOT))
+	if (F_ZERO & p->flags && F_DOT & ~p->flags)
 		i = p->width;
 	else
 		i = p->precision;
@@ -51,16 +51,16 @@ static void	recursive(uint64_t n, t_manager *p, int *nb_digit)
 		recursive(n / 16, p, nb_digit);
 	else
 	{
-		if (c == '0' && *nb_digit == 1 && GET(F_DOT) && p->precision == 0)
+		if (c == '0' && *nb_digit == 1 && F_DOT & p->flags && p->precision == 0)
 			(*nb_digit) = 0;
-		if (GET(F_HASH) && *nb_digit > 0 && c != '0')
+		if (F_HASH & p->flags && *nb_digit > 0 && c != '0')
 			p->width -= 2;
-		if (!GET(F_DASH) && (!GET(F_ZERO) || GET(F_DOT)))
+		if (F_DASH & ~p->flags && (F_ZERO & ~p->flags || F_DOT & p->flags))
 			put_width(p, *nb_digit);
-		if ((GET(F_HASH) && *nb_digit > 0 && c != '0'))
+		if ((F_HASH & p->flags && *nb_digit > 0 && c != '0'))
 			write_buffer(p, (p->specifier == 'X' ? "0X" : "0x"), 2);
 		put_precision(p, *nb_digit);
-		if (*nb_digit != 0 || !GET(F_DOT) || p->precision != 0)
+		if (*nb_digit != 0 || F_DOT & ~p->flags || p->precision != 0)
 			write_buffer(p, &c, 1);
 		return ;
 	}
@@ -73,6 +73,6 @@ void		put_hex(uint64_t n, t_manager *p)
 
 	nb_digit = 0;
 	recursive(n, p, &nb_digit);
-	if (GET(F_DASH))
+	if (F_DASH & p->flags)
 		put_width(p, nb_digit);
 }

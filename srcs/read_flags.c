@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 19:27:11 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 14:56:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	primary_flags(t_manager *p, const char *format, size_t *i)
 		p->flags |= F_DASH;
 		p->flags &= ~(F_ZERO);
 	}
-	else if (format[*i] == '0' && !GET(F_DASH) && ++(*i))
+	else if (format[*i] == '0' && F_DASH & ~p->flags && ++(*i))
 		p->flags |= F_ZERO;
 	else if (format[*i] == '+' && ++(*i))
 		p->flags |= F_PLUS;
@@ -86,7 +86,7 @@ static int	preci(t_manager *p, const char *format, size_t *i, va_list *args)
 			while (is_digit(format[*i]))
 				p->precision = (p->precision * 10) + format[(*i)++] - '0';
 		if (p->precision < 0)
-			p->flags &= ~GET(F_DOT);
+			p->flags &= ~(F_DOT & p->flags);
 	}
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:09:46 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/29 18:09:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:50:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			put_g(long double n, t_manager *p)
 {
 	int e;
 
-	p->precision = (GET(F_DOT) ? p->precision : 6);
+	p->precision = (F_DOT & p->flags ? p->precision : 6);
 	p->precision = (p->precision == 0 ? 1 : p->precision);
 	e = get_exponent(n);
 	if (p->precision > e && e >= -4)
