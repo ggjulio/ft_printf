@@ -6,13 +6,13 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 18:54:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:06:49 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	parse(va_list *args, t_manager *p)
+static void	parse(va_list args, t_manager *p)
 {
 	const char		*conv = "cspdiuxXnfgeo%";
 	const t_handler	jmp_table[14] = {conv_c,
@@ -53,10 +53,10 @@ int			ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			write_buffer(&p, str, format + i++ - str);
-			i += read_flags(&p, &args, format + i);
+			i += read_flags(&p, args, format + i);
 			if (!p.specifier)
 				break ;
-			parse(&args, &p);
+			parse(args, &p);
 			str = (char *)format + i + 1;
 		}
 	write_buffer(&p, str, format + i - str);
@@ -82,10 +82,10 @@ int			ft_dprintf(int fd, const char *format, ...)
 		if (format[i] == '%')
 		{
 			write_buffer(&p, str, format + i++ - str);
-			i += read_flags(&p, &args, format + i);
+			i += read_flags(&p, args, format + i);
 			if (!p.specifier)
 				break ;
-			parse(&args, &p);
+			parse(args, &p);
 			str = (char *)format + i + 1;
 		}
 	write_buffer(&p, str, format + i - str);

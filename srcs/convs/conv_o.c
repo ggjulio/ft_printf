@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:25:45 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/21 14:30:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:03:00 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		conv_o(va_list *args, t_manager *p)
+void		conv_o(va_list args, t_manager *p)
 {
 	put_oct(cast_unsigned(p, args), p);
 }

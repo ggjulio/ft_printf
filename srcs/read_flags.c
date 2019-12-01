@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:59:07 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 16:15:48 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:04:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ static int	primary_flags(t_manager *p, const char *format, size_t *i)
 	return (1);
 }
 
-static int	width(t_manager *p, const char *format, size_t *i, va_list *args)
+static int	width(t_manager *p, const char *format, size_t *i, va_list args)
 {
 	if (is_digit(format[*i]))
 		while (is_digit(format[*i]))
 			p->width = (p->width * 10) + format[(*i)++] - '0';
 	else if (format[*i] == '*' && ++(*i))
 	{
-		if ((p->width = va_arg(*args, size_t)) < 0)
+		if ((p->width = va_arg(args, size_t)) < 0)
 		{
 			p->flags |= F_DASH;
 			p->width = -(p->width);
@@ -77,13 +77,13 @@ static int	width(t_manager *p, const char *format, size_t *i, va_list *args)
 	return (1);
 }
 
-static int	preci(t_manager *p, const char *format, size_t *i, va_list *args)
+static int	preci(t_manager *p, const char *format, size_t *i, va_list args)
 {
 	if (format[*i] == '.' && ++(*i))
 	{
 		p->flags |= F_DOT;
 		if (format[*i] == '*' && ++(*i))
-			p->precision = va_arg(*args, int);
+			p->precision = va_arg(args, int);
 		else
 			while (is_digit(format[*i]))
 				p->precision = (p->precision * 10) + format[(*i)++] - '0';
@@ -95,7 +95,7 @@ static int	preci(t_manager *p, const char *format, size_t *i, va_list *args)
 	return (1);
 }
 
-int			read_flags(t_manager *p, va_list *args, const char *format)
+int			read_flags(t_manager *p, va_list args, const char *format)
 {
 	size_t i;
 

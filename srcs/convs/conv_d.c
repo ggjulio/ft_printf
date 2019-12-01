@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:16:06 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/25 13:48:55 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:01:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	conv_d(va_list *args, t_manager *p)
+void	conv_d(va_list args, t_manager *p)
 {
 	put_int(cast_signed(p, args), p);
 }

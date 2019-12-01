@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 18:49:26 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:06:05 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,26 @@ typedef struct	s_manager
 	size_t			buffer_idx;
 }				t_manager;
 
-typedef void	(*t_handler)(va_list *args, t_manager *p);
+typedef void	(*t_handler)(va_list args, t_manager *p);
 
 /*
 ** ***************** conversions ******************
 */
 
-void			conv_c(va_list *args, t_manager *p);
-void			conv_s(va_list *args, t_manager *p);
-void			conv_p(va_list *args, t_manager *p);
-void			conv_d(va_list *args, t_manager *p);
-void			conv_i(va_list *args, t_manager *p);
-void			conv_u(va_list *args, t_manager *p);
-void			conv_x_lowcase(va_list *args, t_manager *p);
-void			conv_x_upcase(va_list *args, t_manager *p);
-void			conv_n(va_list *args, t_manager *p);
-void			conv_f(va_list *args, t_manager *p);
-void			conv_g(va_list *args, t_manager *p);
-void			conv_e(va_list *args, t_manager *p);
-void			conv_o(va_list *args, t_manager *p);
-void			conv_mod(va_list *args, t_manager *p);
+void			conv_c(va_list args, t_manager *p);
+void			conv_s(va_list args, t_manager *p);
+void			conv_p(va_list args, t_manager *p);
+void			conv_d(va_list args, t_manager *p);
+void			conv_i(va_list args, t_manager *p);
+void			conv_u(va_list args, t_manager *p);
+void			conv_x_lowcase(va_list args, t_manager *p);
+void			conv_x_upcase(va_list args, t_manager *p);
+void			conv_n(va_list args, t_manager *p);
+void			conv_f(va_list args, t_manager *p);
+void			conv_g(va_list args, t_manager *p);
+void			conv_e(va_list args, t_manager *p);
+void			conv_o(va_list args, t_manager *p);
+void			conv_mod(va_list args, t_manager *p);
 
 /*
 ** **************** print in buffer ****************
@@ -92,9 +92,9 @@ int				trailing_zero(long double mantis, int precision);
 ** **************** Lenght modifier ****************
 */
 
-int64_t			cast_signed(t_manager *p, va_list *args);
-uint64_t		cast_unsigned(t_manager *p, va_list *args);
-void			*cast_ptr(t_manager *p, va_list *args);
+int64_t			cast_signed(t_manager *p, va_list args);
+uint64_t		cast_unsigned(t_manager *p, va_list args);
+void			*cast_ptr(t_manager *p, va_list args);
 
 /*
 ** ******************* Utility  ********************
@@ -104,6 +104,6 @@ size_t			ft_strlen(const char *s);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
 void			write_buffer(t_manager *p, char *s, size_t n);
-int				read_flags(t_manager *p, va_list *args, const char *format);
+int				read_flags(t_manager *p, va_list args, const char *format);
 
 #endif

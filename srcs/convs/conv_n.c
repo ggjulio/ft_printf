@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:42:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/20 14:50:09 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:02:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		conv_n(va_list *args, t_manager *p)
+void		conv_n(va_list args, t_manager *p)
 {
 	int *n;
 

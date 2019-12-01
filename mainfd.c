@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:34:13 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 18:51:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:07:56 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int main(void)
 	if (fd > 1)
 	{
 		ft_printf("|fd:%d|\n", fd);
-//		ft_dprintf(fd, "%s|%d|\nok", "test\n", 4325);
-		dprintf(fd, "%s|%d|\nok", "test\n", 4325);
+		ft_dprintf(fd, "%s|%d|\nok", "test\n", 4325);
+//		dprintf(fd, "%s|%d|\nok", "test\n", 4325);
 	}
 	else
 		write(1, "|error|", 7);

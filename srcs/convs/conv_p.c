@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:58 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:48:19 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:03:15 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static void		put_ptr(unsigned long long n, t_manager *p, int *nb_digit)
 	write_buffer(p, &c, 1);
 }
 
-void			conv_p(va_list *args, t_manager *p)
+void			conv_p(va_list args, t_manager *p)
 {
 	int nb_digit;
 
 	nb_digit = 0;
-	put_ptr(va_arg(*args, unsigned long), p, &nb_digit);
+	put_ptr(va_arg(args, unsigned long), p, &nb_digit);
 	if (F_DASH & p->flags)
 		put_width(p, nb_digit);
 }

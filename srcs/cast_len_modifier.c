@@ -6,52 +6,52 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:15 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 16:15:15 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:00:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <inttypes.h>
 
-int64_t		cast_signed(t_manager *p, va_list *args)
+int64_t		cast_signed(t_manager *p, va_list args)
 {
 	if (F_HH & p->flags)
-		return ((char)va_arg(*args, int));
+		return ((char)va_arg(args, int));
 	if (F_H & p->flags)
-		return ((short)va_arg(*args, int));
+		return ((short)va_arg(args, int));
 	if (F_L & p->flags)
-		return (va_arg(*args, long));
+		return (va_arg(args, long));
 	if (F_LL & p->flags)
-		return (va_arg(*args, long long));
+		return (va_arg(args, long long));
 	if (F_J & p->flags)
-		return (va_arg(*args, intmax_t));
-	return (va_arg(*args, int));
+		return (va_arg(args, intmax_t));
+	return (va_arg(args, int));
 }
 
-uint64_t	cast_unsigned(t_manager *p, va_list *args)
+uint64_t	cast_unsigned(t_manager *p, va_list args)
 {
 	if (F_HH & p->flags)
-		return ((unsigned char)va_arg(*args, unsigned int));
+		return ((unsigned char)va_arg(args, unsigned int));
 	if (F_H & p->flags)
-		return ((unsigned short)va_arg(*args, unsigned int));
+		return ((unsigned short)va_arg(args, unsigned int));
 	if (F_L & p->flags)
-		return (va_arg(*args, unsigned long));
+		return (va_arg(args, unsigned long));
 	if (F_LL & p->flags)
-		return (va_arg(*args, unsigned long long));
+		return (va_arg(args, unsigned long long));
 	if (F_J & p->flags)
-		return (va_arg(*args, uintmax_t));
-	return (va_arg(*args, unsigned int));
+		return (va_arg(args, uintmax_t));
+	return (va_arg(args, unsigned int));
 }
 
-void		*cast_ptr(t_manager *p, va_list *args)
+void		*cast_ptr(t_manager *p, va_list args)
 {
 	if (F_HH & p->flags)
-		return ((char *)va_arg(*args, int *));
+		return ((char *)va_arg(args, int *));
 	if (F_H & p->flags)
-		return ((short *)va_arg(*args, int *));
+		return ((short *)va_arg(args, int *));
 	if (F_L & p->flags)
-		return (va_arg(*args, long *));
+		return (va_arg(args, long *));
 	if (F_LL & p->flags)
-		return (va_arg(*args, long long *));
-	return (va_arg(*args, int *));
+		return (va_arg(args, long long *));
+	return (va_arg(args, int *));
 }
