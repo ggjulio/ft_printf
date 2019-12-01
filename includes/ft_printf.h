@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 19:06:05 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 19:24:21 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdint.h>
 
-# define BUFFER_SIZE 100
+# define BUFFER_SIZE 64
 
 # define F_DASH (1U << 0U)
 # define F_ZERO (1U << 1U)
