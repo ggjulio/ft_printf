@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 16:15:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/01 18:49:26 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void			*cast_ptr(t_manager *p, va_list *args);
 ** ******************* Utility  ********************
 */
 
-int				ft_putstr_range(char const *s_begin, char const *s_end);
 size_t			ft_strlen(const char *s);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);

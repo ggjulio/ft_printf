@@ -6,14 +6,13 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/11/27 18:24:50 by juligonz         ###   ########.fr        #
+#    Updated: 2019/12/01 18:50:27 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
 SRCS =	srcs/ft_printf.c 				\
-		srcs/ft_putstr_range.c			\
 		srcs/ft_strlen.c				\
 		srcs/ft_isdigit.c				\
 		srcs/ft_memset.c				\
