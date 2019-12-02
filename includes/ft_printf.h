@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 19:24:21 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 15:05:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@
 # include <unistd.h>
 # include <stdint.h>
 
-# define BUFFER_SIZE 64
+# define F_DASH 1
+# define F_ZERO 2
+# define F_DOT	4
+# define F_STAR 8
+# define F_L 16
+# define F_LL 32
+# define F_H 64
+# define F_HH 128
+# define F_J 256
+# define F_APOSTROPHE 512
+# define F_HASH 1024
+# define F_SPACE 2048
+# define F_PLUS 4096
+# define F_FLOAT_L 8192
 
-# define F_DASH (1U << 0U)
-# define F_ZERO (1U << 1U)
-# define F_DOT (1U << 2U)
-# define F_STAR (1U << 3U)
-# define F_L (1U << 4U)
-# define F_LL (1U << 5U)
-# define F_H (1U << 6U)
-# define F_HH (1U << 7U)
-# define F_J (1U << 8U)
-# define F_APOSTROPHE (1U << 9U)
-# define F_HASH (1U << 10U)
-# define F_SPACE (1U << 11U)
-# define F_PLUS (1U << 12U)
-# define F_FLOAT_L (1U << 13U)
+# define BUFFER_SIZE 5
 
 typedef struct	s_manager
 {
@@ -44,7 +44,9 @@ typedef struct	s_manager
 	int				precision;
 	char			specifier;
 	char			buffer[BUFFER_SIZE];
-	size_t			buffer_idx;
+	int				buffer_idx;
+	char			*sprintf_dst;
+	int				sprintf_dst_idx;
 }				t_manager;
 
 typedef void	(*t_handler)(va_list args, t_manager *p);
@@ -88,6 +90,7 @@ void			put_double(long double n, t_manager *p);
 void			put_double_width(t_manager *p, int nb_char);
 void			put_double_zero(t_manager *p, int nb_char);
 int				trailing_zero(long double mantis, int precision);
+
 /*
 ** **************** Lenght modifier ****************
 */
@@ -101,9 +104,11 @@ void			*cast_ptr(t_manager *p, va_list args);
 */
 
 size_t			ft_strlen(const char *s);
+char			*ft_strncpy(char *dest, const char *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
 void			write_buffer(t_manager *p, char *s, size_t n);
 int				read_flags(t_manager *p, va_list args, const char *format);
+void			parse(va_list args, t_manager *p);
 
 #endif

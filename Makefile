@@ -6,14 +6,17 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/12/01 18:50:27 by juligonz         ###   ########.fr        #
+#    Updated: 2019/12/02 13:28:41 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libftprintf.a
 
 SRCS =	srcs/ft_printf.c 				\
+		srcs/ft_dprintf.c				\
+		srcs/ft_sprintf.c				\
 		srcs/ft_strlen.c				\
+		srcs/ft_strncpy.c				\
 		srcs/ft_isdigit.c				\
 		srcs/ft_memset.c				\
 		srcs/cast_len_modifier.c		\
@@ -24,6 +27,7 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/put_e.c					\
 		srcs/put_g.c					\
 		srcs/read_flags.c				\
+		srcs/parse.c					\
 		srcs/double_utils.c				\
 		srcs/double_utils_2.c			\
 		srcs/write_buffer.c				\
