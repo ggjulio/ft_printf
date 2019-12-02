@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:15:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 15:52:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define F_PLUS 4096
 # define F_FLOAT_L 8192
 
-# define BUFFER_SIZE 64
+# define BUFFER_SIZE 2
 
 typedef struct	s_manager
 {
@@ -77,6 +77,7 @@ void			conv_mod(va_list args, t_manager *p);
 void			put_int(int64_t n, t_manager *p);
 void			put_uint(uint64_t n, t_manager *p);
 void			put_hex(uint64_t n, t_manager *p);
+void			put_ptr(uint64_t n, t_manager *p);
 void			put_oct(int64_t n, t_manager *p);
 void			put_f(long double n, t_manager *p);
 void			put_g(long double n, t_manager *p);

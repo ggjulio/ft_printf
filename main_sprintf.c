@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:34:13 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 14:50:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 15:53:58 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 #include "printf_proto.h"
 #include "ft_printf.h"
 
+#define ARR_SIZE 20
+
 int main(void)
 {
-	char test[15];
+	char test[ARR_SIZE];
 
-	ft_memset(test, 0, 10);
-	ft_sprintf(test, "123456789A");
+	ft_memset(test, 0, ARR_SIZE);
+	ft_sprintf(test, "%d", 16);
 	ft_printf("sprintf>>>>%s|\n", test);
 
 }

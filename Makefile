@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/12/02 13:28:41 by juligonz         ###   ########.fr        #
+#    Updated: 2019/12/02 15:41:57 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,6 +23,7 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/put_dec.c					\
 		srcs/put_hex.c					\
 		srcs/put_oct.c					\
+		srcs/put_ptr.c					\
 		srcs/put_double.c				\
 		srcs/put_e.c					\
 		srcs/put_g.c					\
