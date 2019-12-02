@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 18:44:52 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 21:29:39 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <float.h>
 
 # define F_DASH 1
 # define F_ZERO 2
@@ -95,6 +96,7 @@ void			put_double(long double n, t_manager *p);
 void			put_double_width(t_manager *p, int nb_char);
 void			put_double_zero(t_manager *p, int nb_char);
 int				trailing_zero(long double mantis, int precision);
+int				is_valid_float(long double n, t_manager *p);
 
 /*
 ** **************** Lenght modifier ****************

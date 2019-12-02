@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 12:38:51 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:47:06 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
 #include <stdio.h>
 #include <locale.h>
+#include <float.h>
 
 int 	main(void)
 {
     setlocale(LC_NUMERIC, "en_US");
-
+/*
 	double d = 42.1234;
 	double e = 42.1277;
 	double f = 40.19;
@@ -320,5 +321,72 @@ int 	main(void)
 //	ft_printf("%#8.5o_\n", 34);
 //	printf("%#-8.5o_\n", 34);
 //	ft_printf("%#-8.5o_\n", 34);
+
+//	0.0, 1.0, FLT_MAX, 0.0 / 0.0, 1.0/0.0, -1.0/0.0
+
+*/
+	   printf("\n>>>>>>>>>>>  f\n");
+	   printf("%f\n", 0.0);
+	ft_printf("%f\n", 0.0);
+	   printf("%f\n", 1.0);
+	ft_printf("%f\n", 1.0);
+	   printf("%f\n", 0.0 / 0.0);
+	ft_printf("%f\n", 0.0 / 0.0);
+	   printf("%f\n", 1.0 / 0.0);
+	ft_printf("%f\n", 1.0 / 0.0);
+	   printf("%f\n", -1.0 / 0.0);
+	ft_printf("%f\n", -1.0 / 0.0);
+	   printf("%8f_\n", -1.0 / 0.0);
+	ft_printf("%8f_\n", -1.0 / 0.0);
+	   printf("%-8f_\n", -1.0 / 0.0);
+	ft_printf("%-8f_\n", -1.0 / 0.0);
+	   printf("%015f_\n", -1.0 / 0.0);
+	ft_printf("%015f_\n", -1.0 / 0.0);
+	   printf("%015f_\n", 1.0 / 0.0);
+	ft_printf("%015f_\n", 1.0 / 0.0);
+	   printf("%-5f_\n", 1.0 / 0.0);
+	ft_printf("%-5f_\n", 1.0 / 0.0);
+
+
+	   printf("\n>>>>>>>>>>>  e\n");
+	   printf("%e\n", 0.0);
+	ft_printf("%e\n", 0.0);
+	   printf("%e\n", 1.0);
+	ft_printf("%e\n", 1.0);
+	   printf("%e\n", 0.0 / 0.0);
+	ft_printf("%e\n", 0.0 / 0.0);
+	   printf("%e\n", 1.0 / 0.0);
+	ft_printf("%e\n", 1.0 / 0.0);
+	   printf("%e\n", -1.0 / 0.0);
+	ft_printf("%e\n", -1.0 / 0.0);
+	   printf("%8e_\n", -1.0 / 0.0);
+	ft_printf("%8e_\n", -1.0 / 0.0);
+	   printf("%-8e_\n", -1.0 / 0.0);
+	ft_printf("%-8e_\n", -1.0 / 0.0);
+	   printf("%08e_\n", -1.0 / 0.0);
+	ft_printf("%08e_\n", -1.0 / 0.0);
+	   printf("%08e_\n", 1.0 / 0.0);
+	ft_printf("%08e_\n", 1.0 / 0.0);
+
+
+	   printf("\n>>>>>>>>>>>  g\n");
+	   printf("%g\n", 0.0);
+	ft_printf("%g\n", 0.0);
+	   printf("%g\n", 1.0);
+	ft_printf("%g\n", 1.0);
+	   printf("%g\n", 0.0 / 0.0);
+	ft_printf("%g\n", 0.0 / 0.0);
+	   printf("%g\n", 1.0 / 0.0);
+	ft_printf("%g\n", 1.0 / 0.0);
+	   printf("%g\n", -1.0 / 0.0);
+	ft_printf("%g\n", -1.0 / 0.0);
+	   printf("%8g_\n", -1.0 / 0.0);
+	ft_printf("%8g_\n", -1.0 / 0.0);
+	   printf("%-8g_\n", -1.0 / 0.0);
+	ft_printf("%-8g_\n", -1.0 / 0.0);
+	   printf("%08g_\n", -1.0 / 0.0);
+	ft_printf("%08g_\n", -1.0 / 0.0);
+	   printf("%08g_\n", 1.0 / 0.0);
+	ft_printf("%08g_\n", 1.0 / 0.0);
 
 }

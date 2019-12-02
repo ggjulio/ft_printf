@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 17:36:20 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 14:59:29 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:34:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		put_exp(int64_t exp, t_manager *p, size_t idx)
+static void		put_exp(uint64_t exp, t_manager *p, size_t idx)
 {
 	char	c;
 
