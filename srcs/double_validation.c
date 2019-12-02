@@ -6,15 +6,15 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 22:35:14 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 22:45:26 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 23:07:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void    put_width(t_manager *p, int nb_char)
+static void	put_width(t_manager *p, int nb_char)
 {
-    int i;
+	int	i;
 
 	i = p->width;
 	while (i > nb_char)
@@ -24,7 +24,7 @@ static void    put_width(t_manager *p, int nb_char)
 	}
 }
 
-static char			*get_error_float(long double n)
+static char	*get_error_float(long double n)
 {
 	if (n != n)
 		return ("nan");
@@ -49,7 +49,7 @@ int			is_valid_float(long double n, t_manager *p)
 	if ((F_PLUS & p->flags) || error[3] == '-')
 		write_buffer(p, (error[3] == '-' ? "-" : "+"), 1);
 	write_buffer(p, error, 3);
-	if (F_DASH & p->flags )
+	if (F_DASH & p->flags)
 		put_double_width(p, nb_char);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 21:29:39 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 22:59:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define F_PLUS 4096
 # define F_FLOAT_L 8192
 
-# define BUFFER_SIZE 2
+# define BUFFER_SIZE 64
 
 enum	e_printf{PRINTF, SPRINTF, ASPRINTF};
 
