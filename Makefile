@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/12/02 15:41:57 by juligonz         ###   ########.fr        #
+#    Updated: 2019/12/02 17:19:06 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,9 +15,11 @@ NAME = libftprintf.a
 SRCS =	srcs/ft_printf.c 				\
 		srcs/ft_dprintf.c				\
 		srcs/ft_sprintf.c				\
+		srcs/ft_asprintf.c				\
 		srcs/ft_strlen.c				\
 		srcs/ft_strncpy.c				\
 		srcs/ft_isdigit.c				\
+		srcs/ft_strdup_cat.c			\
 		srcs/ft_memset.c				\
 		srcs/cast_len_modifier.c		\
 		srcs/put_dec.c					\

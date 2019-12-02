@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_asprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:29:54 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 16:46:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:05:43 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_vsprintf(char *dst, const char *format, va_list ap)
+int		ft_vasprintf(char **ret, const char *format, va_list ap)
 {
 	size_t		i;
 	char		*str;
@@ -20,7 +20,9 @@ int		ft_vsprintf(char *dst, const char *format, va_list ap)
 
 	str = (char *)format;
 	ft_memset(&p, 0, sizeof(t_manager));
-	p.dst = dst;
+	p.caller = ASPRINTF;
+	if (!(p.dst = malloc(0)))
+		return (-1);
 	i = -1;
 	while (format[++i])
 		if (format[i] == '%')
@@ -34,17 +36,18 @@ int		ft_vsprintf(char *dst, const char *format, va_list ap)
 		}
 	write_buffer(&p, str, format + i - str);
 	if (p.buffer_idx)
-		ft_strncpy(p.dst + p.dst_len, p.buffer, p.buffer_idx);
+		p.dst = ft_strdup_cat(p.dst, p.buffer, p.dst_len, p.buffer_idx);
+	*ret = p.dst;
 	return (p.len);
 }
 
-int		ft_sprintf(char *str, const char *format, ...)
+int		ft_asprintf(char **ret, const char *format, ...)
 {
 	int		len;
 	va_list	ap;
 
 	va_start(ap, format);
-	len = ft_vsprintf(str, format, ap);
+	len = ft_vasprintf(ret, format, ap);
 	va_end(ap);
 	return (len);
 }

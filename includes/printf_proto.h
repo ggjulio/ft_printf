@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 20:46:39 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 12:50:10 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:01:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ int	ft_dprintf(
 	int fd, const char *format, ...) __attribute__((format(printf,2,3)));
 int	ft_sprintf(
 	char *str, const char *format, ...) __attribute__((format(printf,2,3)));
+int	ft_asprintf(
+	char **ret, const char *format, ...) __attribute__((format(printf,2,3)));
 
 int	ft_vprintf(const char *format, va_list ap);
 int	ft_vdprintf(int fd, const char *format, ...);
 int	ft_vsprintf(char *dst, const char *format, va_list ap);
+int	ft_vasprintf(char **ret, const char *format, va_list ap);
 
 #endif

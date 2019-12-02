@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:52:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:16:25 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 
 # define BUFFER_SIZE 2
 
+enum	e_printf{PRINTF, SPRINTF, ASPRINTF};
+
 typedef struct	s_manager
 {
 	int				fd;
@@ -45,8 +47,9 @@ typedef struct	s_manager
 	char			specifier;
 	char			buffer[BUFFER_SIZE];
 	int				buffer_idx;
-	char			*sprintf_dst;
-	int				sprintf_dst_idx;
+	enum e_printf	caller;
+	char			*dst;
+	int				dst_len;
 }				t_manager;
 
 typedef void	(*t_handler)(va_list args, t_manager *p);
@@ -105,6 +108,7 @@ void			*cast_ptr(t_manager *p, va_list args);
 */
 
 size_t			ft_strlen(const char *s);
+char			*ft_strdup_cat(char *src, char *buf, int src_len, int buf_len);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
