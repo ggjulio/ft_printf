@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:34:13 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/01 19:07:56 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 11:34:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int         ft_dprintf(int fd, const char * format, ...);
-int         ft_printf(const char * format, ...);
+#include "printf_proto.h"
 
 int main(void)
 {
@@ -25,11 +24,7 @@ int main(void)
 
 	fd = open("test2.txt", O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
 	if (fd > 1)
-	{
-		ft_printf("|fd:%d|\n", fd);
-		ft_dprintf(fd, "%s|%d|\nok", "test\n", 4325);
-//		dprintf(fd, "%s|%d|\nok", "test\n", 4325);
-	}
+		ft_dprintf(fd, "%s|%d|\nok", "test\n", 422);
 	else
 		write(1, "|error|", 7);
 	close(fd);
