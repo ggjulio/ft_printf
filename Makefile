@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/22 14:58:05 by juligonz          #+#    #+#              #
-#    Updated: 2019/12/02 22:35:07 by juligonz         ###   ########.fr        #
+#    Updated: 2019/12/02 23:47:05 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,25 +16,25 @@ SRCS =	srcs/ft_printf.c 				\
 		srcs/ft_dprintf.c				\
 		srcs/ft_sprintf.c				\
 		srcs/ft_asprintf.c				\
-		srcs/ft_strlen.c				\
-		srcs/ft_strncpy.c				\
-		srcs/ft_isdigit.c				\
 		srcs/ft_strdup_cat.c			\
-		srcs/ft_memset.c				\
 		srcs/cast_len_modifier.c		\
-		srcs/put_dec.c					\
-		srcs/put_hex.c					\
-		srcs/put_oct.c					\
-		srcs/put_ptr.c					\
-		srcs/put_double.c				\
-		srcs/put_e.c					\
-		srcs/put_g.c					\
 		srcs/read_flags.c				\
 		srcs/parse.c					\
 		srcs/double_utils.c				\
 		srcs/double_utils_2.c			\
 		srcs/double_validation.c		\
 		srcs/write_buffer.c				\
+		srcs/lib/ft_strlen.c			\
+		srcs/lib/ft_strncpy.c			\
+		srcs/lib/ft_isdigit.c			\
+		srcs/lib/ft_memset.c			\
+		srcs/put/put_dec.c				\
+		srcs/put/put_hex.c				\
+		srcs/put/put_oct.c				\
+		srcs/put/put_ptr.c				\
+		srcs/put/put_double.c			\
+		srcs/put/put_e.c				\
+		srcs/put/put_g.c				\
 		srcs/convs/conv_c.c				\
 		srcs/convs/conv_s.c				\
 		srcs/convs/conv_p.c				\
