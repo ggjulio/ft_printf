@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:34:13 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:53:58 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:35:09 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 int main(void)
 {
 	char test[ARR_SIZE];
+	int ret;
 
 	ft_memset(test, 0, ARR_SIZE);
-	ft_sprintf(test, "%d", 16);
-	ft_printf("sprintf>>>>%s|\n", test);
+	ret = ft_sprintf(test, "0123456789|%d", 16);
+	ft_printf("sprintf>>|ret:%d|>>\n%s", ret, test);
 
 }

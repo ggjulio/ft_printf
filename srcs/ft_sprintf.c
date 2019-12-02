@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:29:54 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 16:46:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:32:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		ft_vsprintf(char *dst, const char *format, va_list ap)
 
 	str = (char *)format;
 	ft_memset(&p, 0, sizeof(t_manager));
+	p.caller = SPRINTF;
 	p.dst = dst;
 	i = -1;
 	while (format[++i])

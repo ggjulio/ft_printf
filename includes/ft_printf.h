@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 17:16:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:44:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct	s_manager
 	enum e_printf	caller;
 	char			*dst;
 	int				dst_len;
+	int8_t			malloc_fail;
 }				t_manager;
 
 typedef void	(*t_handler)(va_list args, t_manager *p);

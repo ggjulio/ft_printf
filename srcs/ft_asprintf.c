@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:29:54 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 18:05:43 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:06:58 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int		ft_vasprintf(char **ret, const char *format, va_list ap)
 			str = (char *)format + i + 1;
 		}
 	write_buffer(&p, str, format + i - str);
-	if (p.buffer_idx)
+	if (p.buffer_idx && !p.malloc_fail)
 		p.dst = ft_strdup_cat(p.dst, p.buffer, p.dst_len, p.buffer_idx);
 	*ret = p.dst;
-	return (p.len);
+	return (p.malloc_fail ? -1 : p.len);
 }
 
 int		ft_asprintf(char **ret, const char *format, ...)
