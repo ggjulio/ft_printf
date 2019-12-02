@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:10:29 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:24:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 20:39:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int			ft_vdprintf(int fd, const char *format, va_list ap)
 	write_buffer(&p, str, format + i - str);
 	if (p.buffer_idx)
 		write(p.fd, p.buffer, p.buffer_idx);
-	va_end(ap);
 	return (p.len);
 }
 
