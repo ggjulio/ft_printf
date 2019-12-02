@@ -6,13 +6,13 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:29:54 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:06:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 15:13:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_vsprintf(char *dst, const char *format, va_list ap)
+int		ft_vsprintf(char *dst, const char *format, va_list ap)
 {
 	size_t		i;
 	char		*str;
@@ -39,13 +39,13 @@ int			ft_vsprintf(char *dst, const char *format, va_list ap)
 	return (p.len);
 }
 
-int			ft_sprintf(char *str, const char *format, ...)
+int		ft_sprintf(char *str, const char *format, ...)
 {
 	int		len;
-	va_list	args;
+	va_list	ap;
 
-	va_start(args, format);
-	len = ft_vsprintf(str, format, args);
-	va_end(args);
+	va_start(ap, format);
+	len = ft_vsprintf(str, format, ap);
+	va_end(ap);
 	return (len);
 }
