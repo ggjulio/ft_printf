@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:26:02 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 14:43:40 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:57:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static void	put_width(t_manager *p, int nb_char)
 	}
 }
 
-static void	put_precision(t_manager *p, int nb_char, char c)
+static void	put_precision(t_manager *p, int nb_char)
 {
 	int	i;
 
 	if (F_ZERO & p->flags && F_DOT & ~p->flags)
 		i = p->width;
 	else
-		i = ((F_HASH & p->flags) && c != '0' ? p->precision - 1 : p->precision);
+		i = p->precision;
 	while (i > nb_char)
 	{
 		write_buffer(p, "0", 1);
@@ -51,13 +51,9 @@ static void	recursive(uint64_t n, t_manager *p, int *digits)
 	{
 		if (c == '0' && *digits == 1 && (F_DOT & p->flags) && p->precision == 0)
 			(*digits) = 0;
-		if ((F_HASH & p->flags) && c != '0')
-			p->width -= 1;
 		if ((F_DASH & ~p->flags) && (F_ZERO & ~p->flags || F_DOT & p->flags))
 			put_width(p, *digits);
-		if ((F_HASH & p->flags) && c != '0')
-			write_buffer(p, "0", 1);
-		put_precision(p, *digits, c);
+		put_precision(p, *digits);
 		if (*digits != 0 || (F_DOT & ~p->flags) || p->precision != 0)
 			write_buffer(p, &c, 1);
 		return ;
