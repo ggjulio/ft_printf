@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:57:19 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 16:04:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:38:03 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int			ft_vprintf(const char *format, va_list ap)
 
 	str = (char *)format;
 	ft_memset(&p, 0, sizeof(t_manager));
+	p.caller = PRINTF;
 	p.fd = 1;
 	i = -1;
 	while (format[++i])
@@ -33,8 +34,7 @@ int			ft_vprintf(const char *format, va_list ap)
 			str = (char *)format + i + 1;
 		}
 	write_buffer(&p, str, format + i - str);
-	if (p.buffer_idx)
-		write(p.fd, p.buffer, p.buffer_idx);
+	flush_buffer(&p);
 	return (p.len);
 }
 

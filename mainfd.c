@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:34:13 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 11:34:53 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:55:29 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 
 int main(void)
 {
-	int fd;
+	int fd = -1;
+	char *file = "test.txt";
 
-	fd = open("test2.txt", O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
-	if (fd > 1)
-		ft_dprintf(fd, "%s|%d|\nok", "test\n", 422);
+	fd = open(file, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
+	if (fd >= 1)
+		ft_printf("|fd:%d|ret:%d| output in \"%s\"", fd, ft_dprintf(fd, "%s|%d|\nok", "THE  test\n", 422), file);
 	else
-		write(1, "|error|", 7);
+		write(1, "fd < 1|", 7);
 	close(fd);
 }
