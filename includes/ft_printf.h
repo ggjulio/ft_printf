@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/03 15:36:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/04 21:04:52 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <wchar.h>
 # include <float.h>
 
 # define F_DASH 1
@@ -105,6 +106,8 @@ int				is_valid_float(long double n, t_manager *p);
 int64_t			cast_signed(t_manager *p, va_list args);
 uint64_t		cast_unsigned(t_manager *p, va_list args);
 void			*cast_ptr(t_manager *p, va_list args);
+wint_t			cast_c(t_manager *p, va_list args);
+wchar_t			*cast_s(t_manager *p, va_list args);
 
 /*
 ** ******************* Utility  ********************

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/04 20:31:14 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/04 21:03:07 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,24 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 #include <limits.h>
 #include <stdint.h>
 
+#include <wchar.h>
+
+
 int 	main(void)
 {
 	uint64_t n = ULONG_MAX;
 
 	(void)n;
-	
 
+	wchar_t ws[50] = L"Salut Gérard !";
+	wchar_t wc = ws[7];
+
+	   printf( "%ls_\n", ws);
+	ft_printf( "%ls_\n", ws);
+//	   printf( "%lc_\n", wc);
+//	ft_printf( "%lc_\n", wc);
+	
+/*
 	   printf( "%g\n", -0.0);
 	ft_printf( "%g\n", -0.0);
 	   printf( "%f\n", -0.0);
@@ -61,7 +72,7 @@ int 	main(void)
 	ft_printf( "%g\n", 120.4254);
 	   printf( "%g\n", 1120.4254);
 	ft_printf( "%g\n", 1120.4254);
-
+*/
 }
 /*
 	int64_t n_int = LONG_MAX;
