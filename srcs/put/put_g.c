@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:09:46 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:50:05 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/04 20:10:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int		get_exponent(long double n)
 	if (!n)
 		return (0);
 	e = 0;
+	n = (n < 0 ? -n : n);
 	while (n >= 10)
 	{
 		e++;
