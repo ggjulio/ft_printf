@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:15:12 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/04 21:07:09 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/05 16:09:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void		conv_s(va_list args, t_manager *p)
 {
-	wchar_t	*s;
+	char	*s;
 	int		len;
 
-//	s = va_arg(args, char*);
-	s = cast_s(p, args);
+	s = va_arg(args, char*);
+//	s = cast_s(p, args);
 	if (!s)
-		s = L"(null)";
+		s = "(null)";
 	len = ft_strlen(s);
 	if (F_DOT & p->flags && p->precision < len && p->precision >= 0)
 		len = p->precision;
