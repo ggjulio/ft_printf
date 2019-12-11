@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/04 21:04:52 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:53:57 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char			*ft_strdup_cat(char *src, char *buf, int src_len, int buf_len);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 int				is_digit(char c);
-void			write_buffer(t_manager *p, char *s, size_t n);
+void			write_buffer(t_manager *p, void *s, size_t n);
 void			flush_buffer(t_manager *p);
 int				read_flags(t_manager *p, va_list args, const char *format);
 void			parse(va_list args, t_manager *p);

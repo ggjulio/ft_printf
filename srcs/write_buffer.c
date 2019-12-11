@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:28:25 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/03 16:00:45 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:53:47 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	flush_buffer(t_manager *p)
 	}
 }
 
-void	write_buffer(t_manager *p, char *s, size_t n)
+void	write_buffer(t_manager *p, void *s, size_t n)
 {
 	int i;
 
@@ -42,7 +42,7 @@ void	write_buffer(t_manager *p, char *s, size_t n)
 			flush_buffer(p);
 			p->buffer_idx = 0;
 		}
-		p->buffer[p->buffer_idx++] = s[i++];
+		p->buffer[p->buffer_idx++] = ((char *)s)[i++];
 		p->len++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/08 19:34:52 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:03:20 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,24 @@ int 	main(void)
 //	locale_changed =  setlocale(LC_NUMERIC, "en_US");
 	
 
-	char *locale_changed;
-	locale_changed = setlocale(LC_ALL, "fr_FR.UTF-8");
-//	locale_changed = setlocale(LC_ALL, "");
-//	locale_changed = setlocale(LC_ALL, "chs");
+	char *locale_changed = NULL;
+//	locale_changed = setlocale(LC_ALL, "fr_FR.UTF-8");
+	locale_changed = setlocale(LC_ALL, "");
 //	locale_changed = setlocale(LC_ALL, "chinese-simplified");
 
 	if (locale_changed == NULL)
 		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
 	
-	wchar_t *ws = L"Salut Gérard !";
-	char *s = "Salut Gérard !";
+	int i;
 
-	printf("____________________________________________\n");
-	printf("|||||||||||||||||||TEST|||||||||||||||||||||\n");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	i = 0;
+	while (i < 13350)
+	{
+		printf("|%d|%d|\n", printf("%lc", i), i);
+//		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
+		i++;
+	}
 
-	printf("|%d|r\n",    printf("Grâve."));
-	printf("|%d|m\n", ft_printf("Grâve."));
-	   
-    ft_printf("++++++++++++++++++++++++===\n");
-	
-	printf("~~~~~~~~~~~~~~\n");
-	printf("|%d|r\n",    printf("%s", s));
-	printf("|%d|m\n", ft_printf("%s", s));
-	
-	printf("~~~~~~~~~~~~~~\n");
-	printf("|%d|r\n",    printf("%ls", ws));
-	printf("|%d|m\n", ft_printf("%ls", ws));
-
-	printf("~~~~~~~~~~~~~~\n");
-	printf("|%d|r\n",    printf("%S", ws));
-	printf("|%d|m\n", ft_printf("%S", ws));
-
-	
-//	   printf( "%lc_\n", wc);
-//	ft_printf( "%ls_\n", ws);
-//	   printf( "%lc_\n", wc);
-//	ft_printf( "%lc_\n", wc);
 	
 /*
 	   printf( "%g\n", -0.0);

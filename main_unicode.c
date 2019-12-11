@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_c.c                                           :+:      :+:    :+:   */
+/*   main_unicode.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/17 19:14:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/11 17:53:08 by juligonz         ###   ########.fr       */
+/*   Created: 2019/12/11 18:09:17 by juligonz          #+#    #+#             */
+/*   Updated: 2019/12/11 18:09:47 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "stdio.h"
 
-void		conv_c(va_list args, t_manager *p)
+int count_active_bits(int c_uni)
 {
-	int 	c;
+	int count_b;
 
-	c = va_arg(args, int);
-	if (F_DASH & ~p->flags)
-		while (--p->width > 0)
-			write_buffer(p, " ", 1);
-	if (c < 256)
-		write_buffer(p, &c, 1);
-	else
-		p->malloc_fail = 1;
-	if (F_DASH & p->flags)
-		while (--p->width > 0)
-			write_buffer(p, " ", 1);
+	count_b = 0;
+	while (c_uni)
+	{
+		c_uni = c_uni >> 1;
+		count_b++;
+	}
+	return (count_b);
+}
+
+int main(void)
+{
+    int     c_uni;
+    int bits_amt;
+
+    c_uni = 986;
+    bits_amt = count_active_bits(c_uni);
+    printf("There are %d bits in input number.\n", bits_amt);
+    return (0);
 }
