@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/11 18:03:20 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/11 20:00:36 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,22 @@ int 	main(void)
 	
 
 	char *locale_changed = NULL;
+
+	(void)locale_changed;
 //	locale_changed = setlocale(LC_ALL, "fr_FR.UTF-8");
-	locale_changed = setlocale(LC_ALL, "");
+//	locale_changed = setlocale(LC_ALL, "");
 //	locale_changed = setlocale(LC_ALL, "chinese-simplified");
 
-	if (locale_changed == NULL)
-		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
+//	if (locale_changed == NULL)
+//		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
 	
 	int i;
 
-	i = 0;
-	while (i < 13350)
+	i = 1;
+	while (i < 350)
 	{
-		printf("|%d|%d|\n", printf("%lc", i), i);
-//		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
+//		printf("|%d|%d|\n", printf("%lc", i), i);
+		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
 		i++;
 	}
 
