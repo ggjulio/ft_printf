@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/11 20:00:36 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 11:59:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,27 @@ int 	main(void)
 
 	(void)locale_changed;
 //	locale_changed = setlocale(LC_ALL, "fr_FR.UTF-8");
-//	locale_changed = setlocale(LC_ALL, "");
+	locale_changed = setlocale(LC_ALL, "");
 //	locale_changed = setlocale(LC_ALL, "chinese-simplified");
 
 //	if (locale_changed == NULL)
 //		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
 	
 	int i;
+	char *t = "123456789";
 
-	i = 1;
-	while (i < 350)
+	i = 1250;
+	while (i < 1280)
 	{
-//		printf("|%d|%d|\n", printf("%lc", i), i);
-		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
+//		printf("|%d|%d|\n", printf("%s||%lc",t, i), i);
+		ft_printf("|%d|%d|\n", ft_printf("%s||%lc",t, i), i);
+//		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
 		i++;
 	}
+//	printf("\n\n");
+//	printf("|%d|\n", printf("%c", 19001));
+//	ft_printf("|%d|\n", ft_printf("%c", 19001));
+
 
 	
 /*

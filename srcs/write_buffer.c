@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:28:25 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/11 17:53:47 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 11:18:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	flush_buffer(t_manager *p)
 			p->malloc_fail = 1;
 		p->dst_len += BUFFER_SIZE;
 	}
+	p->buffer_idx = 0;
 }
 
 void	write_buffer(t_manager *p, void *s, size_t n)
@@ -38,10 +39,7 @@ void	write_buffer(t_manager *p, void *s, size_t n)
 	while (n--)
 	{
 		if (p->buffer_idx == BUFFER_SIZE)
-		{
 			flush_buffer(p);
-			p->buffer_idx = 0;
-		}
 		p->buffer[p->buffer_idx++] = ((char *)s)[i++];
 		p->len++;
 	}
