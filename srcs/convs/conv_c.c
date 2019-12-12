@@ -6,37 +6,34 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:14:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/12 12:00:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 14:19:08 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int b(int c_uni)
+int	count_bits(int wc)
 {
-	int count_b;
+	int n;
 
-	count_b = 0;
-	while (c_uni)
+	n = 0;
+	while (wc)
 	{
-		c_uni = c_uni >> 1;
-		count_b++;
+		wc = wc >> 1;
+		n++;
 	}
-	return (count_b);
+	return (n);
 }
 
-int	a(int bits_amount)
+int	get_size_octet(uint16_t nb_bits)
 {
-	if (bits_amount <= 7)
+	if (nb_bits <= 7)
 		return (1);
-	else if (bits_amount > 7 && bits_amount <= 11)
+	if (nb_bits <= 11)
 		return (2);
-	else if (bits_amount > 11 && bits_amount <= 16)
+	if (nb_bits <= 16)
 		return (3);
-	else if (bits_amount > 16)
-		return (4);
-	else
-		return (0);
+	return (4);
 }
 
 void		conv_c(va_list args, t_manager *p)
@@ -50,7 +47,7 @@ void		conv_c(va_list args, t_manager *p)
 	if (c > 255) 
 		p->is_error = 1;
 	if (F_FLOAT_L & p->flags)
-	write_buffer(p, &c, a(b(c)));
+	write_buffer(p, &c, get_size_octet(count_bits(c)));
 	if (F_DASH & p->flags)
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
