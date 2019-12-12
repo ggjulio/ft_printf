@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 15:30:53 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:21:43 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:50:44 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void				put_e(long double n, t_manager *p)
 	int		e;
 	int		nb_char;
 
-	p->precision = (F_DOT & p->flags ? p->precision : 6);
+	p->precision = (p->f.dot ? p->precision : 6);
 	is_neg = (n < 0 ? 1 : 0);
 	n = (n < 0 ? -n : n);
 	e = get_exponent(&n, 0);
@@ -76,17 +76,17 @@ void				put_e(long double n, t_manager *p)
 	e = get_exponent(&n, e);
 	if (p->specifier == 'g')
 		p->precision = trailing_zero(n - (int)n, p->precision);
-	nb_char = p->precision + 6 + (F_PLUS & p->flags ? 1 : 0);
-	if (((F_SPACE & p->flags) && !(is_neg || (F_PLUS & p->flags))))
+	nb_char = p->precision + 6 + (p->f.plus ? 1 : 0);
+	if (p->f.space && !(is_neg || p->f.plus))
 		if (p->width-- || 1)
 			write_buffer(p, " ", 1);
-	if (F_DASH & ~p->flags)
+	if (!p->f.dash)
 		put_double_width(p, nb_char);
-	if (is_neg || F_PLUS & p->flags)
+	if (is_neg || p->f.plus)
 		write_buffer(p, (is_neg ? "-" : "+"), 1);
 	put_double_zero(p, nb_char);
 	put_double(n, p);
 	show_exp(e, p);
-	if (F_DASH & p->flags)
+	if (p->f.dash)
 		put_double_width(p, nb_char);
 }

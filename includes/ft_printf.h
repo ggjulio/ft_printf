@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:53:56 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/11 19:52:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 19:15:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,33 @@
 # include <wchar.h>
 # include <float.h>
 
-# define F_DASH 1
-# define F_ZERO 2
-# define F_DOT	4
-# define F_STAR 8
-# define F_L 16
-# define F_LL 32
-# define F_H 64
-# define F_HH 128
-# define F_J 256
-# define F_APOSTROPHE 512
-# define F_HASH 1024
-# define F_SPACE 2048
-# define F_PLUS 4096
-# define F_FLOAT_L 8192
-
 # define BUFFER_SIZE 64
 
 enum	e_printf{PRINTF, DPRINTF, SPRINTF, ASPRINTF};
 
+typedef struct	s_flags
+{
+	uint16_t	dash:1;
+	uint16_t	zero:1;
+	uint16_t	dot:1;
+	uint16_t	star:1;
+	uint16_t	l:1;
+	uint16_t	ll:1;
+	uint16_t	h:1;
+	uint16_t	hh:1;
+	uint16_t	j:1;
+	uint16_t	apostrophe:1;
+	uint16_t	hash:1;
+	uint16_t	space:1;
+	uint16_t	plus:1;
+	uint16_t	l_uppercase:1;
+	uint16_t	remain_bits:2;
+}				t_flags;
+
 typedef struct	s_manager
 {
 	int				fd;
-	unsigned short	flags;
+	t_flags			f;
 	int				width;
 	int				len;
 	int				precision;

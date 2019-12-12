@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/12 14:22:08 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:40:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,25 +99,5 @@ int 	main(void)
 	   printf( "%g\n", 1120.4254);
 	ft_printf( "%g\n", 1120.4254);
 */
+	
 }
-/*
-	int64_t n_int = LONG_MAX;
-
-
-	   printf( "d   = %d\n",   n_int);
-	ft_printf( "d   = %d\n",   n_int);
-  	   printf( "hd  = %hd\n",  n_int);
-	ft_printf( "hd  = %hd\n",  n_int);
-	   printf( "hhd = %hhd\n", n_int);
-	ft_printf( "hhd = %hhd\n\n", n_int);
-
-	   printf( "d   = %d\n",   n_int);
-	ft_printf( "d   = %d\n",   n_int);
-	   printf( "ld  = %ld\n",  n_int);
-	ft_printf( "ld  = %ld\n",  n_int);
-	   printf( "lld = %lld\n", n_int);
-	ft_printf( "lld = %lld\n\n", n_int);
-
-
-
- */

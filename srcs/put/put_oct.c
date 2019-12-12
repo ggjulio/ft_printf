@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:26:02 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 19:57:55 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:39:55 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	put_precision(t_manager *p, int nb_char)
 {
 	int	i;
 
-	if (F_ZERO & p->flags && F_DOT & ~p->flags)
+	if (p->f.zero && !p->f.dot)
 		i = p->width;
 	else
 		i = p->precision;
@@ -49,12 +49,12 @@ static void	recursive(uint64_t n, t_manager *p, int *digits)
 		recursive(n / 8, p, digits);
 	else
 	{
-		if (c == '0' && *digits == 1 && (F_DOT & p->flags) && p->precision == 0)
+		if (c == '0' && *digits == 1 && p->f.dot && p->precision == 0)
 			(*digits) = 0;
-		if ((F_DASH & ~p->flags) && (F_ZERO & ~p->flags || F_DOT & p->flags))
+		if (!p->f.dash && (!p->f.zero || p->f.dot))
 			put_width(p, *digits);
 		put_precision(p, *digits);
-		if (*digits != 0 || (F_DOT & ~p->flags) || p->precision != 0)
+		if (*digits != 0 || !p->f.dot || p->precision != 0)
 			write_buffer(p, &c, 1);
 		return ;
 	}
@@ -67,6 +67,6 @@ void		put_oct(int64_t n, t_manager *p)
 
 	nb_digit = 0;
 	recursive(n, p, &nb_digit);
-	if (F_DASH & p->flags)
+	if (p->f.dash)
 		put_width(p, nb_digit);
 }

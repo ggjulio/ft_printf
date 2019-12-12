@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 15:41:41 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 15:48:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:42:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ static void	recursive(uint64_t n, t_manager *p, int *nb_digit)
 		recursive(n / 16, p, nb_digit);
 	else
 	{
-		if (c == '0' && *nb_digit == 1 && (F_DOT & p->flags)
-			&& p->precision == 0)
+		if (c == '0' && *nb_digit == 1 && p->f.dot && p->precision == 0)
 			*nb_digit = 0;
 		p->width -= 2;
-		if (F_DASH & ~p->flags)
+		if (!p->f.dash)
 			put_width(p, *nb_digit);
 		write_buffer(p, "0x", 2);
 		if (*nb_digit)
@@ -56,6 +55,6 @@ void		put_ptr(uint64_t n, t_manager *p)
 
 	nb_digit = 0;
 	recursive(n, p, &nb_digit);
-	if (F_DASH & p->flags)
+	if (p->f.dash)
 		put_width(p, nb_digit);
 }

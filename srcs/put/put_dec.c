@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:09:27 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 14:28:14 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:14:47 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	put_precision(t_manager *p, int nb_char, int show_sign)
 {
 	int i;
 
-	if (F_ZERO & p->flags && F_DOT & ~p->flags)
+	if (p->f.zero && !p->f.dot)
 	{
 		i = p->width - show_sign;
 		p->width = (p->width < 0 ? -(p->width) : p->width);
@@ -51,22 +51,22 @@ static void	recursive(uint64_t n, t_manager *p, int *is_neg, int *digits)
 	c = n % 10 + '0';
 	if (n < 10)
 	{
-		if ((F_SPACE & p->flags && !(*is_neg || F_PLUS & p->flags))
+		if ((p->f.space && !(*is_neg || p->f.plus))
 			&& p->specifier != 'u' && (p->width-- || 1))
 			write_buffer(p, " ", 1);
-		if (c == '0' && *digits == 1 && (F_DOT & p->flags) && p->precision == 0)
+		if (c == '0' && *digits == 1 && p->f.dot && p->precision == 0)
 			(*digits) = 0;
-		if (F_DASH & ~p->flags && (F_ZERO & ~p->flags || F_DOT & p->flags))
-			put_width(p, *digits, (*is_neg || F_PLUS & p->flags));
-		if ((*is_neg || F_PLUS & p->flags) && p->specifier != 'u')
+		if (!p->f.dash && (!p->f.zero || p->f.dot))
+			put_width(p, *digits, (*is_neg || p->f.plus));
+		if ((*is_neg || p->f.plus) && p->specifier != 'u')
 			write_buffer(p, (*is_neg ? "-" : "+"), 1);
-		put_precision(p, *digits, (*is_neg || F_PLUS & p->flags));
-		if (*digits != 0 || F_DOT & ~p->flags || p->precision != 0)
+		put_precision(p, *digits, (*is_neg || p->f.plus));
+		if (*digits != 0 || !p->f.dot || p->precision != 0)
 			write_buffer(p, &c, 1);
 		return ;
 	}
 	recursive(n / 10, p, is_neg, digits);
-	if ((F_APOSTROPHE & p->flags) && idx % 3 == 0)
+	if (p->f.apostrophe && idx % 3 == 0)
 		write_buffer(p, ",", 1);
 	write_buffer(p, &c, 1);
 }
@@ -85,8 +85,8 @@ void		put_int(int64_t n, t_manager *p)
 	}
 	else
 		recursive(n, p, &is_neg, &nb_digit);
-	if (F_DASH & p->flags)
-		put_width(p, nb_digit, (is_neg || F_PLUS & p->flags));
+	if (p->f.dash)
+		put_width(p, nb_digit, (is_neg || p->f.plus));
 }
 
 void		put_uint(uint64_t n, t_manager *p)
@@ -97,6 +97,6 @@ void		put_uint(uint64_t n, t_manager *p)
 	is_neg = 0;
 	nb_digit = 0;
 	recursive(n, p, &is_neg, &nb_digit);
-	if (F_DASH & p->flags)
-		put_width(p, nb_digit, (is_neg || F_PLUS & p->flags));
+	if (p->f.dash)
+		put_width(p, nb_digit, (is_neg || p->f.plus));
 }

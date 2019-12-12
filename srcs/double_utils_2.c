@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:58:21 by juligonz          #+#    #+#             */
-/*   Updated: 2019/11/30 15:01:33 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 16:43:31 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_double_width(t_manager *p, int nb_char)
 {
 	int i;
 
-	if (F_ZERO & p->flags)
+	if (p->f.zero)
 		return ;
 	i = p->width;
 	while (i > nb_char)
@@ -30,7 +30,7 @@ void	put_double_zero(t_manager *p, int nb_char)
 {
 	int i;
 
-	if (F_ZERO & ~p->flags)
+	if (!p->f.zero)
 		return ;
 	i = p->width;
 	while (i > nb_char)

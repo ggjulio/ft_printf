@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 22:35:14 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 23:07:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:34:01 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int			is_valid_float(long double n, t_manager *p)
 	error = get_error_float(n);
 	if (!error)
 		return (1);
-	nb_char = ((F_PLUS & p->flags) || error[3] == '-' ? 4 : 3);
-	if (F_DASH & ~p->flags || F_ZERO & p->flags)
+	nb_char = (p->f.plus || error[3] == '-' ? 4 : 3);
+	if (!p->f.dash || p->f.zero)
 		put_width(p, nb_char);
-	if ((F_PLUS & p->flags) || error[3] == '-')
+	if (p->f.plus || error[3] == '-')
 		write_buffer(p, (error[3] == '-' ? "-" : "+"), 1);
 	write_buffer(p, error, 3);
-	if (F_DASH & p->flags)
+	if (p->f.dash)
 		put_double_width(p, nb_char);
 	return (0);
 }
