@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/13 18:02:00 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 18:29:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,48 +30,9 @@ int 	main(void)
 {
 	uint64_t n = ULONG_MAX;
 	(void)n;
-//	locale_changed =  setlocale(LC_NUMERIC, "en_US");
-	
-
-	char *locale_changed = NULL;
-
-	(void)locale_changed;
-//	locale_changed = setlocale(LC_ALL, "fr_FR.UTF-8");
-//	locale_changed = setlocale(LC_ALL, "chinese-simplified");
-
-//	if (locale_changed == NULL)
-//		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
 
 //	locale_changed = setlocale(LC_ALL, "");
 
-	test_ls(L"fb1feafewfefewfe");
-	test_ls(L"ffb1fefwefew");
-	test_ls(L"");
-	test_ls(L"a");
-	test_ls(L"55555555555555555555555555555555555555555555");
-	
-// printf -1
-
-	test_ls(L"\u0b11");
-
-
-	test_ls(L"\uffb1feafewfefewfe");
-	
-//	printf("ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÕìÔÇµÇ≠Ç»Ç¢\n");
-//	ft_printf("ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÕìÔÇµÇ≠Ç»Ç¢\n");
-
-//	printf("|%d|\n", printf("%c", 19001));
-//	ft_printf("|%d|\n", ft_printf("%c", 19001));
-
-
-	
-/*
-	   printf( "%g\n", -0.0);
-	ft_printf( "%g\n", -0.0);
-	   printf( "%f\n", -0.0);
-	ft_printf( "%f\n", -0.0);
-	   printf( "%e\n", -0.0);
-	ft_printf( "%e\n", -0.0);
 
 	   printf( "%g\n", -0.1);
 	ft_printf( "%g\n", -0.1);
@@ -103,6 +64,36 @@ int 	main(void)
 	ft_printf( "%g\n", 120.4254);
 	   printf( "%g\n", 1120.4254);
 	ft_printf( "%g\n", 1120.4254);
-*/
+	   printf( "%g\n", 11230.4254);
+	ft_printf( "%g\n", 11230.4254);
+	   printf( "%g\n", 11230.425454);
+	ft_printf( "%g\n", 11230.425454);
+	   printf( "%g\n", 10.425454);
+	ft_printf( "%g\n", 10.425454);
+	   printf( "%g\n", 0.425454);
+	ft_printf( "%g\n", 0.425454);
+	   printf( "%g\n", 41.0);
+	ft_printf( "%g\n", 41.0);
+	   printf( "%g\n", 0.0344313);
+	ft_printf( "%g\n", 0.0344313);
+	   printf( "%g\n", 0.034431213);
+	ft_printf( "%g\n", 0.034431213);
+	   printf( "%.8g\n", 0.034431213);
+	ft_printf( "%.8g\n", 0.034431213);
+	   printf( "%.8g\n", 0.034431213);
+	ft_printf( "%.8g\n", 0.034431213);
+	   printf( "%g\n", 0.00034431213);
+	ft_printf( "%g\n", 0.00034431213);
+	   printf( "%g\n", 0.0000344312);
+	ft_printf( "%g\n", 0.0000344312);
+	   printf( "%g\n", 300000.0);
+	ft_printf( "%g\n", 300000.0);
+	   printf( "%g\n", 3000000.0);
+	ft_printf( "%g\n", 3000000.0);
+	   printf( "%g\n", -300000.0);
+	ft_printf( "%g\n", -300000.0);
+	   printf( "%g\n", -3000000.0);
+	ft_printf( "%g\n", -3000000.0);
+
 	
 }
