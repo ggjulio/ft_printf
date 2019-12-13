@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/13 15:13:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 15:25:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int 	main(void)
 //	if (locale_changed == NULL)
 //		printf("\n|||||||||| ERROR : Unable to set locale ||||||||\n");
 
-	locale_changed = setlocale(LC_ALL, "");
+//	locale_changed = setlocale(LC_ALL, "");
 
 	
 	int i;
 
-	i = 240;
-	while (i <= 350)
+	i = 0;
+	while (i <= 0xffff)
 	{
-	       printf("|%d|%d|\n",    printf("|%lc", i), i);
-//		ft_printf("|%d|%d|\n", ft_printf("|%lc", i), i);
+	       printf("|%d|%d|\n",    printf("%lc", i), i);
+//		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
 //		   printf("|%d|%d|\n",    printf("%c", i), i);
 //		ft_printf("|%d|%d|\n", ft_printf("%c", i), i);
 		i++;
