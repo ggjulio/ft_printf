@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 15:28:25 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/12 11:18:08 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 17:57:51 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ void	write_buffer(t_manager *p, void *s, size_t n)
 		if (p->buffer_idx == BUFFER_SIZE)
 			flush_buffer(p);
 		p->buffer[p->buffer_idx++] = ((char *)s)[i++];
+		p->len++;
+	}
+}
+
+void	write_buffer_wcs(t_manager *p, wchar_t *s, size_t n)
+{
+	int i;
+
+	i = 0;
+	while (n--)
+	{
+		if (p->buffer_idx == BUFFER_SIZE)
+			flush_buffer(p);
+		p->buffer[p->buffer_idx++] = (char)s[i++];
 		p->len++;
 	}
 }

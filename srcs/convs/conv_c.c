@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 19:14:57 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/13 15:27:02 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 17:53:44 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ void		conv_c(va_list args, t_manager *p)
 	char	c;
 
 	wc = (int)cast_s(p, args);
+	if (wc > 255)
+	{
+		p->is_error = 1;
+		if (p->f.l)
+			return ;
+	}
+	c = (char)wc;
 	if (!p->f.dash)
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);
-	if (wc > 255)
-		p->is_error = 1;
-	c = (char)wc;
-	if (!p->is_error)
-		write_buffer(p, &c, 1);
+	write_buffer(p, &c, 1);
 	if (p->f.dash)
 		while (--p->width > 0)
 			write_buffer(p, " ", 1);

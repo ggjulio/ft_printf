@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:47:31 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/13 15:25:37 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 18:02:00 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int ft_printf(const char *format, ...) __attribute__((format(printf,1,2)));
 
 #include <wchar.h>
 
+void	test_ls(wchar_t *ws)
+{
+	   printf("|%d|\n",    printf("%ls", ws));
+	ft_printf("|%d|\n", ft_printf("%ls", ws));
+}
 
 int 	main(void)
 {
@@ -39,23 +44,18 @@ int 	main(void)
 
 //	locale_changed = setlocale(LC_ALL, "");
 
+	test_ls(L"fb1feafewfefewfe");
+	test_ls(L"ffb1fefwefew");
+	test_ls(L"");
+	test_ls(L"a");
+	test_ls(L"55555555555555555555555555555555555555555555");
 	
-	int i;
+// printf -1
 
-	i = 0;
-	while (i <= 0xffff)
-	{
-	       printf("|%d|%d|\n",    printf("%lc", i), i);
-//		ft_printf("|%d|%d|\n", ft_printf("%lc", i), i);
-//		   printf("|%d|%d|\n",    printf("%c", i), i);
-//		ft_printf("|%d|%d|\n", ft_printf("%c", i), i);
-		i++;
-	}
+	test_ls(L"\u0b11");
 
-//	wchar_t *ws = L"\u00f6\u00e7\u015f\u0131\u011f";
 
-//	   printf("|%d|", printf("%ls", ws));
-//	ft_printf("|%d|", printf("%ls", ws));
+	test_ls(L"\uffb1feafewfefewfe");
 	
 //	printf("ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÕìÔÇµÇ≠Ç»Ç¢\n");
 //	ft_printf("ÉGÉìÉRÅ[ÉfÉBÉìÉOÇÕìÔÇµÇ≠Ç»Ç¢\n");
