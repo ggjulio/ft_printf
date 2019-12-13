@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:06:20 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/02 12:07:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 11:55:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ void	parse(va_list args, t_manager *p)
 	i = -1;
 	while (conv[++i])
 		if (conv[i] == p->specifier)
+		{
 			jmp_table[i](args, p);
+			break ;
+		}
 }

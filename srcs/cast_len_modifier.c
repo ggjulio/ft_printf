@@ -6,7 +6,7 @@
 /*   By: juligonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:15 by juligonz          #+#    #+#             */
-/*   Updated: 2019/12/12 15:11:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2019/12/13 11:15:40 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,18 @@ void		*cast_ptr(t_manager *p, va_list args)
 	if (p->f.ll)
 		return (va_arg(args, long long *));
 	return (va_arg(args, int *));
+}
+
+wint_t		cast_c(t_manager *p, va_list args)
+{
+	if (p->f.l)
+		return (va_arg(args, wint_t));
+	return (va_arg(args, int));
+}
+
+wchar_t		*cast_s(t_manager *p, va_list args)
+{
+	if (p->f.l)
+		return (va_arg(args, wchar_t *));
+	return ((wchar_t *)va_arg(args, char *));
 }
